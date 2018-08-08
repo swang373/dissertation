@@ -14,8 +14,9 @@ git stash --include-untracked
 git checkout -b gh-pages origin/gh-pages
 
 # Remove the previous dissertation version, replace it with the
-# latest version built by Travis-CI, and clean up extra files.
+# latest version built by Travis-CI, and clean untracked files.
 rm main.pdf
 git stash pop
+git add main.pdf
 git clean -fxd
 
