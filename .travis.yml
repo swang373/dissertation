@@ -1,0 +1,37 @@
+# Set sudo to false for a container-based build.
+sudo: false
+
+# Use a generic build environment to save time
+# installing language specific dependencies.
+language: generic
+
+# Build and deploy only when the master branch is updated.
+branches:
+  only:
+  - master
+
+# Install the standard full version of TeXLive.
+addons:
+  apt:
+    packages:
+      - texlive-full
+
+# The install step is required but unnecessary.
+# Set to true to skip.
+install: true
+
+# Build the dissertation.
+script: make
+
+# Prepare the working directory for deployment.
+before_deploy: . ./before_deploy.sh
+
+# Deploy the dissertation to gh-pages.
+deploy:
+  provider: pages
+  keep-history: true
+  skip-cleanup: true
+  on:
+    branch: master
+  github-token: $GITHUB_TOKEN
+
