@@ -6,8 +6,8 @@ ECHO created by Jason Harrington (May 2010)
 latex -interaction=batchmode main
 latex -interaction=batchmode main
 bibtex main
-latex -interaction=batchmode main
-latex -interaction=batchmode main
+REM latex -interaction=batchmode main
+REM latex -interaction=batchmode main
 xelatex main
 xelatex main
 start "c:\Program Files (x86)\Adobe\Reader 9.0\Reader\AcroRd32.exe" main.pdf

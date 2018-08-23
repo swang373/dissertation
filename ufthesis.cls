@@ -92,8 +92,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\renewcommand{\sfdefault}{phv} %Defines Helvetica - uncomment these 2 lines to change to Helvetica
-\renewcommand{\familydefault}{\sfdefault}
-%\renewcommand{\familydefault}{\rmdefault}
+%\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\familydefault}{\rmdefault}
 %\renewcommand{\sfdefault}{pag}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -686,7 +686,7 @@
 %%  Figures and Tables and Equations               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\theequation}{%
-  {\ifnum \c@chapter>\z@ \thechapter-\fi \@arabic\c@equation}}%Changed to hyphen instead of em dash per editorial office 2018
+  {\ifnum \c@chapter>\z@ \thechapter-\fi \@arabic\c@equation}}% changed to hyphed instead of em dash per editorial office 2018
 \renewcommand{\thefigure}{%
   {\ifnum \c@chapter>\z@ \thechapter-\fi \@arabic\c@figure}}%
 \renewcommand{\thetable}{%
