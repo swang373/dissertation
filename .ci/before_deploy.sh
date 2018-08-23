@@ -14,5 +14,5 @@ rm main.pdf
 
 # Unstash the build products and remove all untracked files
 git stash pop
-git clean -fx
+git clean -fxd
 
