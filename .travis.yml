@@ -1,37 +1,38 @@
-# Set sudo to false for a container-based build.
-sudo: false
+###########################
+# Travis-CI Configuration #
+###########################
 
-# Use a generic build environment to save time
-# installing language specific dependencies.
+# Use a generic environment
 language: generic
 
-# Build and deploy only when the master branch is updated.
-branches:
-  only:
-  - master
+# Only deploy updates to the master branch
+stages:
+  - name: deploy
+    if: branch = master
 
-# Install the standard full version of TeXLive.
-addons:
-  apt:
-    packages:
-      - texlive-full
+# Cache the TeX Live installation
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
 
-# The install step is required but unnecessary.
-# Set to true to skip.
-install: true
+################
+# Build Stages #
+################
 
-# Build the dissertation.
+# Installation an optimized setup of TeX Live
+install: source ./.ci/install.sh
+
+# Build the dissertation
 script: make
 
-# Prepare the working directory for deployment.
-before_deploy: . ./before_deploy.sh
+# Prepare the working area for deployment
+before_deploy: source ./.ci/before_deploy.sh
 
-# Deploy the dissertation to gh-pages.
+# Deploy the manuscript to gh-pages
 deploy:
   provider: pages
+  github-token: $GITHUB_TOKEN
   keep-history: true
   skip-cleanup: true
-  on:
-    branch: master
-  github-token: $GITHUB_TOKEN
 
