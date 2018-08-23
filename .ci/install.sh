@@ -36,6 +36,7 @@ tlmgr install  \
   amscls       \
   amsfonts     \
   amsmath      \
+  epsf         \
   geometry     \
   hyperref     \
   ifxetex      \
