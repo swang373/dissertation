@@ -151,3 +151,65 @@ body {
  color: white;
  width: 27vw;
 }
+
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+  }
+
+  #scene {
+    height: 67vh;
+    width: 90vw;
+  }
+
+  #event-info {
+    height: 67vh;
+    width: 90vw;
+  }
+
+  #event-display {
+    height: 67vh;
+    width: 90vw;
+  }
+
+  @-webkit-keyframes from-left {
+    from {
+      transform: translate(0px, 0px);
+    }
+  
+    to {
+      transform: translate(33vw, -21vh);
+    }
+  }
+  
+  @keyframes from-left {
+    from {
+      transform: translate(0px, 0px);
+    }
+  
+    to {
+      transform: translate(33vw, -21vh);
+    }
+  }
+
+  @-webkit-keyframes from-right {
+    from {
+      transform: translate(0px, 0px);
+    }
+  
+    to {
+      transform: translate(-33vw, 21vh);
+    }
+  }
+  
+  @keyframes from-right {
+    from {
+      transform: translate(0px, 0px);
+    }
+  
+    to {
+      transform: translate(-33vw, 21vh);
+    }
+  }
+
+}
