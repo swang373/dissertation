@@ -1,9 +1,153 @@
 body {
-  background-attachment: fixed;
-  background-color: black;
-  background-image: url(images/);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 75%, auto, cover;
+  background: black;
 }
 
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#scene {
+  display: flex;
+  align-items: center;
+  height: 90vh;
+  width: 67vw;
+}
+
+#event-info {
+  background-image: url("images/event_info_Znn.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 90vh;
+  width: 27vw;
+}
+
+#proton1 {
+  display: inline-block;
+  background: yellow;
+  border-radius: 50%;
+  position: absolute;
+  top: 75%;
+  left: 16%;
+  height: 10px;
+  width: 10px;
+  -webkit-animation: from-left 0.5s ease-out forwards, fade-out 0.5s ease-in forwards;
+  animation: from-left 0.5s ease-out forwards, fade-out 0.5s ease-in forwards;
+}
+
+#proton2 {
+  display: inline-block;
+  background: yellow;
+  border-radius: 50%;
+  position: absolute;
+  top: 12%;
+  left: 89%;
+  height: 10px;
+  width: 10px;
+  -webkit-animation: from-right 0.5s ease-out forwards, fade-out 0.5s ease-in forwards;
+  animation: from-right 0.5s ease-out forwards, fade-out 0.5s ease-in forwards;
+}
+
+@-webkit-keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes from-left {
+  from {
+    transform: translate(0px, 0px);
+  }
+
+  to {
+    transform: translate(24vw, -28vh);
+  }
+}
+
+@keyframes from-left {
+  from {
+    transform: translate(0px, 0px);
+  }
+
+  to {
+    transform: translate(24vw, -28vh);
+  }
+}
+
+@-webkit-keyframes from-right {
+  from {
+    transform: translate(0px, 0px);
+  }
+
+  to {
+    transform: translate(-25vw, 29vh);
+  }
+}
+
+@keyframes from-right {
+  from {
+    transform: translate(0px, 0px);
+  }
+
+  to {
+    transform: translate(-25vw, 29vh);
+  }
+}
+
+#event-display {
+  background-image: url("images/event_display_Znn.png");
+  background-position: center center;
+  background-size: cover;
+  opacity: 0;
+  height: 90vh;
+  width: 67vw;
+  -webkit-animation: fade-in 0.25s linear 0.5s forwards;
+  animation: fade-in 0.25s linear 0.5s forwards;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+#story {
+ color: white;
+ width: 27vw;
+}
