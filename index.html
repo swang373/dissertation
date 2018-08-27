@@ -7,28 +7,43 @@
 
     <!-- Behavioral Metadata -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
 
   </head>
   <body>
-    <div class="container">
+    <div class="visual">
       <div id="scene">
-        <div id="event-info" data-depth="0.4"></div>
+        <div data-depth="0.4">
+          <div id="event-metadata" class="visual-item"></div>
+        </div>
+        <div data-depth="0.3">
+          <div id="event-legend" class="visual-item"></div>
+        </div>
         <div data-depth="0.2">
-          <div id="proton1"></div>
-          <div id="proton2"></div>
-          <div id="event-display"></div>
+          <div id="proton-left" class="proton"></div>
+          <div id="proton-right" class="proton"></div>
+          <div id="event-display" class="visual-item"></div>
         </div>
       </div>
-      <div id="story">
-        <p>Placeholder Text</p>
-      </div>
+    </div>
+
+    <div class="sidebar">
+      <p id="about">During the Summer of 2018, the decay of a Higgs boson into a bottom quark-antiquark pair (H→bb̅) was finally observed. By combining over 30 years of experience with modern techniques, experts at the CMS experiment at CERN crafted an analysis of the VH(bb̅) decay channel which contributed significantly to this historic result.</p>
+      <a id="article" class="button" href="http://cds.cern.ch/record/2636067?ln=en" target="_blank">View the paper <i class="fas fa-angle-right"></i></a>
+      <a id="dissertation" class="button" href="#"><s>View my thesis</s> <i class="fas fa-angle-right"></i></a>
+    </div>
+
+
+    <div class="footer">
+      &copy; Copyright 2018, Sean-Jiun Wang.
     </div>
 
     <script>
