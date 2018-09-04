@@ -5,6 +5,10 @@ body {
   text-align: justify;
 }
 
+.border {
+  border: 2px dashed #00ffaa;
+}
+
 a {
   text-decoration: none;
 }
@@ -96,25 +100,38 @@ a {
   animation: fade-in 0.5s ease-in 1.5s forwards;
 }
 
+.sb-section {
+  margin: 1% 0;
+  padding: 1% 0;
+  width: 95%;
+}
+
+.sb-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sb-button {
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  margin: 0 0 0.5em;
+  padding: 0.2em 0.2em;
+  width: 50%;
+  z-index: 0;
+  cursor: pointer;
+  transition: all 0.33s;
+}
+
+.sb-button:focus, .sb-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  width: 60%;
+}
+
 #about {
   text-align: justify;
-}
-
-.button {
-    color: white;
-    text-align: center;
-    margin: 0 0 0.5em;
-    padding: 0.2em 0.2em;
-    width: 175px;
-    z-index: 0;
-    cursor: pointer;
-    transition: all 0.4s;
-}
-
-.button:focus, .button:hover {
-    background-color: white;
-    color: black;
-    width: 200px;
 }
 
 .footer {
@@ -237,6 +254,15 @@ a {
     float: initial;
     height: 33vh;
     width: 95vw;
+  }
+
+  .sb-links {
+    flex-direction: row;
+  }
+
+  .sb-button:focus, .sb-button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 50%;
   }
 
   .footer {
