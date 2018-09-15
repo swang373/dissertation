@@ -18,7 +18,7 @@ if ! command -v xelatex > /dev/null; then
 fi
 
 # Install base packages required to build plain and LaTeX formats
-tlmgr install cm etex knuth-lib latex-bin tex-ini-files unicode-data xetex
+tlmgr install cm etex knuth-lib latex-bin tex-ini-files texlive-scripts unicode-data xetex
 
 # Install packages required for graphics support (includes graphicx, keyval, lscape)
 tlmgr install graphics graphics-cfg graphics-def oberdiek
