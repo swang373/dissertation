@@ -569,7 +569,7 @@
     \GradMonth\ \GradYear \\*[\BaseDiff\baselineskip]%
     \end{RS@Cent}%
     {\raggedright Chair: \Chair \\%
-    %\raggedright Cochair: \Cochair \\%uncomment this line if you have a cochair
+    \raggedright Cochair: \Cochair \\%uncomment this line if you have a cochair
     Major: \Department} %
     \setboolean{SetDSpace}{true}%
     \par%
@@ -648,9 +648,9 @@
 \newcommand*{\SetChair}[1]{\renewcommand*{\Chair}{#1}}%
 \newcommand*{\Chair}{UNDEFINED Chair}%
 \@onlypreamble{\SetChair}%
-%\newcommand*{\SetCochair}[1]{\renewcommand*{\Cochair}{#1}}%uncomment these three lines if you have a Cochair
-%\newcommand*{\Cochair}{UNDEFINED Cochair}%Line 2
-%\@onlypreamble{\SetCochair}%Line 3
+\newcommand*{\SetCochair}[1]{\renewcommand*{\Cochair}{#1}}%uncomment these three lines if you have a Cochair
+\newcommand*{\Cochair}{UNDEFINED Cochair}%Line 2
+\@onlypreamble{\SetCochair}%Line 3
 %%    Adding personal notes to your text
 \newboolean{ShowNotes}% Used to display private notes.
 \setboolean{ShowNotes}{false}%
