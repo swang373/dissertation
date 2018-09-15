@@ -29,6 +29,7 @@ tlmgr install lm zapfding
 
 # Install remaining packages needed to compile the UF dissertation template
 # amscls includes amsthm
+# dvipdfmx includes xdvipdfmx
 # ms includes ragged2e
 # tools includes bm, calc, longtable, tabularx
 tlmgr install  \
@@ -36,6 +37,7 @@ tlmgr install  \
   amscls       \
   amsfonts     \
   amsmath      \
+  dvipdfmx     \
   epsf         \
   geometry     \
   hyperref     \
