@@ -227,7 +227,7 @@ FUNCTION { control.init }
   'control.author.reversed :=
   #1
   'control.editor :=
-  #-1
+  #0
   'control.title  :=
   #0
   'control.pages  :=
@@ -1353,19 +1353,7 @@ FUNCTION {format.eprint}
     { pop$ "" }
     {
       duplicate$
-      ""
-        archive duplicate$ empty$ { pop$ archiv.base } 'skip$ if$ *
-        "/" *
-        swap$ *
-        "{" swap$ * "} " *
-      swap$
-      ""
-        archivePrefix duplicate$ empty$ { pop$ "" } { ":" * } if$ *
-        swap$ *
-        primaryClass  duplicate$ empty$ { pop$ "" } { " [" swap$ * "]" * } if$ *
-        "{" swap$ * "} " *
-      *
-      eprint.command swap$ *
+      pop$
     }
   if$
 }
@@ -1892,7 +1880,7 @@ FUNCTION {string.enquote}
   } { "" } if$
    swap$ pop$
   *
-  bbl.enquote "{" * swap$ * "}" *
+  %bbl.enquote "{" * swap$ * "}" *
   word.space *
 }
 
@@ -2080,6 +2068,7 @@ FUNCTION {format.date}
 FUNCTION {format.date.output.check}
 {
  format.date
+ punctuation.no 'punctuation.state :=
  "year" output.check
 }
 
@@ -2140,7 +2129,7 @@ FUNCTION {format.bvolume}
 
 FUNCTION {format.number}
 {
-  bbl.number
+  ""
   output.state after.word = output.state after.punctuation = or
   #1 or
   #0 and
@@ -2308,7 +2297,7 @@ FUNCTION {format.journal.pages}
 { pages duplicate$ empty$ 'pop$
     { swap$ duplicate$ empty$
         { pop$ pop$ format.pages }
-        { volnum.punct *
+        { " " *
           swap$
           control.pages duplicate$ #0 < {
             pop$ pop$
@@ -2332,7 +2321,7 @@ FUNCTION {format.journal.eid}
 { eid "eid" bibinfo.check
   duplicate$ empty$ 'pop$
     { swap$ duplicate$ empty$ 'skip$
-        { volnum.punct * }
+        { " " * }
       if$
       swap$ *
     }
@@ -2342,8 +2331,8 @@ FUNCTION {format.journal.eid}
 FUNCTION {eid.or.pages}
 {
   eid empty$
-    { format.journal.pages }
-    { format.journal.eid }
+    { format.journal.pages ", " * }
+    { format.journal.eid ", " * }
   if$
 }
 
@@ -2356,7 +2345,6 @@ FUNCTION {format.ser.vol.num}
       "volume" bibinfo.check
     }
   if$
-  bolden
 }
 
 FUNCTION {format.chapter.pages}
@@ -2613,7 +2601,6 @@ FUNCTION {article}
   output.article.booktitle
   crossref missing$
     {
-      link.open
       journal
       "journal" bibinfo.warn
       "journal" 'bibfield :=
@@ -2621,23 +2608,27 @@ FUNCTION {article}
       add.blank
       format.ser.vol.num
       output
-      eid.or.pages
       format.date.output.check
+      eid.or.pages
       pages empty$ {
       doi output
       } 'skip$ if$
-      link.shut
     }{
       format.article.crossref output.nonnull
       format.pages output
     }
   if$
+  link.open
+  format.url
+  output
+  link.shut
   format.issn.output
   new.block.comma
   new.sentence.comma
   format.note output
   format.eprint output
   format.translation output
+  add.period$
   fin.entry
 }
 
