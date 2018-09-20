@@ -59,7 +59,7 @@ where the vacuum now attains an expectation value $v$ in its ground state. The s
     \label{fig:potential}
 \end{figure}
 
-Because particles are excitations of their fields, the presence of the Higgs field also suggests the existence of the Higgs boson. An expression for the mass of this new boson can be determined by expanding the potential around the vacuum ground state $\phi_{0}$. By choosing the unitarity gauge, the components of $\phi_{0}$ become
+Because particles are excitations of their fields, the presence of the Higgs field also suggests the existence of the Higgs boson. An expression for the mass of this new boson can be determined by expanding the potential around the vacuum ground state $\phi_{0}$. By choosing the unitary gauge, the components of $\phi_{0}$ become
 \begin{equation}
   (\phi_{1})_{0} = 0, (\phi_{2})_{0} = 0, (\phi_{3})_{0} = v, (\phi_{4})_{0} = 0
 \end{equation}
@@ -75,25 +75,26 @@ and $\phi_{0}$ becomes simply
                v \\
              \end{pmatrix}.
 \end{equation}
-Then for small fluctuations $\phi(x) = v + h(x)$, the potential becomes to second order in $h$
+Then for small fluctuations $\phi(x) = \phi_{0} + H(x)$, the potential to second order in $H$ becomes
 \begin{align}
   \begin{split}
-    V(\phi) &= \mu^{2}(v^{2} + 2vh + h^{2}) + \frac{\lambda}{2}(v^{2} + 2vh + h^{2})^{2} \\
-            &= (\mu^{2}v^{2} + \frac{\lambda}{2}v^{4}) + 2(\mu^{2}v + \lambda v^{3})h + (\mu^{2} + 3\lambda v^{2})h^{2} + \mathcal{O}(h^{3}) \\
-            &= V_{0} - 2\mu^{2}h^{2} + \mathcal{O}(h^{3}), \\
+    V(\phi) &= \frac{\mu^{2}}{2}(v^{2} + 2vH + H^{2}) + \frac{\lambda}{4}(v^{2} + 2vH + H^{2})^{2} \\
+            &= \frac{1}{2}(\mu^{2}v^{2} + \frac{\lambda}{2}v^{4}) + (\mu^{2}v + \lambda v^{3})H + \frac{1}{2}(\mu^{2} + 3\lambda v^{2})H^{2} + \mathcal{O}(H^{3}) \\
+            &= V_{0} - \frac{1}{2}(2\mu^{2})H^{2} + \mathcal{O}(H^{3}), \\
   \end{split}
 \end{align}
-where $V_{0}$ collects the constant terms and Eq. \ref{eq:vev} has been used to vanish the first order term and simplify the second order term. The mass is given by the coefficient of the second order term in $h$:
+where $V_{0}$ collects the constant terms and Eq. \ref{eq:vev} has been used to vanish the first order term and simplify the second order term. The mass can be read from the coefficient of the second order term in $H$:
 \begin{equation}
-  m_{h}^{2} = -2\mu^{2} \implies m_{h} = \sqrt{2}\mu.
+  m_{H}^{2} = -2\mu^{2} \implies m_{H} = \sqrt{2}\mu.
 \end{equation}
 Because $\mu^2$ was chosen to be negative, the sign of the mass is correct. Although the Standard Model predicts a massive Higgs boson, its dependence on the unknown parameter $\mu$ means it must be determined experimentally.
 
 \subsubsection{Gauge boson masses}
 
-The Lagrangian for the Higgs may then be written as
+The necessity of the Higgs mechanism is realized by its generation of the gauge boson masses. The Lagrangian for the Higgs may be written as
 \begin{equation}
-  \mathcal{L}_{\phi} = (D_{\mu}\phi)^{\dag}(D^{\mu}\phi) - V(\phi) = (D_{\mu}\phi)^{\dag}(D^{\mu}\phi) - \mu^{2}\phi^{\dag}\phi - \lambda(\phi^{\dag}\phi)^{2},
+  \mathcal{L}_{\phi} = (D_{\mu}\phi)^{\dag}(D^{\mu}\phi) - V(\phi) = (D_{\mu}\phi)^{\dag}(D^{\mu}\phi) - \mu^{2}\phi^{\dag}\phi - \frac{\lambda}{2}(\phi^{\dag}\phi)^{2},
+  \label{eq:Lhiggs}
 \end{equation}
 By definition, the Higgs field has weak hypercharge $Y = +1$ and weak isospin $T_{3} = -1/2$. The weak hypercharge $Y$ and weak isospin $T$ are the generators of the \symWEAK\ and \symEM\ symmetries, respectively, with the choice of their values made to satisfy the relation
 \begin{equation}
@@ -101,25 +102,51 @@ By definition, the Higgs field has weak hypercharge $Y = +1$ and weak isospin $T
 \end{equation}
 where $Q$ is the electric charge.\footnote{Hence, the Higgs boson is a neutral particle.} These choices require the covariant derivative of the kinetic term to be of the form
 \begin{equation}
-  D_{\mu}\phi = (\partial_{\mu} - \frac{i}{2}g\boldsymbol\sigma\cdot\mathbf{A}_{\mu} - \frac{i}{2}g^{\prime}B_{\mu})\phi,
+  D_{\mu}\phi = (\partial_{\mu} - \frac{i}{2}g\boldsymbol\sigma\cdot\mathbf{W}_{\mu} - \frac{i}{2}g^{\prime}B_{\mu})\phi,
 \end{equation}
-where $\mathbf{A_{\mu}}$ and $B_{\mu}$ are, respectively, the \symWEAK\ and \symEM\ gauge bosons, $g$ and $g^{\prime}$ are the corresponding gauge couplings, and $\boldsymbol\sigma = \sigma^{a}, a = 1, 2, 3$ are the Pauli matrices.
+where $\mathbf{W_{\mu}}$ and $B_{\mu}$ are, respectively, the \symWEAK\ and \symEM\ gauge bosons, $g$ and $g^{\prime}$ are the corresponding gauge couplings, and $\boldsymbol\sigma = \sigma^{a}, a = 1, 2, 3$ are the Pauli matrices.
 
+The gauge boson masses are contained in the kinetic term of the Lagrangian and can be determined by evaluating near the vacuum ground state. The covariant derivative becomes
+\begin{align}
+  \begin{split}
+    D_{\mu}\phi &\rightarrow \left[ \partial_{\mu} - \frac{i}{2}g \begin{pmatrix} W_{\mu}^{3} & W_{\mu}^{1} - iW_{\mu}^{2} \\ W_{\mu}^{1} + iW_{\mu}^{2} & -W_{\mu}^{3} \\ \end{pmatrix} - \frac{i}{2}g^{\prime}B_{\mu} \right] \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ v + H \\ \end{pmatrix} \\[1em]
+                &= -\frac{i}{2} \begin{pmatrix} \frac{g}{\sqrt{2}}(W_{\mu}^{1}-iW_{\mu}^{2})(v + H) \\ i\sqrt{2}\partial_{\mu}H + \frac{1}{\sqrt{2}}(-gW_{\mu}^{3} + g^{\prime}B_{\mu})(v + H) \\ \end{pmatrix} \\
+  \end{split}
+\end{align}
+and substituting this expression into Eq. \ref{eq:Lhiggs} while ignoring the potential term for clarity yields
+\begin{align}
+  \begin{split}
+    \mathcal{L}_{\phi} &= \frac{1}{4} \begin{vmatrix} \frac{g}{\sqrt{2}}(W_{\mu}^{1}-iW_{\mu}^{2})(v + H) \\ i\sqrt{2}\partial_{\mu}H + \frac{1}{\sqrt{2}}(-gW_{\mu}^{3} + g^{\prime}B_{\mu})(v + H) \\ \end{vmatrix}^{2} \\[1em]
+                       &= \frac{1}{4} \left[ 2(\partial_{\mu}H)^{2} + \left( \frac{g^{2}}{2} \left( (W_{\mu}^{1})^{2} + (W_{\mu}^{2})^{2} \right) + \frac{1}{2} \left( g^{\prime}B_{\mu} - gW_{\mu}^{3} \right)^{2} \right) (v + H)^{2} \right] \\[1em]
+                       &= \frac{1}{2}(\partial_{\mu}H)^{2} + \frac{g^{2}}{8}(W_{\mu}^{1})^{2}v^{2} + \frac{g^{2}}{8}(W_{\mu}^{2})^{2}v^{2} + \frac{1}{8}\left( g^{\prime}B_{\mu} - gW_{\mu}^{3} \right)^{2}v^{2} + \mathcal{O}(H), \\
+    \label{eq:gaugemasses}
+  \end{split}
+\end{align}
+where higher order terms in $H$ have been discarded. The result of Eq. \ref{eq:gaugemasses} reveals that the broken symmetry of the Higgs field causes the $W_{\mu}^{1}$ and $W_{\mu}^{2}$ vector fields to both acquire a mass of
+\begin{equation}
+  m_{W}^{2} = \frac{g^{2}v^{2}}{4} \implies m_{W} = \frac{gv}{2}.
+\end{equation}
+The linear combination of vector fields $(g^{\prime}B_{\mu} - gW_{\mu}^{3})$ also acquires a mass that depends on the couplings $g$ and $g^{\prime}$, and is typically expressed as
+\begin{equation}
+  m_{Z}^{2} = \frac{(g^{2} + g^{\prime 2}) v^{2}}{4} \implies m_{Z} = \frac{\sqrt{g^{2} + g^{\prime 2}} v}{2}.
+\end{equation}
+The excitations of these massive vector fields are the weak gauge bosons \bosWp, \bosWm, and \bosZn which have been observed in nature and whose masses have been measured\cite{PDG2018} to be
+\begin{equation}
+  m_{\bosWp} = m_{\bosWm} = 80.379 \pm 0.012\ \GeV\ \mathrm{and}\ m_{\bosZn} = 91.1876 \pm 0.0021\ \GeV.
+\end{equation}
 
+The derivation would be complete but for a missing gauge boson. Recall our earlier transformation to the unitary gauge which fixed three of the four degrees of freedom of the Higgs field. According to Goldstone's Theorem \cite{Goldstone}, these degrees of freedom become the longitudinal polarizations of the now massive weak gauge bosons. The remaining degree of freedom corresponds to the massless photon \bosg, the gauge boson of the electromagnetic field. The electromagnetic field $A_{\mu}$ appears as the linear combination $(g^{\prime}W_{\mu}^{3} + gB_{\mu})$ which is orthogonal to the field of \bosZn.
 
 \subsubsection{Fermion masses}
 
-The gauge and 
+\section{Higgs Phenomenology at the LHC}
 
-\section{The Higgs Boson}
+Example citation of ATLAS Higgs discovery paper. \cite{ATLASHiggsDiscovery}
+Example citation of CMS Higgs discovery paper. \cite{CMSHiggsDiscovery}
 
 \subsection{Production Modes}
 
 \subsection{Decay Modes}
-
-\subsection{Discovery at the LHC}
-
-Example citation of ATLAS Higgs discovery paper. \cite{ATLASHiggsDiscovery}
 
 \section{Searches for \VHbb}
 
