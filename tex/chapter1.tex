@@ -11,7 +11,7 @@ The Standard Model is a relativistic quantum field theory (QFT) in which fundame
 \begin{figure}[htbp]
   \centering
     \includegraphics[width=6in]{images/SMinfographic_image}
-    \caption[Standard Model Infographic]{An infographic of the Standard Model. The elementary particles are arranged in their usual generational pairs and the surrounding solid lines divide them into sections based on the fundamental forces they experience.\cite{Purcell:1473657}}
+    \caption[Standard Model Infographic]{An infographic of the Standard Model \cite{Purcell:1473657}. The elementary particles are arranged in their usual generational pairs and the surrounding solid lines divide them into sections based on the fundamental forces they experience.}
     \label{fig:SM}
 \end{figure}
 
@@ -23,13 +23,93 @@ The leptons and quarks are each arranged into pairs by flavour quantum number an
 
 \subsection{Bosons}
 
-The bosons, which obey Bose-Einstein statistics because of their integer spin, are divided into vector and scalar bosons. The spin-1 vector, or gauge, bosons mediate the fundamental forces and are exchanged between elementary particles during their interactions. The photon \bosg\ mediates the electromagnetic force, which is responsible for the phenomenon of intermolecular repulsion.\footnote{It is this repulsion that prevents us from passing through objects.} The \bosW\ and \bosZ\ bosons mediate the weak nuclear force that causes nuclear decay. And finally, the gluons \bosgln\ mediate the strong nuclear force that binds quarks into hadrons and even protons and neutrons in nuclei. The only spin-0 scalar boson in the theory is the Higgs boson, which is responsible for the masses of the heavy gauge bosons and fermions.
+The bosons, which obey Bose-Einstein statistics because of their integer spin, are divided into vector and scalar bosons. The spin-1 vector, or gauge, bosons mediate the fundamental forces and are exchanged between elementary particles during their interactions. The photon (\bosg) mediates the electromagnetic force, which is responsible for the phenomenon of intermolecular repulsion.\footnote{It is this repulsion that prevents us from passing through objects.} The \bosW\ and \bosZ\ bosons mediate the weak nuclear force that causes nuclear decay. And finally, the gluons (\bosgln) mediate the strong nuclear force that binds quarks into hadrons and even protons and neutrons in nuclei. The only spin-0 scalar boson in the theory is the Higgs boson (\bosH), which is responsible for the masses of the heavy gauge bosons and fermions.
 
 \subsection{The Higgs Mechanism}
 
 The requirement of gauge invariance under \symWEAK\ leads to a prediction of massless gauge bosons, which stands in contrast to the observation that the weak vector bosons are massive. In order to reconcile this observation while preserving the gauge invariance of the interaction, a mechanism of \textit{spontaneous symmetry breaking} was incorporated into the unified electroweak theory proposed by Sheldon Glashow \cite{EWKGLASHOW}, Abdus Salam \cite{EWKSALAM}, and Steven Weinberg \cite{EWKWEINBERG}. This mechanism, which came to be known as the \textit{Higgs mechanism}, was independently developed by Robert Brout and Fran\c{c}ois Englert \cite{HIGGSBE}, its namesake Peter Higgs \cite{HIGGSH}, and Gerald Guralnik, Richard Hagen, and Sir Thomas Kibble \cite{HIGGSGHK}.
 
+The mechanism introduces into the Standard Model a scalar field $\phi$ represented as a complex doublet
+\begin{equation}
+  \phi = \begin{pmatrix}
+           \phi^{+} \\
+           \phi^{0} \\
+         \end{pmatrix}
+       = \frac{1}{\sqrt{2}}
+         \begin{pmatrix}
+           \phi_{1} + i\phi_{2} \\
+           \phi_{3} + i\phi_{4} \\
+         \end{pmatrix}
+\end{equation}
+and its potential $V(\phi)$ of the form
+\begin{equation}
+V(\phi) = \mu^{2}\phi^{\dag}\phi + \frac{\lambda}{2}(\phi^{\dag}\phi)^{2},
+\end{equation}
+where the real parameters $\mu^{2}$ and $\lambda$ represent the mass and self-coupling, respectively. The self-coupling $\lambda$ is taken to be positive by convention such that the potential is bounded from below. When $\mu^{2} > 0$, the potential is parabolic in shape and the ground state of the vacuum is at $\phi = 0$, keeping its symmetries intact. However, when $\mu^{2} < 0$, the minimum of the potential is no longer at $\phi = 0$ but rather\footnote{The solution is unique up to a phase $e^{i\theta}$, but it is customary to take $\theta = 0$.}
+\begin{equation}
+  v = \left(\frac{-\mu^{2}}{\lambda}\right)^{1/2},
+  \label{eq:vev}
+\end{equation}
+where the vacuum now attains an expectation value $v$ in its ground state. The shape of such a potential is illustrated in Figure \ref{fig:potential}. The Higgs mechanism thus provides the means to spontaneously break the $\symWEAK \times \symEM$ symmetry within the model.
 
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=3.5in]{images/higgspotential}
+    \caption[Shape of the Higgs Field Potential]{The shape of the Higgs field potential for $\mu^{2} < 0$ \cite{deBoer:2013pud}. The transition of the field from its unstable state at the origin to its true ground state spontaneously breaks the rotational symmetry of the system.}
+    \label{fig:potential}
+\end{figure}
+
+Because particles are excitations of their fields, the presence of the Higgs field also suggests the existence of the Higgs boson. An expression for the mass of this new boson can be determined by expanding the potential around the vacuum ground state $\phi_{0}$. By choosing the unitarity gauge, the components of $\phi_{0}$ become
+\begin{equation}
+  (\phi_{1})_{0} = 0, (\phi_{2})_{0} = 0, (\phi_{3})_{0} = v, (\phi_{4})_{0} = 0
+\end{equation}
+and $\phi_{0}$ becomes simply
+\begin{equation}
+  \phi_{0} = \begin{pmatrix}
+               \phi^{+} \\
+               \phi^{0} \\
+             \end{pmatrix}_{0}
+           = \frac{1}{\sqrt{2}}
+             \begin{pmatrix}
+               0 \\
+               v \\
+             \end{pmatrix}.
+\end{equation}
+Then for small fluctuations $\phi(x) = v + h(x)$, the potential becomes to second order in $h$
+\begin{align}
+  \begin{split}
+    V(\phi) &= \mu^{2}(v^{2} + 2vh + h^{2}) + \frac{\lambda}{2}(v^{2} + 2vh + h^{2})^{2} \\
+            &= (\mu^{2}v^{2} + \frac{\lambda}{2}v^{4}) + 2(\mu^{2}v + \lambda v^{3})h + (\mu^{2} + 3\lambda v^{2})h^{2} + \mathcal{O}(h^{3}) \\
+            &= V_{0} - 2\mu^{2}h^{2} + \mathcal{O}(h^{3}), \\
+  \end{split}
+\end{align}
+where $V_{0}$ collects the constant terms and Eq. \ref{eq:vev} has been used to vanish the first order term and simplify the second order term. The mass is given by the coefficient of the second order term in $h$:
+\begin{equation}
+  m_{h}^{2} = -2\mu^{2} \implies m_{h} = \sqrt{2}\mu.
+\end{equation}
+Because $\mu^2$ was chosen to be negative, the sign of the mass is correct. Although the Standard Model predicts a massive Higgs boson, its dependence on the unknown parameter $\mu$ means it must be determined experimentally.
+
+\subsubsection{Gauge boson masses}
+
+The Lagrangian for the Higgs may then be written as
+\begin{equation}
+  \mathcal{L}_{\phi} = (D_{\mu}\phi)^{\dag}(D^{\mu}\phi) - V(\phi) = (D_{\mu}\phi)^{\dag}(D^{\mu}\phi) - \mu^{2}\phi^{\dag}\phi - \lambda(\phi^{\dag}\phi)^{2},
+\end{equation}
+By definition, the Higgs field has weak hypercharge $Y = +1$ and weak isospin $T_{3} = -1/2$. The weak hypercharge $Y$ and weak isospin $T$ are the generators of the \symWEAK\ and \symEM\ symmetries, respectively, with the choice of their values made to satisfy the relation
+\begin{equation}
+  Q = T_{3} + \frac{1}{2}Y,
+\end{equation}
+where $Q$ is the electric charge.\footnote{Hence, the Higgs boson is a neutral particle.} These choices require the covariant derivative of the kinetic term to be of the form
+\begin{equation}
+  D_{\mu}\phi = (\partial_{\mu} - \frac{i}{2}g\boldsymbol\sigma\cdot\mathbf{A}_{\mu} - \frac{i}{2}g^{\prime}B_{\mu})\phi,
+\end{equation}
+where $\mathbf{A_{\mu}}$ and $B_{\mu}$ are, respectively, the \symWEAK\ and \symEM\ gauge bosons, $g$ and $g^{\prime}$ are the corresponding gauge couplings, and $\boldsymbol\sigma = \sigma^{a}, a = 1, 2, 3$ are the Pauli matrices.
+
+
+
+\subsubsection{Fermion masses}
+
+The gauge and 
 
 \section{The Higgs Boson}
 
