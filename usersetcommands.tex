@@ -51,59 +51,77 @@
 % Particle Physics Commands %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Mathematical Symbols
+\newcommand{\symEM}{\ensuremath{\mathrm{U(1)}}}
+\newcommand{\symWEAK}{\ensuremath{\mathrm{SU(2)}}}
+\newcommand{\symSTRONG}{\ensuremath{\mathrm{SU(3)}}}
+\newcommand{\symSM}{\ensuremath{\symSTRONG \times \symWEAK \times \symEM}}
+
 % Units
 \newcommand{\invfb}{\ensuremath{\mathrm{fb^{-1}}}}
 \newcommand{\GeV}{\ensuremath{\mathrm{GeV}}}
 \newcommand{\TeV}{\ensuremath{\mathrm{TeV}}}
 
 % Particle Symbols
-\newcommand{\syme}{\ensuremath{\mathrm{e}}}
-\newcommand{\symb}{\ensuremath{\mathrm{b}}}
-\newcommand{\symH}{\ensuremath{\mathrm{H}}}
-\newcommand{\symV}{\ensuremath{\mathrm{V}}}
-\newcommand{\symW}{\ensuremath{\mathrm{W}}}
-\newcommand{\symZ}{\ensuremath{\mathrm{Z}}}
+\newcommand{\lepe}{\ensuremath{e}}
+\newcommand{\lepm}{\ensuremath{\mu}}
+\newcommand{\lept}{\ensuremath{\tau}}
+\newcommand{\lepne}{\ensuremath{\nu_{e}}}
+\newcommand{\lepnm}{\ensuremath{\nu_{\mu}}}
+\newcommand{\lepnt}{\ensuremath{\nu_{\tau}}}
+\newcommand{\qrku}{\ensuremath{\mathrm{u}}}
+\newcommand{\qrkd}{\ensuremath{\mathrm{d}}}
+\newcommand{\qrkc}{\ensuremath{\mathrm{c}}}
+\newcommand{\qrks}{\ensuremath{\mathrm{s}}}
+\newcommand{\qrkb}{\ensuremath{\mathrm{b}}}
+\newcommand{\qrkt}{\ensuremath{\mathrm{t}}}
+\newcommand{\bosH}{\ensuremath{\mathrm{H}}}
+\newcommand{\bosV}{\ensuremath{\mathrm{V}}}
+\newcommand{\bosW}{\ensuremath{\mathrm{W}}}
+\newcommand{\bosZ}{\ensuremath{\mathrm{Z}}}
+\newcommand{\bosgln}{\ensuremath{\mathrm{g}}}
+\newcommand{\bosg}{\ensuremath{\gamma}}
 
 % Shorthand
 \newcommand{\VH}{\ensuremath{\mathrm{VH}}}
-\newcommand{\bb}{\ensuremath{\symb\bar{\symb}}}
+\newcommand{\bb}{\ensuremath{\qrkb\bar{\qrkb}}}
 \newcommand{\VHbb}{\ensuremath{\VH(\bb)}}
 
 % Decay Formulae
-\newcommand{\Htobb}{\ensuremath{\symH\rightarrow\symb\bar{\symb}}}
+\newcommand{\Htobb}{\ensuremath{\bosH\rightarrow\qrkb\bar{\qrkb}}}
 
 % VHbb Decay Channels
-\newcommand{\Znn}{\ensuremath{\symZ(\nu\bar{\nu})}}
-\newcommand{\ZnnH}{\ensuremath{\symZ(\nu\bar{\nu})\symH}}
-\newcommand{\ZnnHbb}{\ensuremath{\symZ(\nu\bar{\nu})\symH(\bb)}}
+\newcommand{\Znn}{\ensuremath{\bosZ(\nu\bar{\nu})}}
+\newcommand{\ZnnH}{\ensuremath{\bosZ(\nu\bar{\nu})\bosH}}
+\newcommand{\ZnnHbb}{\ensuremath{\bosZ(\nu\bar{\nu})\bosH(\bb)}}
 
-\newcommand{\Wln}{\ensuremath{\symW(\ell\nu)}}
-\newcommand{\WlnH}{\ensuremath{\symW(\ell\nu)\symH}}
-\newcommand{\WlnHbb}{\ensuremath{\symW(\ell\nu)\symH(\bb)}}
+\newcommand{\Wln}{\ensuremath{\bosW(\ell\nu)}}
+\newcommand{\WlnH}{\ensuremath{\bosW(\ell\nu)\bosH}}
+\newcommand{\WlnHbb}{\ensuremath{\bosW(\ell\nu)\bosH(\bb)}}
 
-\newcommand{\Wen}{\ensuremath{\symW(\syme\nu)}}
-\newcommand{\WenH}{\ensuremath{\symW(\syme\nu)\symH}}
-\newcommand{\WenHbb}{\ensuremath{\symW(\syme\nu)\symH(\bb)}}
+\newcommand{\Wen}{\ensuremath{\bosW(\lepe\nu)}}
+\newcommand{\WenH}{\ensuremath{\bosW(\lepe\nu)\bosH}}
+\newcommand{\WenHbb}{\ensuremath{\bosW(\lepe\nu)\bosH(\bb)}}
 
-\newcommand{\Wmn}{\ensuremath{\symW(\mu\nu)}}
-\newcommand{\WmnH}{\ensuremath{\symW(\mu\nu)\symH}}
-\newcommand{\WmnHbb}{\ensuremath{\symW(\mu\nu)\symH(\bb)}}
+\newcommand{\Wmn}{\ensuremath{\bosW(\lepm\nu)}}
+\newcommand{\WmnH}{\ensuremath{\bosW(\lepm\nu)\bosH}}
+\newcommand{\WmnHbb}{\ensuremath{\bosW(\lepm\nu)\bosH(\bb)}}
 
-\newcommand{\Zll}{\ensuremath{\symZ(\ell\bar{\ell})}}
-\newcommand{\ZllH}{\ensuremath{\symZ(\ell\bar{\ell})\symH}}
-\newcommand{\ZllHbb}{\ensuremath{\symZ(\ell\bar{\ell})\symH(\bb)}}
+\newcommand{\Zll}{\ensuremath{\bosZ(\ell\bar{\ell})}}
+\newcommand{\ZllH}{\ensuremath{\bosZ(\ell\bar{\ell})\bosH}}
+\newcommand{\ZllHbb}{\ensuremath{\bosZ(\ell\bar{\ell})\bosH(\bb)}}
 
-\newcommand{\Zee}{\ensuremath{\symZ(\syme\bar{\syme})}}
-\newcommand{\ZeeH}{\ensuremath{\symZ(\syme\bar{\syme})\symH}}
-\newcommand{\ZeeHbb}{\ensuremath{\symZ(\syme\bar{\syme})\symH(\bb)}}
+\newcommand{\Zee}{\ensuremath{\bosZ(\lepe\bar{\lepe})}}
+\newcommand{\ZeeH}{\ensuremath{\bosZ(\lepe\bar{\lepe})\bosH}}
+\newcommand{\ZeeHbb}{\ensuremath{\bosZ(\lepe\bar{\lepe})\bosH(\bb)}}
 
-\newcommand{\Zmm}{\ensuremath{\symZ(\mu\bar{\mu})}}
-\newcommand{\ZmmH}{\ensuremath{\symZ(\mu\bar{\mu})\symH}}
-\newcommand{\ZmmHbb}{\ensuremath{\symZ(\mu\bar{\mu})\symH(\bb)}}
+\newcommand{\Zmm}{\ensuremath{\bosZ(\lepm\bar{\lepm})}}
+\newcommand{\ZmmH}{\ensuremath{\bosZ(\lepm\bar{\lepm})\bosH}}
+\newcommand{\ZmmHbb}{\ensuremath{\bosZ(\lepm\bar{\lepm})\bosH(\bb)}}
 
 % Kinematic Variables and Other Quantities
 \newcommand{\sqrts}{\ensuremath{\sqrt{s}}}
-\newcommand{\massH}{\ensuremath{m_{\symH}}}
+\newcommand{\massH}{\ensuremath{m_{\bosH}}}
 \newcommand{\pT}{\ensuremath{p_{\mathrm{T}}}}
 
 
