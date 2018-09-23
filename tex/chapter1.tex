@@ -85,13 +85,13 @@ Then for small fluctuations $\phi(x) = \phi_{0} + H(x)$, the potential to second
 \end{align}
 where $V_{0}$ collects the constant terms and Eq. \ref{eq:vev} has been used to vanish the first order term and simplify the second order term. The mass can be read from the coefficient of the second order term in $H$:
 \begin{equation}
-  m_{H}^{2} = -2\mu^{2} \implies m_{H} = \sqrt{2}\mu.
+  m_{H}^{2} = -2\mu^{2} \implies m_{H} = \sqrt{2}\mu = \sqrt{2\lambda}v,
 \end{equation}
-Because $\mu^2$ was chosen to be negative, the sign of the mass is correct. Although the Standard Model predicts a massive Higgs boson, its dependence on the unknown parameter $\mu$ means it must be determined experimentally.
+where the sign of the mass was dropped because $\mu^2$ was chosen to be negative. Although the Standard Model predicts a massive Higgs boson, its dependence on the value of the unknown self-coupling parameter $\lambda$ and the vacuum expectation value $v$ means it must be determined experimentally.
 
 \subsubsection{Gauge boson masses}
 
-The necessity of the Higgs mechanism is realized by its generation of the gauge boson masses. The Lagrangian for the Higgs may be written as
+The necessity of the Higgs mechanism is realized by how it generates the masses of the gauge bosons. The Lagrangian for the Higgs may be written as
 \begin{equation}
   \mathcal{L}_{\phi} = (D_{\mu}\phi)^{\dag}(D^{\mu}\phi) - V(\phi) = (D_{\mu}\phi)^{\dag}(D^{\mu}\phi) - \mu^{2}\phi^{\dag}\phi - \frac{\lambda}{2}(\phi^{\dag}\phi)^{2},
   \label{eq:Lhiggs}
@@ -106,7 +106,7 @@ where $Q$ is the electric charge.\footnote{Hence, the Higgs boson is a neutral p
 \end{equation}
 where $\mathbf{W_{\mu}}$ and $B_{\mu}$ are, respectively, the \symWEAK\ and \symEM\ gauge bosons, $g$ and $g^{\prime}$ are the corresponding gauge couplings, and $\boldsymbol\sigma = \sigma^{a}, a = 1, 2, 3$ are the Pauli matrices.
 
-The gauge boson masses are contained in the kinetic term of the Lagrangian and can be determined by evaluating near the vacuum ground state. The covariant derivative becomes
+The gauge boson masses are contained in the kinetic term of the Lagrangian and can be determined by evaluating its expression for the vacuum ground state. The covariant derivative becomes
 \begin{align}
   \begin{split}
     D_{\mu}\phi &\rightarrow \left[ \partial_{\mu} - \frac{i}{2}g \begin{pmatrix} W_{\mu}^{3} & W_{\mu}^{1} - iW_{\mu}^{2} \\ W_{\mu}^{1} + iW_{\mu}^{2} & -W_{\mu}^{3} \\ \end{pmatrix} - \frac{i}{2}g^{\prime}B_{\mu} \right] \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ v + H \\ \end{pmatrix} \\[1em]
@@ -130,23 +130,88 @@ The linear combination of vector fields $(g^{\prime}B_{\mu} - gW_{\mu}^{3})$ als
 \begin{equation}
   m_{Z}^{2} = \frac{(g^{2} + g^{\prime 2}) v^{2}}{4} \implies m_{Z} = \frac{\sqrt{g^{2} + g^{\prime 2}} v}{2}.
 \end{equation}
-The excitations of these massive vector fields are the weak gauge bosons \bosWp, \bosWm, and \bosZn which have been observed in nature and whose masses have been measured\cite{PDG2018} to be
+The excitations of these massive vector fields are the weak gauge bosons \bosWp, \bosWm, and \bosZn\ which have been observed in nature and whose masses have been measured\cite{PDG2018} to be
 \begin{equation}
   m_{\bosWp} = m_{\bosWm} = 80.379 \pm 0.012\ \GeV\ \mathrm{and}\ m_{\bosZn} = 91.1876 \pm 0.0021\ \GeV.
 \end{equation}
 
-The derivation would be complete but for a missing gauge boson. Recall our earlier transformation to the unitary gauge which fixed three of the four degrees of freedom of the Higgs field. According to Goldstone's Theorem \cite{Goldstone}, these degrees of freedom become the longitudinal polarizations of the now massive weak gauge bosons. The remaining degree of freedom corresponds to the massless photon \bosg, the gauge boson of the electromagnetic field. The electromagnetic field $A_{\mu}$ appears as the linear combination $(g^{\prime}W_{\mu}^{3} + gB_{\mu})$ which is orthogonal to the field of \bosZn.
+The derivation would be complete but for a missing gauge boson. Recall our earlier transformation to the unitary gauge which fixed three of the four degrees of freedom of the Higgs field. According to Goldstone's Theorem\cite{Goldstone}, these degrees of freedom become the longitudinal polarizations of the now massive weak gauge bosons. The untouched degree of freedom thus corresponds to the massless photon \bosg. By taking the electromagnetic field $A_{\mu}$ to be proportional to the missing linear combination of fields $(g^{\prime}W_{\mu}^{3} + gB_{\mu})$, it can be explicitly introduced into the kinetic term of the Lagrangian while remaining orthogonal to the other fields.
 
 \subsubsection{Fermion masses}
 
-\section{Higgs Phenomenology at the LHC}
+Although the Dirac Lagrangian describes the dynamics of the fermions, it is inadequate for explaining their observed masses. This is because a Dirac mass term of the form
+\begin{equation}
+  m\bar{\psi}\psi = m(\bar{\psi}_{L} + \bar{\psi}_{R})(\psi_{L} + \psi_{R}) = m(\bar{\psi}_{L}\psi_{R} + \bar{\psi}_{R}\psi_{L})
+\end{equation}
+violates the gauge invariance of the model by coupling together left-handed and right-handed fermions which transform differently under both \symWEAK\ and \symEM. The masses of the fermions are instead another consequence of spontaneous symmetry breaking, and their coupling to the scalar Higgs field through Yukawa interactions gives rise to their mass terms in the Standard Model Lagrangian.
 
-Example citation of ATLAS Higgs discovery paper. \cite{ATLASHiggsDiscovery}
-Example citation of CMS Higgs discovery paper. \cite{CMSHiggsDiscovery}
+The Yukawa interaction of the first generation leptons to the Higgs field $\phi$ is given by
+\begin{equation}
+  \mathcal{L}_{\mathrm{Yukawa}} = -\lambda_{\lepe} \left( \bar{L} \phi \lepe_{R} + \lepebar_{R} \phi^{\dag} L\right),
+\end{equation}
+where $\lambda_{\lepe}$ is the coupling constant, the \symWEAK\ singlet $\lepe_{R}$ represents the right-handed electron, and the \symWEAK\ doublet $L$ represents the left-handed neutrino\footnote{The neutrinos have been experimentally measured, within uncertainties, to have left-handed helicity only.} and electron, i.e.
+\begin{equation}
+  L = \begin{pmatrix} \nu_{L} \\ \lepe_{L} \\ \end{pmatrix}.
+\end{equation}
+Evaluating this expression for the vacuum ground state yields the electron mass term
+\begin{align}
+  \begin{split}
+    \mathcal{L}_{\mathrm{Yukawa}} &= -\lambda_{\lepe} \left( \bar{L} \phi_{0} \lepe_{R} + \lepebar_{R} \phi_{0}^{\dag} L\right) \\[1em]
+                                  &= -\frac{\lambda_{\lepe}}{\sqrt{2}} \left[ \begin{pmatrix} \bar{\nu}_{L} & \lepebar_{L} \\ \end{pmatrix} \begin{pmatrix} 0 \\ v \\ \end{pmatrix}_{0} \lepe_{R} + \lepebar_{R} \begin{pmatrix} 0 & v \\ \end{pmatrix}_{0} \begin{pmatrix} \nu_{L} \\ \lepe_{L} \\ \end{pmatrix} \right] \\[1em]
+                                  &= -\frac{\lambda_{\lepe}v}{\sqrt{2}} \left( \lepebar_{L} \lepe_{R} + \lepebar_{R} \lepe_{L} \right), \\[1em]
+  \end{split}
+\end{align}
+which gives the electron mass
+\begin{equation}
+  m_{\lepe} = \frac{\lambda_{\lepe}v}{\sqrt{2}}.
+\end{equation}
+Therefore the electron, and similarly for the leptons of other generations, is a mixture of left-handed and right-handed fields which acquire a mass that is proportional to the vacuum expectation value $v$ and their coupling $\lambda$ to the Higgs field.
 
-\subsection{Production Modes}
+The Yukawa interaction of the quarks, taking into account the existence of the right-handed \symWEAK\ singlet $\qrku_{R}$, is similarly given by
+\begin{equation}
+  \mathcal{L}_{\mathrm{Yukawa}} = -\Lambda_{\qrkd}^{ij} \left( \bar{Q}_{L}^{i} \phi \qrkd_{R}^{j} + \qrkdbar_{R}^{j} \phi^{\dag} Q_{L}^{i} \right) -\Lambda_{\qrku}^{ij} \left( \bar{Q}_{L}^{i} \tilde{\phi} \qrku_{R}^{j} + \qrkubar_{R}^{j} \tilde{\phi}^{\dag} Q_{L}^{i} \right),
+\end{equation}
+where $\Lambda_{\qrkd}^{ij}$ and $\Lambda_{\qrku}^{ij}$ are $3 \times 3$ complex matrices of couplings for the down-type and up-type quarks, respectively, whose indices $i$ and $j$ run over the quark generations, $\qrkd_{R}$ and $\qrku_{R}$ are the right-handed singlets, $Q_{L}$ is the left-handed doublet
+\begin{equation}
+  Q_{L} = \begin{pmatrix} u_{L} \\ d_{L} \\ \end{pmatrix},
+\end{equation}
+and $\tilde{\phi}$ is the charge conjugate of the Higgs doublet
+\begin{equation}
+  \tilde{\phi} = \begin{pmatrix} \phi^{0*} \\ -\phi^{+*} \\ \end{pmatrix} \implies \tilde{\phi}_{0} = \begin{pmatrix} v \\ 0 \\ \end{pmatrix}.
+\end{equation}
+Proceeding as before, evaluating this expression for the vacuum ground state yields
+\begin{equation}
+  \mathcal{L}_{\mathrm{Yukawa}} = -\frac{v}{\sqrt{2}} \Lambda_{\qrkd}^{ij} \left( \qrkdbar_{L}^{i} \qrkd_{R}^{j} + \qrkdbar_{R}^{j} \qrkd_{L}^{i} \right) -\frac{v}{\sqrt{2}} \Lambda_{\qrku}^{ij} \left( \qrkubar_{L}^{i}\qrku_{R}^{j} + \qrkubar_{R}^{j} \qrku_{L}^{i} \right),
+\end{equation}
+from which the quark masses are found to be
+\begin{equation}
+  M_{\qrkd}^{ij} = \frac{\Lambda_{\qrkd}^{ij}v}{\sqrt{2}}\ \mathrm{and}\ M_{\qrku}^{ij} = \frac{\Lambda_{\qrku}^{ij}v}{\sqrt{2}}.
+\end{equation}
+These mass terms resemble those of leptons except that they are matrices which depend on the Yukawa couplings of the mixed quark states to the Higgs field. The physical quark fields correspond to the mass eigenstates obtained by diagonalizing the mass matrices $M_{\qrkd}^{ij}$ and $M_{\qrku}^{ij}$. A general complex matrix may be diagonalized by a biunitary transformation, so there exist unitary matrices $\mathbf{D}_{L}$, $\mathbf{D}_{R}$, $\mathbf{U}_{L}$, and $\mathbf{U}_{R}$ such that
+\begin{equation}
+  \mathbf{D}_{L}^{\dag}\mathbf{M}_{\qrkd}\mathbf{D}_{R} = \begin{pmatrix} m_{\qrkd} & 0 & 0 \\ 0 & m_{\qrks} & 0 \\ 0 & 0 & m_{\qrkb} \\ \end{pmatrix}, \mathbf{U}_{L}^{\dag}\mathbf{M}_{\qrku}\mathbf{U}_{R} = \begin{pmatrix} m_{\qrku} & 0 & 0 \\ 0 & m_{\qrkc} & 0 \\ 0 & 0 & m_{\qrkt} \\ \end{pmatrix},
+\end{equation}
+where the mass eigenvalues are real and positive. But this transformation also amounts to diagonalizing the Yukawa coupling matrices, thus revealing that the quark masses also depend on their couplings and the vacuum expectation value in the same fashion as the leptons.
 
-\subsection{Decay Modes}
+\section{The Higgs Boson}
+
+The Standard Model does not predict the value of the Higgs self-coupling $\lambda$, and therefore the mass of the Higgs boson \massH\ is an unknown parameter of the model. Theoretical constraints based on unitarity bounds, the stability of the vacuum, and the energy scale of Standard Model physics could only limit the value of the mass between a wide range from 100 \GeV\ up to 1 \TeV. Experiments would have to be capable of producing Higgs bosons and detecting their decays at considerable rates in order to confirm its existence, or at best place further restrictions on the mass range.
+
+Searches for the Higgs boson began in earnest during the 1980s, when the energies of particle accelerators finally put the mass range of the Higgs boson within reach. Among its various properties, the production and decay modes of the Higgs boson greatly influenced the design and operation of these experiments. As the current era of high-energy physics experiment is dominated by the Large Hadron Collider, the following review of Higgs boson phenomenology is framed in the context of modern hadron colliders.
+
+\subsection{Phenomenology}
+
+\subsubsection{Production Modes}
+
+\subsubsection{Decay Modes}
+
+\subsection{Discovery}
+
+fireworks
+
+discovery plots
+
+The discovery of a new boson was announced on July 4, 2012 at CERN with independent observations achieved by the ATLAS\cite{ATLASHiggsDiscovery} and CMS\cite{CMSHiggsDiscovery} collaborations. In less than a year, the new particle would be confirmed to be consistent with a Standard Model Higgs boson and the 2013 Nobel Prize in Physics would be awarded to Fran\c{c}ois Englert and Peter Higgs for their discovery of the Higgs mechanism and subsequent prediction of a Higgs boson almost half a century earlier.
 
 \section{Searches for \VHbb}
 
