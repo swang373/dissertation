@@ -82,8 +82,9 @@ Then for small fluctuations $\phi(x) = \phi_{0} + H(x)$, the potential to second
             &= \frac{1}{2}(\mu^{2}v^{2} + \frac{\lambda}{2}v^{4}) + (\mu^{2}v + \lambda v^{3})H + \frac{1}{2}(\mu^{2} + 3\lambda v^{2})H^{2} + \mathcal{O}(H^{3}) \\
             &= V_{0} - \frac{1}{2}(2\mu^{2})H^{2} + \mathcal{O}(H^{3}), \\
   \end{split}
+  \label{eq:higgsexpand}
 \end{align}
-where $V_{0}$ collects the constant terms and Eq. \ref{eq:vev} has been used to vanish the first order term and simplify the second order term. The mass can be read from the coefficient of the second order term in $H$:
+where $V_{0}$ collects the constant terms and Equation \ref{eq:vev} has been used to vanish the first order term and simplify the second order term. The mass can be read from the coefficient of the second order term in $H$:
 \begin{equation}
   m_{H}^{2} = -2\mu^{2} \implies m_{H} = \sqrt{2}\mu = \sqrt{2\lambda}v,
 \end{equation}
@@ -113,7 +114,7 @@ The gauge boson masses are contained in the kinetic term of the Lagrangian and c
                 &= -\frac{i}{2} \begin{pmatrix} \frac{g}{\sqrt{2}}(W_{\mu}^{1}-iW_{\mu}^{2})(v + H) \\ i\sqrt{2}\partial_{\mu}H + \frac{1}{\sqrt{2}}(-gW_{\mu}^{3} + g^{\prime}B_{\mu})(v + H) \\ \end{pmatrix} \\
   \end{split}
 \end{align}
-and substituting this expression into Eq. \ref{eq:Lhiggs} while ignoring the potential term for clarity yields
+and substituting this expression into Equation \ref{eq:Lhiggs} while ignoring the potential term for clarity yields
 \begin{align}
   \begin{split}
     \mathcal{L}_{\phi} &= \frac{1}{4} \begin{vmatrix} \frac{g}{\sqrt{2}}(W_{\mu}^{1}-iW_{\mu}^{2})(v + H) \\ i\sqrt{2}\partial_{\mu}H + \frac{1}{\sqrt{2}}(-gW_{\mu}^{3} + g^{\prime}B_{\mu})(v + H) \\ \end{vmatrix}^{2} \\[1em]
@@ -122,7 +123,7 @@ and substituting this expression into Eq. \ref{eq:Lhiggs} while ignoring the pot
     \label{eq:gaugemasses}
   \end{split}
 \end{align}
-where higher order terms in $H$ have been discarded. The result of Eq. \ref{eq:gaugemasses} reveals that the broken symmetry of the Higgs field causes the $W_{\mu}^{1}$ and $W_{\mu}^{2}$ vector fields to both acquire a mass of
+where higher order terms in $H$ have been discarded. The result of Equation \ref{eq:gaugemasses} reveals that the broken symmetry of the Higgs field causes the $W_{\mu}^{1}$ and $W_{\mu}^{2}$ vector fields to both acquire a mass of
 \begin{equation}
   m_{W}^{2} = \frac{g^{2}v^{2}}{4} \implies m_{W} = \frac{gv}{2}.
 \end{equation}
@@ -195,23 +196,108 @@ where the mass eigenvalues are real and positive. But this transformation also a
 
 \section{The Higgs Boson}
 
-The Standard Model does not predict the value of the Higgs self-coupling $\lambda$, and therefore the mass of the Higgs boson \massH\ is an unknown parameter of the model. Theoretical constraints based on unitarity bounds, the stability of the vacuum, and the energy scale of Standard Model physics could only limit the value of the mass between a wide range from 100 \GeV\ up to 1 \TeV. Experiments would have to be capable of producing Higgs bosons and detecting their decays at considerable rates in order to confirm its existence, or at best place further restrictions on the mass range.
-
-Searches for the Higgs boson began in earnest during the 1980s, when the energies of particle accelerators finally put the mass range of the Higgs boson within reach. Among its various properties, the production and decay modes of the Higgs boson greatly influenced the design and operation of these experiments. As the current era of high-energy physics experiment is dominated by the Large Hadron Collider, the following review of Higgs boson phenomenology is framed in the context of modern hadron colliders.
+While the Standard Model predicts the existence of the Higgs boson, it does not predict the value of its self-coupling $\lambda$ and therefore its mass \massH\ is an unknown parameter of the model. Theoretical constraints based on unitarity bounds, the stability of the vacuum, and the energy scale of Standard Model physics only place the value of \massH\ within a wide range from 100 \GeV\ up to 1 \TeV. Stronger limits on \massH\, not to mention an observation of the elusive boson, would have to be obtained from experimental results. During the 1980s, experimental searches for the Higgs boson began in earnest as particle accelerators finally reached energies that enabled the predicted mass range to be studied. The current era of high-energy physics experiment is now dominated by experiments at the Large Hadron Collider (LHC) and so the following qualitative review of Standard Model Higgs boson phenomenology is framed in its context.
 
 \subsection{Phenomenology}
 
+The Standard Model Higgs boson is predicted to be a spinless particle with zero electric or color charge that is even under the combined symmetry of charge conjugation and parity (CP-symmetry). It is also predicted to couple to the gauge bosons, fermions, and itself\footnote{The Higgs self-couplings come from the higher order terms of Equation \ref{eq:higgsexpand}.} in proportion to their masses according to
+\begin{equation}
+  \begin{array}{ccc}
+    g_{Hf\bar{f}} = \frac{m_{f}}{v}, & g_{HVV} = \frac{2m_{V}^{2}}{v}, & g_{HHVV} = \frac{2m_{V}^{2}}{v^{2}}, \\[1em]
+    g_{HHH} = \frac{3m_{H}^{2}}{v},  & g_{HHHH} = \frac{3m_{H}^{2}}{v^{2}}, \\
+  \end{array}
+\end{equation}
+where $V = \bosW\ \mathrm{or}\ \bosZ$ and $v$ is the vacuum expectation value.\cite{PDG2018} These interactions may be expressed as the Feynman diagram vertices shown in Figure \ref{fig:higgsvertices}. Because the Higgs boson might be coaxed into existence by these interactions, the production modes of the Higgs boson have informed the development of modern hadron colliders. By the same token, those interactions provide the means for the massive Higgs boson to decay into lighter and more stable particles. The decay modes of the Higgs boson thus influence the design of particle detectors capable of accurately measuring the properties of its decays products.
+
+\begin{figure}[htbp]
+  \centering
+  \mbox{
+    \subfigure [] {\includegraphics[scale=0.2]{images/vertex-Hff}} \qquad
+    \subfigure [] {\includegraphics[scale=0.2]{images/vertex-HVV}} \qquad
+    \subfigure [] {\includegraphics[scale=0.2]{images/vertex-HHVV}} \qquad
+  }
+  \mbox{
+    \subfigure [] {\includegraphics[scale=0.2]{images/vertex-HHH}} \qquad
+    \subfigure [] {\includegraphics[scale=0.2]{images/vertex-HHHH}} \qquad
+  }
+  \caption[Higgs Boson Interaction Vertices]{The Feynman diagrams for the vertices of the Standard Model Higgs boson representing the A) fermion-Higgs interaction; B) trilinear gauge-Higgs interaction; C) quartic gauge-Higgs interaction; D) trilinear self-interaction; E) quartic self-interaction.}
+  \label{fig:higgsvertices}
+\end{figure}
+ 
 \subsubsection{Production Modes}
+
+The production of massive particles such as the Higgs boson proceeds from the interactions of hadrons made to collide at high energies. The probability that such a collision results in a specific interaction is known as a cross section $\sigma$. The production cross sections of the Higgs boson depend on the center-of-mass energy of the collision $\sqrt{s}$ and its mass \massH, and have been determined by theoretical calculations to behave as shown in Figure \ref{fig:higgsprodxsec}.
+
+\begin{figure}[htbp]
+  \centering
+  \mbox{
+    \subfigure [] {\includegraphics[scale=0.36]{images/Plot_Escan_H125_new_sqrt}} \qquad
+    \subfigure [] {\includegraphics[scale=0.36]{images/plot_13tev_H_sqrt}} \qquad
+  }
+  \caption[Higgs Boson Production Cross Sections]{The production cross section for the Higgs boson as A) a function of the center of mass energy $\sqrt{s}$ for $\massH = 125\ \GeV$; B) a function of \massH\ for $\sqrt{s} = 13\ \TeV$. The shaded bands show the combined parametric and theoretical uncertainties and the labels indicate the production mode and any radiative corrections considered.\cite{CERNYR4}}
+  \label{fig:higgsprodxsec}
+\end{figure}
+
+The dominant production mode is gluon fusion ($pp \rightarrow H$), in which a gluon from each of the colliding hadrons form a virtual quark loop. Because the Higgs boson couples to quarks in proportion to their masses, it can be radiated from the resulting virtual top quark or, to a lesser extent, bottom quark loop. The production mode with the second-largest cross section is vector boson fusion ($pp \rightarrow qqH$), which proceeds from the parton scattering of two quarks, or anti-quarks, via their exchange of weak vector bosons \bosV. This produces a Higgs boson because of the allowed the trilinear gauge-Higgs interaction. The vector boson associated production mode ($pp \rightarrow \VH$), or \textit{Higgstrahlung}, has the third-largest cross section. This production mechanism proceeds from the weak interaction of a quark and an anti-quark from which a Higgs boson is radiated by the virtual \bosW\ or \bosZ\ weak vector boson. Because the \bosZ\ associated production can also be induced via a virtual top quark loop, a contribution of nearly 15\% to the total production cross section of this mode comes from the process $\bosgln\bosgln \rightarrow \bosZ\bosH$. The fourth relevant production mode is top quark pair associated production ($pp \rightarrow ttH$). Rather than forming a virtual top quark loop, a gluon from each of the colliding hadrons decays into a top quark-antiquark pair and a Higgs boson is produced by the annhiliation of a top quark of one pair and the top anti-quark of the other. The smallest cross sections are contributed by the single top quark associated production and bottom quark pair associated production modes, which are suppressed relative to the main production modes. The Feynman diagrams for the main production modes are shown in Figure \ref{fig:higgsprodfeyn}.
+
+\begin{figure}[htbp]
+  \centering
+  \mbox{
+    \subfigure [] {\includegraphics[scale=0.2]{images/production-ggH}} \qquad
+    \subfigure [] {\includegraphics[scale=0.2]{images/production-VBF}} \qquad
+    \subfigure [] {\includegraphics[scale=0.2]{images/production-ttH}} \qquad
+  }
+  \mbox{
+    \subfigure [] {\includegraphics[scale=0.2]{images/production-VH}} \qquad
+    \subfigure [] {\includegraphics[scale=0.2]{images/production-ggZH}} \qquad
+  }
+  \caption[Higgs Boson Production Diagrams]{The Feynman diagrams for the Higgs boson production processes of A) gluon fusion; B) vector boson fusion; C) top quark pair associated production; D) vector boson associated production; E) top-loop induced contribution to vector boson associated production.}
+  \label{fig:higgsprodfeyn}
+\end{figure}
+
+For the current center-of-mass energy of proton collisions at the LHC, $\sqrt{s} = 13\ \TeV$, and a Higgs boson mass of $\massH = 125\ \GeV$, the state-of-the-art values computed for the production cross sections\footnote{The cross sections are presented in units of picobarns $(\pb)$, where $1\ \mathrm{barn} = 10^{-24}\ \mathrm{cm}^{2}$.} are
+\begin{alignat*}{2}
+  &\sigma\left( pp \rightarrow H \right) &&= 48.58\ {}_{-6.7\%}^{+4.6\%} \ (\mathrm{theory}) \pm 3.2\%\ (\mathrm{PDF} + \alpha_{s})\ \pb, \\
+  &\sigma\left( pp \rightarrow qqH \right) &&= 3.782\ {}_{-0.3\%}^{+0.4\%} \ (\mathrm{QCD\ scale}) \pm 2.1\%\ (\mathrm{PDF} + \alpha_{s})\ \pb, \\
+  &\sigma\left( pp \rightarrow WH \right) &&= 1.373\ {}_{-0.7\%}^{+0.5\%} \ (\mathrm{QCD\ scale}) \pm 1.9\%\ (\mathrm{PDF} + \alpha_{s})\ \pb,
+\end{alignat*}
+\begin{alignat*}{2}
+  &\sigma_{\mathrm{total}}\left( pp \rightarrow ZH \right) &&= 0.8839\ {}_{-3.1\%}^{+3.8\%} \ (\mathrm{QCD\ scale}) \pm 1.6\%\ (\mathrm{PDF} + \alpha_{s})\ \pb, \\
+  &\sigma\left( gg \rightarrow ZH \right) &&= 0.1227\ {}_{-18.9\%}^{+25.1\%} \ (\mathrm{QCD\ scale}) \pm 2.4\%\ (\mathrm{PDF} + \alpha_{s})\ \pb, \\
+  &\sigma\left( pp \rightarrow ttH \right) &&= 0.5071\ {}_{-9.2\%}^{+5.8\%} \ (\mathrm{QCD\ scale}) \pm 3.6\%\ (\mathrm{PDF} + \alpha_{s})\ \pb.
+\end{alignat*}
+The uncertainties are due to variations on the QCD renormalization scale ($\mathrm{QCD\ scale}$), the parton distribution function (PDF) that determines the momenta of the interacting partons, and the strong coupling constant ($\alpha_{s}$). The accuracy of these cross sections are determined by the inclusion of higher-order terms during their calculation, which is generally next-to-next-to-leading (NNLO) order in QCD and next-to-leading (NLO) in electroweak corrections. The exceptions are that the gluon fusion cross section is calculated further to N3LO in QCD, hence acquiring additional theoretical uncertainties, and the top quark pair associated production cross section which is calculated only to NLO in QCD. The methods and theoretical treatment of these cross section calculations are thoroughly documented in Ref. \cite{CERNYR4}.
 
 \subsubsection{Decay Modes}
 
+With a predicted lifetime\footnote{The total decay width of the Higgs boson is predicted to be $\Gamma_{H} = 4.088$ \MeV\ and the lifetime of a particle is given by $\tau = \hslash\ /\ \Gamma$.} of $1.6 \times 10^{-22}\ \mathrm{s}$, the Higgs boson decays almost immediately and its presence can only be inferred from its decay products. Based on its predicted properties, the final state of its decay must be electrically and color neutral. By conservation of mass, it must also decay into lighter particles, so a decay into a top quark-antiquark pair $t\bar{t}$ is forbidden for low mass Higgs bosons, for example. However, because the Higgs boson couples to particles in proportion to their masses, the heaviest allowed decays will be the most favored.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=3.5in]{images/SMHiggsBR-YR4-square}
+    \caption[Higgs Boson Branching Ratios]{The branching ratios of the Higgs boson as a function of its mass \massH. \cite{CERNYR4}. The shaded bands indicate the theoretical uncertainty of the calculation while the labels indicate the decay mode.}
+    \label{fig:higgsbrplots}
+\end{figure}
+
+The probability of a particular decay mode occuring is given by its \textit{branching ratio}, and is shown in Figure \ref{fig:higgsbrplots} as a function of the Higgs boson mass \massH. For a Higgs boson mass of $\massH = 125\ \GeV$, the state-of-the-art values computed for the branching ratios of its allowed decays are, in descending order,
+\begin{alignat*}{2}
+  &\textrm{BR}\left( H \rightarrow \bb \right) &&= 0.5824\ {}_{-0.65\%}^{+0.65\%}\ (\mathrm{theory}) {}_{-0.74\%}^{+0.72\%}\ (m_{q}) {}_{-0.80\%}^{+0.78\%}\ (\alpha_{s}), \\
+  &\textrm{BR}\left( H \rightarrow \bosW\bosW \right) &&= 0.2137\ {}_{-0.99\%}^{+0.99\%}\ (\mathrm{theory}) {}_{-0.98\%}^{+0.99\%}\ (m_{q}) {}_{-0.63\%}^{+0.66\%}\ (\alpha_{s}), \\
+  &\textrm{BR}\left( H \rightarrow \bosgln\bosgln \right) &&= 0.08187\ {}_{-3.41\%}^{+3.40\%}\ (\mathrm{theory}) {}_{-1.13\%}^{+1.12\%}\ (m_{q}) {}_{-3.61\%}^{+3.69\%}\ (\alpha_{s}), \\
+  &\textrm{BR}\left( H \rightarrow \tau\bar{\tau} \right) &&= 0.06272\ {}_{-1.16\%}^{+1.17\%}\ (\mathrm{theory}) {}_{-0.98\%}^{+0.98\%}\ (m_{q}) {}_{-0.62\%}^{+0.62\%}\ (\alpha_{s}), \\
+  &\textrm{BR}\left( H \rightarrow c\bar{c} \right) &&= 0.02891\ {}_{-1.20\%}^{+1.20\%}\ (\mathrm{theory}) {}_{-0.98\%}^{+5.26\%}\ (m_{q}) {}_{-1.25\%}^{+1.25\%}\ (\alpha_{s}), \\
+  &\textrm{BR}\left( H \rightarrow \bosZ\bosZ \right) &&= 0.02619\ {}_{-0.99\%}^{+0.99\%}\ (\mathrm{theory}) {}_{-0.98\%}^{+0.99\%}\ (m_{q}) {}_{-0.63\%}^{+0.66\%}\ (\alpha_{s}), \\
+  &\textrm{BR}\left( H \rightarrow \bosg\bosg \right) &&= 0.002270\ {}_{-1.72\%}^{+1.73\%}\ (\mathrm{theory}) {}_{-0.99\%}^{+0.93\%}\ (m_{q}) {}_{-0.62\%}^{+0.61\%}\ (\alpha_{s}), \\
+  &\textrm{BR}\left( H \rightarrow \bosZ\bosg \right) &&= 0.001533\ {}_{-5.71\%}^{+5.71\%}\ (\mathrm{theory}) {}_{-1.01\%}^{+0.98\%}\ (m_{q}) {}_{-0.65\%}^{+0.58\%}\ (\alpha_{s}), \\
+  &\textrm{BR}\left( H \rightarrow \mu\bar{\mu} \right) &&= 0.0002176\ {}_{-1.23\%}^{+1.23\%}\ (\mathrm{theory}) {}_{-0.99\%}^{+0.97\%}\ (m_{q}) {}_{-0.64\%}^{+0.59\%}\ (\alpha_{s}).
+\end{alignat*}
+The theoretical uncertainties account for missing higher-order QCD and electroweak corrections, while the parametric uncertainties cover the variations of the quark masses $m_{q}$, where $q = c,\ b,\ t$, and the strong coupling constant $\alpha_{s}$ which are input parameters to the calculation.\cite{CERNYR4}
+
 \subsection{Discovery}
 
-fireworks
+The discovery of a new boson with a mass close to 125 \GeV\ was announced on July 4, 2012 at CERN, with independent observations achieved by the ATLAS\cite{ATLASHiggsDiscovery} and CMS\cite{CMSHiggsDiscovery} collaborations. Within a year's time, the new particle would be verified by both experiments to have zero spin and positive parity\cite{ATLASHiggsVerify,CMSHiggsVerify} and its observed couplings would remain consistent with a Standard Model Higgs boson.\cite{HiggsCouplingConstraints} At this point, the new boson was recognized as a Higgs boson, and in 2013 the Nobel Prize in Physics would be awarded to Fran\c{c}ois Englert and Peter Higgs for their discovery of the Higgs mechanism and prediction of a Higgs boson almost half a century before its discovery.
 
-discovery plots
-
-The discovery of a new boson was announced on July 4, 2012 at CERN with independent observations achieved by the ATLAS\cite{ATLASHiggsDiscovery} and CMS\cite{CMSHiggsDiscovery} collaborations. In less than a year, the new particle would be confirmed to be consistent with a Standard Model Higgs boson and the 2013 Nobel Prize in Physics would be awarded to Fran\c{c}ois Englert and Peter Higgs for their discovery of the Higgs mechanism and subsequent prediction of a Higgs boson almost half a century earlier.
+The decay channels with the highest sensitivities were $\bosH \rightarrow \bosZ\bosZ$, with each \bosZ\ subsequently decaying into a pair of charged leptons, and $\bosH \rightarrow \bosg\bosg$, for which ATLAS and CMS both had observed local significances above the expected background of $3\sigma$ and $4\sigma$, respectively. While those channels individually passed the $3\sigma$ threshold for establishing evidence, it would take their combination with other channels for ATLAS to surpass and CMS to reach $5\sigma$, the threshold for declaring a discovery. By the beginning of 2015, when the LHC would resume operations since its first planned maintainence period, the Higgs production modes of gluon fusion and vector boson fusion were observed, as well as its decays to $WW$, $ZZ$, and $\bosg\bosg$. 
 
 \section{Searches for \VHbb}
 
