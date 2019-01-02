@@ -22,11 +22,11 @@ Because the LHC reuses the tunnels of the Large Electron-Positron (LEP) Collider
 \begin{figure}[htbp]
   \centering
     \includegraphics[width=6.5in]{images/CERNcomplex}
-    \caption[The CERN Accelerator Complex]{A complete schematic of the CERN accerlator complex and experiments.\cite{CERNcomplex}}
+    \caption[CERN Accelerator Complex]{A complete schematic of the CERN accerlator complex and experiments.\cite{CERNcomplex}}
     \label{fig:CERNcomplex}
 \end{figure}
 
-The circular orbit of the proton beams are maintained by the 1,232 bending magnets lining the LHC. The bending magnets are superconducting dipole magnets which generate 8.3 T magnetic fields powerful enough to bend the high energy beams. In order to minimize the oscillation of the bunches around their trajectories and achieve high luminosity, 392 focusing magnets are also placed along the LHC ring. The focusing magnets are superconducting quadrupole magnets with a magnetic field gradient of 223 T/m. They are placed in alternating pairs to account for their nature of focusing along one direction while defocusing the orthogonal direction. Schematics for these two main types of magnets are shown in Figure \ref{fig:lhcmagnets}
+The circular orbit of the proton beams are maintained by the 1,232 bending magnets lining the LHC. The bending magnets are superconducting dipole magnets which generate 8.3 T magnetic fields powerful enough to bend the high energy beams. In order to minimize the oscillation of the bunches around their trajectories and achieve high luminosity, 392 focusing magnets are also placed along the LHC ring. The focusing magnets are superconducting quadrupole magnets with a magnetic field gradient of 223 T/m. They are placed in alternating pairs to account for their nature of focusing along one direction while defocusing the orthogonal direction. Schematics for these two main types of magnets are shown in Figure \ref{fig:lhcmagnets}. In order to maintain the superconductivity of these magnets, the cryogenic systems cool them down to a temperature of 1.9 K.
 
 \begin{figure}[htbp]
   \centering
@@ -46,30 +46,21 @@ where $N$ refers to the number of interactions. The cross section, or interactio
 \begin{equation}
   \mathcal{L} = \frac{ N^{2} k_{b} f \gamma }{ 4 \pi \epsilon_{n} \beta^{\ast} } F,
 \end{equation}
-where the various parameters are determined by the design of the collider:
-\begin{itemize}
-  \item $N$ is the number of protons per bunch,
-  \item $k_{b}$ is the number of bunches,
-  \item $f$ is the revolution frequency,
-  \item $\gamma$ is the typical Lorentz factor,
-  \item $\epsilon_{n}$ is the normalized emittance,
-  \item $\beta^{\ast}$ is the value of the beta function at the interaction point,
-  \item $F$ is the geometrical reduction factor due to the crossing angle.\cite{lumiequation}
-\end{itemize}
+where the various parameters are determined by the design of the collider: $N$ is the number of protons per bunch, $k_{b}$ is the number of bunches, $f$ is the revolution frequency, $\gamma$ is the typical Lorentz factor, $\epsilon_{n}$ is the normalized emittance, $\beta^{\ast}$ is the value of the betatron function at the interaction point, and $F$ is the geometrical reduction factor due to the crossing angle.\cite{CMSTDR1}
 
 The LHC has a 25 ns bunch spacing, or time between bunch crossings at the interaction point, which places a constraint on how large $k_{b}$ and $f$ can be. The spacing cannot be lowered due to operational safety concerns, such as providing kicker magnets enough time to ramp up and divert the bunches toward a beam dump for absorption. The normalized emittance $\epsilon_{n}$ is a measure of the kinematic phase space occupied by the particles in the bunch and can be improved by reducing the size of the bunch and the spread in momentum of its particles. The beta function is a measure of the beam's transverse size and so its value at the interaction point $\beta^{\ast}$ is determined by how well the magnets can focus the beam at the interaction point. The geometrical factor $F$ corrects the amount by which the colliding bunches overlap as they are made to cross at a shallow angle. While a head-on collision would result in the greatest overlap, it also increases the chances of long range electromagnetic interactions between bunches, so there is some interplay in determining the crossing angle.
 
-Although the design luminosity of the LHC is $10^{34}\ \mathrm{cm}^{-2} \mathrm{s}^{-1}$, it has exceeded expectations by achieving a luminosity of twice the designed value. As a measure of particle flux, the luminosity that has been discussed so far is a dynamic quantity and is better called \textit{instantaneous luminosity}. The expected number of interactions $N$ for a given process is thus given by
+Although the design luminosity of the LHC is $10^{34}\ \mathrm{cm}^{-2} \mathrm{s}^{-1}$, it has exceeded expectations by achieving a luminosity of twice the designed value. As a measure of particle flux, the luminosity that has been discussed so far is a dynamic quantity and is better called \textit{instantaneous luminosity}. The expected number of interactions $N$ for a specific process is thus given by
 \begin{equation}
-  N = \int \sigma\mathcal{L}dt = \sigma \int \mathcal{L}dt = \sigma \mathcal{L}_{int},
+  N = \sigma \int \mathcal{L}dt = \sigma \mathcal{L}_{int},
 \end{equation}
 where $\mathcal{L}_{int}$ is the \textit{integrated luminosity}, and so the total integrated luminosity is quoted in reference to the size of particle physics datasets.
 
-Surrounding the four interaction points of the LHC are its four main experiments: A Large Ion Collider Experiment (ALICE), A Toroidal LHC ApparatuS (ATLAS), the Compact Muon Solenoid (CMS), and the Large Hadron Collider beauty (LHCb). Both ATLAS and CMS are general-purpose detectors designed to search for the Higgs boson and perform precise measurements of its properties, while also exploring the new energy frontier in search of physics beyond the Standard Model. The LHC can also accelerate lead ions, which is used by ALICE to study heavy-ion collisions and the dynamics of quark-gluon plasma. As general-purpose detectors, ATLAS and CMS also study heavy-ion collisions. The LHCb experiment specializes in studying the electroweak and QCD physics of heavy flavor quarks and measuring the properties of B mesons.
+Surrounding each of the interaction points of the LHC are its four main experiments: A Large Ion Collider Experiment (ALICE), A Toroidal LHC ApparatuS (ATLAS), the Compact Muon Solenoid (CMS), and the Large Hadron Collider beauty (LHCb). Both ATLAS and CMS are general-purpose detectors designed to search for the Higgs boson and perform precise measurements of its properties, while also exploring the new energy frontier in search of physics beyond the Standard Model. The LHC can also accelerate lead ions, which is used by ALICE to study heavy-ion collisions and the dynamics of quark-gluon plasma. As general-purpose detectors, ATLAS and CMS also study heavy-ion collisions. The LHCb experiment specializes in studying the electroweak and QCD physics of heavy flavor quarks and measuring the properties of B mesons.
 
 \section{The Compact Muon Solenoid}
 
-The Compact Muon Solenoid (CMS), illustrated in Figure \ref{fig:CMScutaway}, is a general-purpose detector capable of detecting more just than muons. The namesake feature is the superconducting solenoid around which the detector is built. Its cylindrical design is impressively compact, with a diameter of 15 m and a length of 28.7 m, and houses layers of subsystems dedicated towards the detection and measurement of different particles.
+The Compact Muon Solenoid (CMS), illustrated in Figure \ref{fig:CMScutaway}, is a general-purpose particle detector and one of the two main experiments at the LHC. Its cylindrical design is impressively compact for its purpose, with a diameter of 15 m and a length of 28.7 m. Although heavy, weighing in at 14,000 tonnes, the bulk of this weight comes from its steel return yoke and structural supports which together weigh 12,500 tonnes. The return yoke guides and contains the 3.8 T magnetic field generated by the detector's namesake superconducting solenoid, which is cooled by its cryostat to a temperature of 4.5 K during operation.
 
 \begin{figure}[htbp]
   \centering
@@ -78,6 +69,59 @@ The Compact Muon Solenoid (CMS), illustrated in Figure \ref{fig:CMScutaway}, is 
     \label{fig:CMScutaway}
 \end{figure}
 
+The solenoid is central to the design of the CMS detector because it provides a uniform magnetic field capable of bending the trajectories of charged particles as they travel through the detector, thereby enabling the measurement of their electric charge and transverse momentum \pT. This follows because a particle with electric charge $q$ and velocity $\mathbf{v}$ moving through a uniform magnetic field $\mathbf{B}$ experiences a Lorentz force given by
+\begin{equation}
+  \mathbf{F} = q\mathbf{v} \times \mathbf{B}.
+\end{equation}
+Since the force is transverse to the direction of motion, the particle travels along a helical path of radius $R$ with a handedness determined by its electric charge. An application of Newton's 2\textsuperscript{nd} Law upon the circular motion of such a particle with mass $m$ and velocity transverse to the direction of motion $v$ further shows that its transverse momentum is determined by the radius of curvature of its path
+\begin{equation}
+  \frac{mv^{2}}{R} = qvB \implies \pT = qRB,
+\end{equation}
+where $\pT = mv$ is the transverse momentum of the particle.
+
+While the helical paths of charged particles travelling with low momentum are fully contained within the detector, the trajectories of charged particles with high momentum are recorded as incomplete arcs, either because they decay mid-flight or, in the case of muons, travel out of the detector. While the radius of curvature of such highly energetic particles cannot be directly measured, it can be obtained by measuring the sagitta of their \textit{track}, the arc they trace through the detector.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=4in]{images/sagitta}
+    \caption[Sagitta of a Charged Particle Track]{A diagram defining the sagitta of an arc representing a charged particle track (orange) travelling away from the interaction point (IP). The track has a chord of length $L$, an opening angle of $\theta$, a radius of curvature $R$, and a sagitta (red) of length $s$.}
+    \label{fig:sagitta}
+\end{figure}
+
+From Figure \ref{fig:sagitta}, a relationship between the chord length $L$, radius of curvature $R$, and sagitta $s$ of the track can be constructed using the Pythagorean Theorem such that
+\begin{equation}
+  R^{2} = \left( R - s \right)^{2} + \left( \frac{L}{2} \right)^{2}.
+\end{equation}
+Solving for $R$ with the reasonable assumption that $s \ll L$ yields
+\begin{equation}
+  R = \frac{L^{2}}{8s} + \frac{s}{2} \approx \frac{L^{2}}{8s},
+\end{equation}
+and therefore the \pT\ of a charged particle can be determined from the chord length and sagitta of its track
+\begin{equation}
+  \pT = \frac{qBL^{2}}{8s}.
+\end{equation}
+The magnetic field strength $B$ and, in part, the chord length $L$ are dictated by the design of the detector, and so the \pT\ resolution is limited by the resolution of the sagitta. As their momentum increases, charged particles leave straighter tracks which make it difficult to accurately measure the sagitta, thereby degrading the resolution at high momentum.
+
+The magnetic field within the solenoid is oriented along the direction of the beam which motivates the coordinate system adopted for the CMS detector that is shown in Figure \ref{fig:CMS_coord_sys}. The geometrical center of the detector defines the origin of the right-handed Cartesian coordinate system with the \textit{z}-axis oriented along the direction of the anticlockwise proton beam from the LHC, the \textit{x}-axis pointing horizontally towards the center of the LHC ring, and the \textit{y}-axis pointing vertically upwards out of the plane of the LHC ring. The shape of the detector also admits a cylindrical description about the same origin. With the \textit{x}-axis and \textit{z}-axis taken to be the polar and longitudinal axes, respectively, a cylindrical coordinate system can be defined with the azimuthal angle $\phi$ taken with respect to the positive \textit{x}-axis ($\phi = 0$) and the polar angle $\theta$ taken with respect to the positive \textit{z}-axis ($\theta = 0$). Because the polar angle $\theta$ is not Lorentz invariant under boosts along the direction of the beam, it is typically transformed into the \textit{pseudorapidity}
+\begin{equation}
+  \eta = -\ln\left[\tan\left(\frac{\theta}{2}\right)\right]
+\end{equation}
+such that the positive \textit{z}-axis has $\eta = + \infty$ and \textit{y}-axis has $\eta = 0$.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=3.5in]{images/CMS_coord_sys}
+    \caption[Coordinate System of the CMS Detector]{The conventional coordinate system of the CMS detector.\cite{CMSCoordSys}}
+    \label{fig:CMS_coord_sys}
+\end{figure}
+
+\subsection{Detector Subsystems}
+
+The CMS detector is composed of layers of subsystems dedicated towards the detection and measurement of different types of particles. Hermetic design, but fiducial volume? coverage? high pseudorapidity or very \textit{forward} particles lost down the beam pipe or lack of coverage, radiation
+
+
+A full review of the detector \cite{CMSTDR1}
+
 \begin{figure}[htbp]
   \centering
     \includegraphics[width=5.5in]{images/CMSslice_whiteBackground}
@@ -85,21 +129,21 @@ The Compact Muon Solenoid (CMS), illustrated in Figure \ref{fig:CMScutaway}, is 
     \label{fig:CMSslice}
 \end{figure}
 
-\subsection{Superconducting Solenoid}
+\subsubsection{Silicon Tracker}
 
-\subsection{Silicon Tracker}
+\subsubsection{Electromagnetic Calorimeter}
 
-\subsection{Electromagnetic Calorimeter}
+\subsubsection{Hadronic Calorimeter}
 
-\subsection{Hadronic Calorimeter}
-
-\subsection{The Muon System}
+\subsubsection{The Muon Subsystems}
 
 \subsection{Data Acquisition and Triggers}
 
 \subsubsection{Level 1 trigger}
 
 \subsubsection{High level trigger}
+
+\subsection{Computing}
 
 \subsection{Upgrades for Run 2}
 
