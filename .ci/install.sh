@@ -37,6 +37,7 @@ tlmgr install  \
   amscls       \
   amsfonts     \
   amsmath      \
+  bibtex       \
   dvipdfmx     \
   epsf         \
   geometry     \
