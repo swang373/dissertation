@@ -1,12 +1,32 @@
-\chapter{MATERIALS ANS METHODS} \label{materials}
+\chapter{PHYSICS OBJECT RECONSTRUCTION} \label{reco}
 
-\section{Consectetur Adipiscing Elit}
+In the early days of particle physics experimentation, charged particles were visually identified by analyzing photographs of the ionization tracks left behind in cloud chambers and bubble chambers. Given the higher collision energies and luminosities demanded by modern experiments, the amount of information recorded for a collision event renders such visual analyses intractable. The final state particles produced by a proton collision at the LHC are recorded as electronic signals by the CMS detector, and the accurate interpretation of these signals as physics objects is what enables the full reconstruction of the collision's aftermath. The definition and reconstruction of the standard physics objects, with an emphasis on those used by the \VHbb\ analysis, are described in this chapter.
 
- Fusce eget tempus lectus, non porttitor tellus. Aliquam molestie sed urna quis convallis. Aenean nibh eros, aliquam non eros in, tempus lacinia justo. In magna sapien, blandit a faucibus ac, scelerisque nec purus. Praesent fermentum felis nec massa interdum, vel dapibus mi luctus. Cras id fringilla mauris. Ut molestie eros mi, ut hendrerit nulla tempor et. Pellentesque tortor quam, mattis a scelerisque nec, euismod et odio. Mauris rhoncus metus sit amet risus mattis, eu mattis sem interdum.
+\section{Particle-Flow Reconstruction}
 
-\subsection{This Is an Isolated Heading}
-Either promote this to a section heading, add another subsection heading, or delete this heading.
+The hermetic design of the CMS detector and the granularity of its subsystems enabled the first successful deployment of a \textit{particle-flow (PF)} based reconstruction algorithm at a hadron collider experiment.\cite{PARTICLEFLOW} Although the individual subsystems are capable of reconstructing the particles for which they were designed, a more accurate and global event description can be achieved by combining the measurements obtained by the subsystems as a whole. Since its commissioning, the PF algorithm has been used online to improve the efficiency of the High-Level Trigger (HLT) and offline to improve the quality of the reconstructed particle candidates considered by physics analyses.
 
-\section{Augue sapien mattis leo}
-Nec accumsan turpis quam at neque. Ut pellentesque velit sed placerat cursus. Integer congue urna non massa dictum, a pellentesque arcu accumsan. Nulla posuere, elit accumsan eleifend elementum, ipsum massa tristique metus, in ornare neque nisl sed odio. Nullam eget elementum nisi. Duis a consectetur erat, sit amet malesuada sapien. Aliquam nec sapien et leo sagittis porttitor at ut lacus. Vivamus vulputate elit vitae libero condimentum dictum. Nulla facilisi. Quisque non nibh et massa ullamcorper iaculis.
+The PF algorithm begins with the basic \textit{elements} produced by each detector subsystem: the silicon tracker and muon chambers both provide charged particle \textit{tracks}, while the electromagnetic calorimeter (ECAL) and hadronic calorimeter (HCAL) both provide \textit{clusters} of absorbed energy. A \textit{link algorithm} which tests the compatibility of pairs of elements from different subsystems is used to generate \textit{blocks} of elements that are directly linked or indirectly linked through common elements. Individual particles are subsequently identified and reconstructed within each block, starting with muons then proceeding to electrons, photons, and charged and neutral hadrons. As particles are reconstructed, the elements associated with that particle are removed from the block such that each particle is reconstructed from a set of uniquely linked elements. Once all the blocks have been processed and all particles in the event have been identified and reconstructed, a post-processing algorithm is used to correct misidentified or misreconstructed high-\pT\ muons which can artificially increase the reconstructed missing transverse momentum \pTmiss\ in the event.
+
+At this stage, the particle candidates proposed by the PF algorithm are ready to be used in physics analyses. In practice, the particle candidates are processed further by passing them to algorithms which employ different clustering strategies to reconstruct jets. Finally, The candidate particles and jets which satisfy the additional criteria recommended by the various physics object groups (POGs) within the CMS collaboration become the standard physics objects considered by the physics analyses.
+
+\section{Tracks and Primary Vertices}
+
+\section{Pileup Treatment}
+
+\section{Leptons}
+
+\subsection{Electrons}
+
+\subsection{Muons}
+
+\section{Jets}
+
+\subsection{Jet Clustering Algorithms}
+
+\subsection{\qrkb-Tagging}
+
+\section{Missing Transverse Energy}
+
+Additional ``soft'' hadronic activity?
 
