@@ -1,12 +1,338 @@
-\chapter{SUMMARY AND CONCLUSIONS} \label{conclusion}
+\chapter{ANALYSIS STRATEGY} \label{strategy}
 
-\section{Non Porttitor Tellus}
+The first \VHbb\ analysis conducted by the CMS collaboration in 2012\cite{HIG13012} demonstrated that an observation of the \Hbb\ decay was feasible by combining searches for the \ZnnHbb, \WenHbb, \WmnHbb, \ZeeHbb, and \ZmmHbb\ decay channels. The overall strategy that it pioneered has remained largely intact, even through the transition to LHC Run 2. The search for \VHbb\ using the 2016 dataset would establish evidence for the \Hbb\ decay in 2017\cite{CMSVHbbEvidence} with only incremental improvements. The search for \VHbb\ using the 2017 dataset would build on the physics insights and experiences obtained the year prior while bringing to bear additional event reconstruction techniques and deep learning to finally observe the \Hbb\ decay in 2018.\cite{HIG18016} This chapter describes the analysis strategy used by CMS to achieve its state of the art result, with a focus on the \ZnnHbb\ decay channel in particular.\footnote{This chapter includes content adapted from Ref. \cite{CMSVHbbEvidence} and \cite{HIG18016}, as the author's work directly contributed to those publications.}
 
-Aliquam molestie sed urna quis convallis. Aenean nibh eros, aliquam non eros in, tempus lacinia justo. In magna sapien, blandit a faucibus ac, scelerisque nec purus. Praesent fermentum felis nec massa interdum, vel dapibus mi luctus. Cras id fringilla mauris. Ut molestie eros mi, ut hendrerit nulla tempor et. Pellentesque tortor quam, mattis a scelerisque nec, euismod et odio. Mauris rhoncus metus sit amet risus mattis, eu mattis sem interdum.
+\section{Data and Simulation}
 
-\subsection{Nam Arcu Magna}
-Semper vel lorem eu, venenatis ultrices est. Nam aliquet ut erat ac scelerisque. Maecenas ut molestie mi. Phasellus ipsum magna, sollicitudin eu ipsum quis, imperdiet cursus turpis. Etiam pretium enim a fermentum accumsan. Morbi vel vehicula enim.
+\subsection{Data}
 
-\subsubsection{Ut pellentesque velit sede}
- Placerat cursus. Integer congue urna non massa dictum, a pellentesque arcu accumsan. Nulla posuere, elit accumsan eleifend elementum, ipsum massa tristique metus, in ornare neque nisl sed odio. Nullam eget elementum nisi. Duis a consectetur erat, sit amet malesuada sapien. Aliquam nec sapien et leo sagittis porttitor at ut lacus. Vivamus vulputate elit vitae libero condimentum dictum. Nulla facilisi. Quisque non nibh et massa ullamcorper iaculis.
+The datasets used for this analysis were collected by the CMS detector throughout 2017 and produced by proton-proton collisions with a center-of-mass energy $\sqrt{s} = 13\ \TeV$ and a bunch spacing of 25 ns. The \ZnnH\ channel uses the MET dataset, the \WenH\ channel uses the SingleElectron dataset, the \WmnH\ channel uses the SingleMuon dataset, the \ZeeH\ channel uses the DoubleEG dataset, and the \ZmmH\ channel uses the DoubleMuon dataset. All of these primary datasets have an approximate total luminosity of 41.3 \invfb\ when only considering \textit{golden} events, which were certified by data quality monitoring teams to have been collected during periods of normal function for all detector subsystems. The JSON certification file \texttt{Cert\_294927-306462\_13TeV\_EOY2017ReReco\_Collisions17\_JSON\_v1.txt} was used to filter for golden events.
 
+\subsection{Simulation}
+
+Simulated samples for each of the relevant signal and background processes are used to design and validate the analysis strategy in an unbiased manner. These samples are produced using different Monte-Carlo (MC) generators and processed by the \textsc{\small GEANT4}\cite{GEANT4A,GEANT4B,GEANT4C} software which realistically models the detector's response to the passage of particles through its materials. The reconstruction of these MC events was performed using CMS SoftWare (CMSSW) version 94X releases set to match the 2017 data taking conditions.
+
+The signal samples, generated using the \textsc{\small POWHEG} v2\cite{POWHEGA,POWHEGB,POWHEGC} event generator, are listed in Table \ref{tbl:MCsignal}. The quark-induced signal processes are generated to next-to-leading order (NLO) accuracy in QCD using the MiNLO procedure \cite{MINLOA,MINLOB}, while the gluon-induced contributions to the $ZH$ signal processes are generated only to leading order (LO) accuracy in QCD. Their production cross sections and branching fractions are taken to be the state of the art values calculated for a Higgs boson mass of $\massH = 125\ \GeV$ from Ref. \cite{CERNYR4}, and specifically those listed in sections \ref{productionmodes} and \ref{decaymodes}. These production cross sections are further rescaled to next-to-next-to-leading order (NNLO) accuracy in QCD and NLO electroweak accuracy as a function of the transverse momentum of the vector boson \pTV, according to the combined calculations of the \textsc{\small VHNNLO}\cite{VHNNLOA,VHNNLOB,VHNNLOC,VHNNLOD}, \textsc{\small VH@NNLO}\cite{VHATNNLOA,VHATNNLOB}, and \textsc{\small HAWK} v2.0\cite{HAWK} event generators as described in Ref. \cite{CERNYR4}. The event weights used to rescale the samples are specific to each signal process and an example of the weights applied to the $\bosWp(\ell\nu)\Htobb$ channel are shown in Figure \ref{fig:VHNNLOweight}.
+
+\begin{table}[htbp]
+  \caption[Signal Samples for \VHbb\ 2017]{The Monte-Carlo samples and their cross sections for the signal processes considered by the 2017 \VHbb\ analysis.}
+  \label{tbl:MCsignal}
+  \small
+  \begin{tabularx}{6.5in}{lX}
+    \hline
+    Sample                                                        & $\sigma (\pb)$                                   \\
+    \hline
+    \texttt{WminusH\_HToBB\_WToLNu\_M125\_13TeV\_powheg\_pythia8} & $0.5824 \times 0.533 \times 0.108535$            \\
+    \texttt{WplusH\_HToBB\_WToLNu\_M125\_13TeV\_powheg\_pythia8}  & $0.5824 \times 0.840 \times 0.108535$            \\
+    \texttt{ZH\_HToBB\_ZToLL\_M125\_13TeV\_powheg\_pythia8}       & $0.5824 \times (0.8839 - 0.1227) \times 0.10974$ \\
+    \texttt{ZH\_HToBB\_ZToNuNu\_M125\_13TeV\_powheg\_pythia8}     & $0.5824 \times (0.8839 - 0.1227) \times 0.20103$ \\
+    \texttt{ggZH\_HToBB\_ZToLL\_M125\_13TeV\_powheg\_pythia8}     & $0.5824 \times 0.1227 \times 0.10974$            \\
+    \texttt{ggZH\_HToBB\_ZToNuNu\_M125\_13TeV\_powheg\_pythia8}   & $0.5824 \times 0.1227 \times 0.20103$            \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=3in]{images/ewk_wplush_correction}
+    \caption[2017 Signal MC Rescaling Weights for $\bosWp(\ell\nu)\Htobb$]{The event weights used to rescale the production cross section of the $\bosWp(\ell\nu)\Htobb$ signal Monte-Carlo sample to NNLO QCD and NLO electroweak accuracy.}
+    \label{fig:VHNNLOweight}
+\end{figure}
+
+The diboson samples listed in Table \ref{tbl:MCdiboson} are generated using the \textsc{\small MadGraph5\_amc@NLO} v2.4.2\cite{AMCNLO} event generator at NLO accuracy with the FxFx\cite{FXFX} merging scheme and up to two additional partons. The exception is the inclusive \bosZ\bosZ\ sample which is only simulated to LO accuracy and generated using \textsc{\small PYTHIA} v8.230\cite{PYTHIA8} event generator. Although the cross section of the \texttt{ZZTo2L2Q} sample has been obtained from an NLO calculation, the other cross sections are taken to be the product of their measured inclusive cross sections\cite{WWxsec,WZxsec,ZZxsec} and the appropriate branching ratio as computed by the Particle Data Group (PDG) in Ref. \cite{PDG2018}.
+
+\begin{table}[htbp]
+  \caption[Diboson Samples for \VHbb\ 2017]{The Monte-Carlo samples and their cross sections for the diboson processes considered by the 2017 \VHbb\ analysis.}
+  \label{tbl:MCdiboson}
+  \begin{tabularx}{6.5in}{lX}
+    \hline
+    Sample                                                      & $\sigma (\pb)$ \\
+    \hline
+    \texttt{WWTo1L1Nu2Q\_13TeV\_amcatnloFXFX\_madspin\_pythia8} & 50.86          \\
+    \texttt{WZTo1L1Nu2Q\_13TeV\_amcatnloFXFX\_madspin\_pythia8} & 10.88          \\
+    \texttt{ZZ\_TuneCP5\_13TeV-pythia8}                         & 14.60          \\
+    \texttt{ZZTo2L2Q\_13TeV\_amcatnloFXFX\_madspin\_pythia8}    & 3.69           \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+The \bosV+jets samples are also produced using the \textsc{\small MadGraph5\_amc@NLO} v2.4.2 event generator but at LO accuracy with the MLM matching scheme\cite{MLM}. Besides their inclusive and HT-binned configurations, \qrkb-quark enriched versions with up to four additional partons are also generated to increase the statistical power of these samples in the phase space most relevant for signal events because the \bosV+jets processes are the primary irreducible backgrounds. The samples for \bosW+jets with $\bosW \rightarrow \ell\nu$ are listed in Table \ref{tbl:MCWtoLNu}, while the samples for \bosZ+jets with $\bosZ \rightarrow \ell\bar{\ell}$ are listed in Table \ref{tbl:MCZtoLL} and with $\bosZ \rightarrow \nu\bar{\nu}$ are listed in Table \ref{tbl:MCZtoNuNu}. The cross sections of the \bosV+jets samples are multiplied by \textit{k}-factors of 1.21 and 1.23 for the \bosW+jets and \bosZ+jets samples, respectively, which rescale them to their NNLO cross sections as calculated by the \textsc{\small FEWZ} 3.1\cite{FEWZA,FEWZB,FEWZC} software. The cross sections of the \qrkb-quark enriched samples are further multiplied by a stitching factor which allows them to be used in conjunction with the inclusive and HT-binned versions by appropriately scaling their cross sections.
+
+\begin{table}[htbp]
+  \caption[\bosW+jets $(\bosW \rightarrow \ell\bar{\nu})$ Samples for \VHbb\ 2017]{The Monte-Carlo samples and their cross sections for the \bosW+jets $(\bosW \rightarrow \ell\bar{\nu})$ processes considered by the 2017 \VHbb\ analysis. Stitching factors of 1.5 and 1.12 are applied to the \texttt{WBJets} and \texttt{BGenFilter} \qrkb-quark enriched samples, respectively.}
+  \label{tbl:MCWtoLNu}
+  \small
+  \begin{tabularx}{6.5in}{lX}
+    \hline
+    Sample                                                                 & $\sigma (\pb)$                 \\
+    \hline
+    \texttt{WJetsToLNu\_TuneCP5\_13TeV-madgraphMLM-pythia8}                & $1.21 \times 52940.0$          \\
+    \texttt{WJetsToLNu\_HT-100To200\_TuneCP5\_13TeV-madgraphMLM-pythia8}   & $1.21 \times 1395.0$           \\
+    \texttt{WJetsToLNu\_HT-200To400\_TuneCP5\_13TeV-madgraphMLM-pythia8}   & $1.21 \times 407.9$            \\
+    \texttt{WJetsToLNu\_HT-400To600\_TuneCP5\_13TeV-madgraphMLM-pythia8}   & $1.21 \times 57.48$            \\
+    \texttt{WJetsToLNu\_HT-600To800\_TuneCP5\_13TeV-madgraphMLM-pythia8}   & $1.21 \times 12.87$            \\
+    \texttt{WJetsToLNu\_HT-800To1200\_TuneCP5\_13TeV-madgraphMLM-pythia8}  & $1.21 \times 5.366$            \\
+    \texttt{WJetsToLNu\_HT-1200To2500\_TuneCP5\_13TeV-madgraphMLM-pythia8} & $1.21 \times 1.074$            \\
+    \texttt{WJetsToLNu\_HT-2500ToInf\_TuneCP5\_13TeV-madgraphMLM-pythia8}  & $1.21 \times 0.03216$          \\
+    \texttt{WBJetsToLNu\_Wpt-100to200\_TuneCP5\_13TeV-madgraphMLM-pythia8} & $1.21 \times 1.5 \times 7.35$  \\
+    \texttt{WBJetsToLNu\_Wpt-200toInf\_TuneCP5\_13TeV-madgraphMLM-pythia8} & $1.21 \times 1.5 \times 1.1$   \\
+    \texttt{WJetsToLNu\_BGenFilter\_Wpt-100to200\_TuneCP5\_13TeV}          & $1.21 \times 1.12 \times 26.6$ \\
+    \texttt{  -madgraphMLM-pythia8}                                        &                                \\
+    \texttt{WJetsToLNu\_BGenFilter\_Wpt-200toInf\_TuneCP5\_13TeV}          & $1.21 \times 1.12 \times 3.9$  \\
+    \texttt{  -madgraphMLM-pythia8}                                        &                                \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+  \caption[\bosZ+jets $(\bosZ \rightarrow \ell\bar{\ell})$ Samples for \VHbb\ 2017]{The Monte-Carlo samples and their cross sections for the \bosZ+jets $(\bosZ \rightarrow \ell\bar{\ell})$ processes considered by the 2017 \VHbb\ analysis. Stitching factors of 1.085 and 1.15 are applied to the \texttt{DYBJetsToLL} and \texttt{BGenFilter} \qrkb-quark enriched samples, respectively.}
+  \label{tbl:MCZtoLL}
+  \small
+  \begin{tabularx}{6.5in}{lX}
+    \hline
+    Sample                                                              & $\sigma (\pb)$                    \\
+    \hline
+    \texttt{DYJetsToLL\_M-4to50\_HT-100to200\_TuneCP5\_13TeV}           & $1.23 \times 204.0$               \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_M-4to50\_HT-200to400\_TuneCP5\_13TeV}           & $1.23 \times 54.4$                \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_M-4to50\_HT-400to600\_TuneCP5\_13TeV}           & $1.23 \times 5.70$                \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_M-4to50\_HT-600toInf\_TuneCP5\_13TeV}           & $1.23 \times 1.85$                \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_M-50\_TuneCP5\_13TeV}                           & $1.23 \times 5343.0$              \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_M-50\_HT-100to200\_TuneCP5\_13TeV}              & $1.23 \times 161.1$               \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_M-50\_HT-200to400\_TuneCP5\_13TeV}              & $1.23 \times 48.66$               \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_M-50\_HT-400to600\_TuneCP5\_13TeV}              & $1.23 \times 6.97$                \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_M-50\_HT-600to800\_TuneCP5\_13TeV}              & $1.23 \times 1.743$               \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_M-50\_HT-800to1200\_TuneCP5\_13TeV}             & $1.23 \times 0.805$               \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_M-50\_HT-1200to2500\_TuneCP5\_13TeV}            & $1.23 \times 0.193$               \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_M-50\_HT-2500toInf\_TuneCP5\_13TeV}             & $1.23 \times 0.00347$             \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYBJetsToLL\_M-50\_Zpt-100to200\_TuneCP5\_13TeV}            & $1.23 \times 1.085 \times 4.042$  \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYBJetsToLL\_M-50\_Zpt-200toInf\_TuneCP5\_13TeV}            & $1.23 \times 1.085 \times 0.4286$ \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_BGenFilter\_Zpt-100to200\_M-50\_TuneCP5\_13TeV} & $1.23 \times 1.15 \times 3.384$   \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \texttt{DYJetsToLL\_BGenFilter\_Zpt-200toInf\_M-50\_TuneCP5\_13TeV} & $1.23 \times 1.15 \times 0.5327$  \\
+    \texttt{  -madgraphMLM-pythia8}                                     &                                   \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+  \caption[\bosZ+jets $(\bosZ \rightarrow \nu\bar{\nu})$ Samples for \VHbb\ 2017]{The Monte-Carlo samples and their cross sections for the \bosZ+jets $(\bosZ \rightarrow \nu\bar{\nu})$ processes considered by the 2017 \VHbb\ analysis. Stitching factors of 1.085 and 1.11 are applied to the \texttt{ZBJetsToNuNu} and \texttt{BGenFilter} \qrkb-quark enriched samples, respectively.}
+  \label{tbl:MCZtoNuNu}
+  \small
+  \begin{tabularx}{6.5in}{lX}
+    \hline
+    Sample                                                               & $\sigma (\pb)$                            \\
+    \hline
+    \texttt{ZJetsToNuNu\_HT-100To200\_13TeV-madgraph}                    & $1.23 \times 304.2$                       \\
+    \texttt{ZJetsToNuNu\_HT-200To400\_13TeV-madgraph}                    & $1.23 \times 91.92$                       \\
+    \texttt{ZJetsToNuNu\_HT-400To600\_13TeV-madgraph}                    & $1.23 \times 13.18$                       \\
+    \texttt{ZJetsToNuNu\_HT-600To800\_13TeV-madgraph}                    & $1.23 \times 3.258$                       \\
+    \texttt{ZJetsToNuNu\_HT-800To1200\_13TeV-madgraph}                   & $1.23 \times 1.496$                       \\
+    \texttt{ZJetsToNuNu\_HT-1200To2500\_13TeV-madgraph}                  & $1.23 \times 0.3419$                      \\
+    \texttt{ZJetsToNuNu\_HT-2500ToInf\_13TeV-madgraph}                   & $1.23 \times 0.005112$                    \\
+    \texttt{ZBJetsToNuNu\_M-50\_Zpt-100to200\_TuneCP5\_13TeV}            & $1.23 \times 1.085 \times 7.7$            \\
+    \texttt{  -madgraphMLM-pythia8}                                      &                                           \\
+    \texttt{ZBJetsToNuNu\_M-50\_Zpt-200toInf\_TuneCP5\_13TeV}            & $1.23 \times 1.085 \times 0.8131$         \\
+    \texttt{  -madgraphMLM-pythia8}                                      &                                           \\
+    \texttt{ZJetsToNuNu\_BGenFilter\_Zpt-100to200\_M-50\_TuneCP5\_13TeV} & $1.23 \times 1.11 \times 3 \times 2.139$  \\
+    \texttt{  -madgraphMLM-pythia8}                                      &                                           \\
+    \texttt{ZJetsToNuNu\_BGenFilter\_Zpt-200toInf\_M-50\_TuneCP5\_13TeV} & $1.23 \times 1.11 \times 3 \times 0.3287$ \\
+    \texttt{  -madgraphMLM-pythia8}                                      &                                           \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+The $\qrkt\bar{\qrkt}$\cite{MCTT} samples listed in Table \ref{tbl:MCttbar} are generated to NLO accuracy using the \textsc{\small POWHEG} v2 event generator and their cross sections are rescaled to NNLO accuracy using the next-to-next-to-leading-logarithm (NNLL) values calculated using the \textsc{\small Top++} v2.0\cite{TOPPP} software. The single top production samples listed in Table \ref{tbl:MCsingletop} are also generated to NLO accuracy, with the t-channel\cite{MCsingletopT} and tW-channel\cite{MCsingletopTW} processes generated using the \textsc{\small POWHEG} v2 event generator and the s-channel\cite{MCsingletopS} process generated using the \textsc{\small MadGraph5\_amc@NLO} v2.4.2 event generator. Their cross sections are also rescaled to their corresponding values obtained from NNLO calculations.\cite{singletopNNLOA,singletopNNLOB} Finally, the QCD or multi-jet samples listed in Table \ref{tbl:MCQCD} are generated to LO accuracy using the \textsc{\small MadGraph5\_amc@NLO} v2.4.2 event generator with the MLM matching scheme. 
+
+\begin{table}[htbp]
+  \caption[$\qrkt\bar{\qrkt}$ Samples for \VHbb\ 2017]{The Monte-Carlo samples and their cross sections for the $\qrkt\bar{\qrkt}$ processes considered by the 2017 \VHbb\ analysis.}
+  \label{tbl:MCttbar}
+  \begin{tabularx}{6.5in}{lX}
+    \hline
+    Sample                                                          & $\sigma (\pb)$ \\
+    \hline
+    \texttt{TTTo2L2Nu\_TuneCP5\_PSweights\_13TeV-powheg-pythia8}    & 88.29          \\
+    \texttt{TTToSemiLeptonic\_TuneCP5\_13TeV-powheg-pythia8}        & 365.34         \\
+    \texttt{TTToHadronic\_TuneCP5\_PSweights\_13TeV-powheg-pythia8} & 377.96         \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+  \caption[Single Top Samples for \VHbb\ 2017]{The Monte-Carlo samples and their cross sections for the single top processes considered by the 2017 \VHbb\ analysis.}
+  \label{tbl:MCsingletop}
+  \small
+  \begin{tabularx}{6.5in}{lX}
+    \hline
+    Sample                                                                   & $\sigma (\pb)$        \\
+    \hline
+    \texttt{ST\_s-channel\_4f\_leptonDecays\_TuneCP5\_PSweights\_13TeV}      & $0.325 \times 10.32$  \\
+    \texttt{  -amcatnlo-pythia8}                                             &                       \\
+    \texttt{ST\_t-channel\_antitop\_4f\_inclusiveDecays\_TuneCP5\_13TeV}     & $0.325 \times 80.95$  \\
+    \texttt{  -powhegV2-madspin-pythia8}                                     &                       \\
+    \texttt{ST\_t-channel\_top\_4f\_inclusiveDecays\_TuneCP5\_13TeV}         & $0.325 \times 136.02$ \\
+    \texttt{  -powhegV2-madspin-pythia8}                                     &                       \\
+    \texttt{ST\_tW\_antitop\_5f\_inclusiveDecays\_TuneCP5\_PSweights\_13TeV} & 35.85                 \\
+    \texttt{  -powheg-pythia8}                                               &                       \\
+    \texttt{ST\_tW\_top\_5f\_inclusiveDecays\_TuneCP5\_PSweights\_13TeV}     & 35.85                 \\
+    \texttt{  -powheg-pythia8}                                               &                       \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+  \caption[QCD Samples for \VHbb\ 2017]{The Monte-Carlo samples and their cross sections for the QCD processes considered by the 2017 \VHbb\ analysis.}
+  \label{tbl:MCQCD}
+  \begin{tabularx}{6.5in}{lX}
+    \hline
+    Sample                                                         & $\sigma (\pb)$ \\
+    \hline
+    \texttt{QCD\_HT100to200\_TuneCP5\_13TeV-madgraphMLM-pythia8}   & 27990000       \\
+    \texttt{QCD\_HT200to300\_TuneCP5\_13TeV-madgraphMLM-pythia8}   & 1547000        \\
+    \texttt{QCD\_HT300to500\_TuneCP5\_13TeV-madgraphMLM-pythia8}   & 322600         \\
+    \texttt{QCD\_HT500to700\_TuneCP5\_13TeV-madgraphMLM-pythia8}   & 29980          \\
+    \texttt{QCD\_HT700to1000\_TuneCP5\_13TeV-madgraphMLM-pythia8}  & 6334           \\
+    \texttt{QCD\_HT1000to1500\_TuneCP5\_13TeV-madgraphMLM-pythia8} & 1088           \\
+    \texttt{QCD\_HT1500to2000\_TuneCP5\_13TeV-madgraphMLM-pythia8} & 99.11          \\
+    \texttt{QCD\_HT2000toInf\_TuneCP5\_13TeV-madgraphMLM-pythia8}  & 20.23          \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+The set of parton distribution functions, which define the distribution of a hadron's momentum among its partons, used to generate all of the MC samples was chosen to be the NNPDF3.1\cite{NNPDF} set. The parton showering and hadronization was handled by interfacing the matrix element generators with \textsc{\small PYTHIA} v8.230. Finally, additional $pp$ interactions are added to the hard-scattering process to simulate pileup, with a multiplicity distribution matched to the 2017 data taking conditions.
+
+\subsection{Triggers}
+
+Each channel employs a subset of the available triggers to select data events which are consistent with their signal hypothesis. The \ZnnH\ channel uses triggers which place thresholds on the missing tranverse energy (MET), missing transverse hadronic energy (MHT), and tranverse hadronic energy (HT) in an event. The \WenH\ and \WmnH\ channels both use single lepton triggers, while the \ZeeH\ and \ZmmH\ channels both use di-lepton triggers, which place thresholds on the transverse momentum of isolated leptons. The specific triggers used by each channel are detailed in Table \ref{tbl:triggers2017}. Because the triggers are also emulated during simulation, the MC events are also required to satisfy the same triggers as used in data.
+
+\begin{table}[htbp]
+  \caption[L1 and HLT Triggers for \VHbb 2017]{The L1 and HLT triggers used by the 2017 \VHbb\ analysis, organized by decay channel.}
+  \label{tbl:triggers2017}
+  \small
+  \begin{tabularx}{6.5in}{Xll}
+    \hline
+    Channel & L1 Seeds                               & HLT Paths                                                  \\
+    \hline
+    \ZnnH   & \texttt{(L1\_ETM110 OR L1\_ETMHF120)}  & \texttt{HLT\_PFMET120\_PFMHT120\_IDTight}                  \\
+            & \texttt{OR L1\_ETMHF110\_HTT60er}      & \texttt{OR HLT\_PFMET120\_PFMHT120\_IDTight\_PFHT60}       \\
+    \WenH   & \texttt{L1\_SingleEG38}                & \texttt{HLT\_Ele32\_WPTight\_Gsf\_L1DoubleEG}              \\
+            & \texttt{OR L1\_SingleIsoEG30}          &                                                            \\
+            & \texttt{OR L1\_SingleIsoEG28er2p1}     &                                                            \\
+            & \texttt{OR L1\_DoubleEG\_25\_12}       &                                                            \\
+    \WmnH   & \texttt{L1\_SingleMu22}                & \texttt{HLT\_IsoMu27}                                      \\
+    \ZeeH   & \texttt{L1\_SingleEG30}                & \texttt{HLT\_Ele23\_Ele12\_CaloIdL\_TrackIdL\_IsoVL}       \\
+            & \texttt{OR L1\_SingleIsoEG22er}        &                                                            \\
+            & \texttt{OR L1\_SingleIsoEG24}          &                                                            \\
+            & \texttt{OR L1\_DoubleEG\_15\_10}       &                                                            \\
+    \ZmmH   & \texttt{L1\_DoubleMu\_12\_5}           & \texttt{HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8} \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+The primary trigger for the \ZnnH\ channel is \texttt{\small HLT\_PFMET120\_PFMHT120\_IDTight}, which requires both particle-flow (PF) MET and MHT to be above 120 \GeV. The corresponding triggers at L1 are seeded by ETM with thresholds ranging from 100 \GeV\ to 120 \GeV\, which varies based on the instantaneous luminosity of the LHC in order to maintain reasonable trigger rates. The online PF MET, though similar to the offline version, uses a simplified version of tracking and is evaluted as the transverse momentum (\pT) imbalance of all PF objects reconstructed at the HLT which includes photons, electrons, muons, and corrected jets from neutral and charged hadrons. The online PF MHT considers corrected PF jets with $\pT > 20 \GeV$ and $\left|\eta\right| < 5.2$ which have neutral hadronic fraction $< 0.9$, neutral electromagnetic fraction $< 0.99$, and at least one constituent. The jets contributing to the PF MHT which lie within the tracker acceptance, or $\left|\eta\right| < 2.4$, are also required to have charged hadronic fraction $> 0$, charged electromagnetic fraction $< 0.99$, and charged multiplicity $> 0$.
+
+The secondary trigger for the \ZnnH\ channel, \texttt{\small HLT\_PFMET120\_PFMHT120\_IDTight\_PFHT60}, additionally requires the PF HT to be above 60 \GeV. This additional requirement was verified to pose no significant impact, as there are at least two highly-energetic jets present in the events considered by the analysis. Because the primary trigger was sometimes inactive during run period F, this secondary trigger is used to guarantee full coverage throughout 2017 by taking the logical \texttt{OR} of the two triggers.
+
+The trigger efficiency of the logical \texttt{OR} of the primary and secondary MET triggers is measured using the SingleElectron primary dataset. Because the single-electron triggers are orthogonal to the MET triggers, this dataset provides an unbiased sample with which the trigger efficiency can be measured. In addition to passing the \texttt{OR} of the primary and secondary MET triggers, events are also required to have two jets within the tracker acceptance and the electron is required to have $\left|\Delta\phi(\lepe, \textrm{MET})\right| < 2.5$. This separation in azimuthal angle rejects events which have an electron that is back-to-back with the reconstructed MET in order to avoid bias from the L1 MET. As the triggers are parameterized by both the online PF MET and PF MHT, the efficiency is measured as a function of the minimum of the offline MET and MHT, i.e. $\min(\textrm{MET}, \textrm{MHT})$. The trigger efficiency curve is derived by fitting the data points shown in Figure \ref{fig:triggersdata} with the convolution of a crystal ball function and a step function.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=3.75in]{images/2017METTriggersData}
+    \caption[Trigger Efficiency for \ZnnHbb\ in 2017 Data]{The trigger efficiency for the \ZnnHbb\ channel as a function of the minimum of the offline MET and MHT measured using the full 2017 SingleElectron primary dataset. The green curve represents the efficiency in 2016 data of the logical \texttt{OR} of analogous triggers used by the 2016 analysis. The red curve represents the efficiency of the logical \texttt{OR} of the triggers used for the 2017 analysis.}
+    \label{fig:triggersdata}
+\end{figure}
+
+The MET trigger efficiency can also be measured using MC samples to assess the trigger emulation performance. The trigger efficiency curve of the emulated MET triggers is obtained using the same procedure as for data and is shown in Figure \ref{fig:triggersmc}. An efficiency correction is obtained by taking the ratio of the fitted trigger efficiency curve for data to that of simulation and is shown in Figure \ref{fig:triggersunc}. The correction reaches up to 9\% in the ``turn-on'' region of the efficiency curve, but then remains close to unity upon reaching the plateau. The uncertainty of this efficiency correction were determined by the eigenvector decomposition of the covariance matrices of the fitted functions for data and simulation, and those which have non-negligible effects on the shape of the final discriminant or process normalizations are assessed as systematic uncertainties.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=3.75in]{images/2017METTriggersMC}
+    \caption[Trigger Efficiency for \ZnnHbb\ in 2017 MC]{The emulated trigger efficiency for the \ZnnHbb\ channel as a function of the minimum of the offline MET and MHT measured using a $\bosW + 3\textrm{-jets}$ Monte-Carlo sample. The green curve represents the efficiency in 2016 data of the logical \texttt{OR} of analogous triggers used by the 2016 analysis. The red curve represents the efficiency of the emulated logical \texttt{OR} of the triggers used for the 2017 analysis.}
+    \label{fig:triggersmc}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \mbox{
+    \subfigure [] {\includegraphics[scale=0.33]{images/metTrigger2017SF_dataunc}} \quad
+    \subfigure [] {\includegraphics[scale=0.33]{images/metTrigger2017SF_mcunc}} \quad
+  }
+  \caption[2017 MET Trigger Efficiency Correction for \ZnnHbb]{The MET trigger efficiency correction for the \ZnnHbb\ channel as a function of the minimum of the offline MET and MHT. The red curve represents the nominal correction, while the dotted and dash-dotted curves represent the variations in the correction due to the four leading uncertainties in data (A) and Monte-Carlo (B).}
+    \label{fig:triggersunc}
+\end{figure}
+
+The trigger efficiencies for the other decays channels are similarly handled. The triggers used by the \WlnH\ channel reach efficiencies of approximately 90\% for electrons and 95\% for muons. The triggers used by the \ZllH\ channel reach efficiencies of approximately 96\% for electrons and 91\% for muons.
+
+\subsection{Residual Monte-Carlo Corrections}
+
+Although the MC samples provide realistic simulations of physics processes, discrepancies between the shapes of kinematic distributions in data and MC remain a concern. The presence of such observed differences is not unexpected, given the fixed-order accuracy of and the assumptions made by the event generators. Residual corrections therefore need to be applied to the MC samples to improve the agreement between data and MC for key distributions.
+
+The first such correction addresses the difference between the \pTV\ spectrum in data and the \bosV+jets MC samples. The \pTV\ distribution is harder for simulation than for data because the simulation does not include higher-order electroweak corrections.\cite{EWKCORR} The \bosV+jets samples are therefore reweighted as a function of the \pTV\ to apply the NLO electroweak correction shown in Figure \ref{fig:vjetsewkweight} which accounts for discrepancies of up to 10\% for \pTV\ near 400 \GeV.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=3in]{images/ewk_vjets_correction}
+    \caption[2017 \bosV+jets MC Electroweak Correction]{The NLO electroweak correction applied to the \bosV+jets Monte-Carlo samples.}
+    \label{fig:vjetsewkweight}
+\end{figure}
+
+The second such correction addresses the difference between the \pT\ spectra of the top quarks in data and the $\qrkt\bar{\qrkt}$ MC samples. The \pT\ spectra of top quarks in data are observed to be softer than predicted by the event generators. The $\qrkt\bar{\qrkt}$ samples are therefore reweighted as a function of the top quark \pT\ according to the official recommendation by the CMS experiment.\cite{CMSTTCORR} This correction is only applicable for the \ZnnH\ and \ZllH\ channels, and is superceded by an equivalent reweighting specific to the \WlnH\ channel. 
+
+A third correction addresses the discrepancy between the di-jet invariant mass \mjj\ distribution in data and the LO \bosV+jets MC samples. Although NLO \bosV+jets MC samples are readily available and show good agreement with data for the \mjj\ distribution, they are not used by the analysis because their limited statistical power results in an over 10\% decrease in expected sensitivity with respect to the LO \bosV+jets samples. A differential LO-to-NLO correction based on the separation in $\eta$ between the two \qrkb-quark jets from the Higgs boson decay $\Delta\eta(jj)$ is derived as a ratio of the NLO to LO \bosV+jets samples following the procedure outlined in Ref. \cite{CMSVHbbEvidence}. An example of this ratio is shown in Figure \ref{fig:NLOtoLOratio}. These reweighting functions improve the agreement between data and the LO \bosV+jets samples for the \mjj\ and \pTV\ distributions while demonstrating a negligible effect on the remaining distributions. The full reweighting is assessed as a systematic uncertainty.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=6in]{images/NLOtoLO}
+    \caption[NLO to LO Ratio of $\Delta\eta(jj)$ for \bosZ+jets $(\bosZ \rightarrow \ell\bar{\ell})$ Samples]{The ratio of $\Delta\eta(jj)$ between the NLO to LO \bosZ+jets $(\bosZ \rightarrow \ell\bar{\ell})$ Monte-Carlo samples divided into categories based on the number of true \qrkb-jets present.}
+    \label{fig:NLOtoLOratio}
+\end{figure}
+
+A final correction addresses the downward trend in the data to MC ratio for the \pTV\ distribution that is observed in the control regions of the \WlnH\ channel. A simultaneous fit of the \pTV\ distribution to data in the control regions of the \WlnH\ channel are used to derive independent linear reweighting functions for the $\qrkt\bar{\qrkt}$, \bosW with light-flavored jets (\Wlight), and combination of \bosW with \qrkb-jets (\Wbb) and single top processes. The relative compositions of the background processes were fixed during the fit and the reweighting preserves the overall normalization. The uncertainties on the fitted slopes of the linear reweighting functions are taken to be the systematic uncertainties of this \pTV\ correction. An uncertainty of 13\% is assessed for the $\qrkt\bar{\qrkt}$ reweighting, while a 6\% uncertainty is asseseed for both the \Wlight and \Wbb + single top reweightings. These uncertainties sufficiently cover any perceived discrepancies after all corrections have been applied.
+
+\section{Physics Objects}
+
+\subsection{Vector Boson Candidate}
+
+\subsection{Higgs Boson Candidate}
+
+\section{Event Selection}
+
+\subsection{Signal Regions}
+
+\subsection{Background Control Regions}
+
+\section{Binned Multivariate Shape Analysis}
+
+\subsection{Input Features}
+
+\subsection{Model Training}
+
+\subsection{Model Selection}
+
+\subsection{Binned Shape Analysis}
+
+\section{Systematic Uncertainties}
+
+%\section{Non Porttitor Tellus}
+%
+%Aliquam molestie sed urna quis convallis. Aenean nibh eros, aliquam non eros in, tempus lacinia justo. In magna sapien, blandit a faucibus ac, scelerisque nec purus. Praesent fermentum felis nec massa interdum, vel dapibus mi luctus. Cras id fringilla mauris. Ut molestie eros mi, ut hendrerit nulla tempor et. Pellentesque tortor quam, mattis a scelerisque nec, euismod et odio. Mauris rhoncus metus sit amet risus mattis, eu mattis sem interdum.
+%
+%\subsection{Nam Arcu Magna}
+%Semper vel lorem eu, venenatis ultrices est. Nam aliquet ut erat ac scelerisque. Maecenas ut molestie mi. Phasellus ipsum magna, sollicitudin eu ipsum quis, imperdiet cursus turpis. Etiam pretium enim a fermentum accumsan. Morbi vel vehicula enim.
+%
+%\subsubsection{Ut pellentesque velit sede}
+% Placerat cursus. Integer congue urna non massa dictum, a pellentesque arcu accumsan. Nulla posuere, elit accumsan eleifend elementum, ipsum massa tristique metus, in ornare neque nisl sed odio. Nullam eget elementum nisi. Duis a consectetur erat, sit amet malesuada sapien. Aliquam nec sapien et leo sagittis porttitor at ut lacus. Vivamus vulputate elit vitae libero condimentum dictum. Nulla facilisi. Quisque non nibh et massa ullamcorper iaculis.
+%
