@@ -102,7 +102,7 @@ and therefore the \pT\ of a charged particle can be determined from the chord le
 \end{equation}
 The magnetic field strength $B$ and, in part, the chord length $L$ are dictated by the design of the detector, and so the \pT\ resolution is limited by the resolution of the sagitta. As their momentum increases, charged particles leave straighter tracks which make it difficult to accurately measure the sagitta, thereby degrading the resolution at high momentum.
 
-The magnetic field within the solenoid is oriented along the direction of the beam which motivates the coordinate system adopted for the CMS detector that is shown in Figure \ref{fig:CMS_coord_sys}. The geometrical center of the detector defines the origin of the right-handed Cartesian coordinate system with the \textit{z}-axis oriented along the direction of the anticlockwise proton beam from the LHC, the \textit{x}-axis pointing horizontally towards the center of the LHC ring, and the \textit{y}-axis pointing vertically upwards out of the plane of the LHC ring. The shape of the detector also admits a cylindrical description about the same origin. With the \textit{x}-axis and \textit{z}-axis taken to be the polar and longitudinal axes, respectively, a cylindrical coordinate system can be defined with the azimuthal angle $\phi$ taken with respect to the positive \textit{x}-axis ($\phi = 0$) and the polar angle $\theta$ taken with respect to the positive \textit{z}-axis ($\theta = 0$). Because the polar angle $\theta$ is not Lorentz invariant under boosts along the direction of the beam, it is typically transformed into the \textit{pseudorapidity}
+Because the magnetic field within the solenoid is oriented along the direction of the beam, it motivates the coordinate system adopted for the CMS detector that is shown in Figure \ref{fig:CMS_coord_sys}. The geometrical center of the detector defines the origin of the right-handed Cartesian coordinate system with the \textit{z}-axis oriented along the direction of the anticlockwise proton beam from the LHC, the \textit{x}-axis pointing horizontally towards the center of the LHC ring, and the \textit{y}-axis pointing vertically upwards out of the plane of the LHC ring. The shape of the detector also permits a cylindrical description about the same origin. With the \textit{x}-axis and \textit{z}-axis taken to be the polar and longitudinal axes, respectively, a cylindrical coordinate system can be defined with the azimuthal angle $\phi$ taken with respect to the positive \textit{x}-axis ($\phi = 0$) and the polar angle $\theta$ taken with respect to the positive \textit{z}-axis ($\theta = 0$). Because the polar angle $\theta$ is not Lorentz invariant under boosts along the direction of the beam, it is typically transformed into the \textit{pseudorapidity}
 \begin{equation}
   \eta = -\ln\left[\tan\left(\frac{\theta}{2}\right)\right]
 \end{equation}
@@ -110,34 +110,83 @@ such that the positive \textit{z}-axis has $\eta = + \infty$ and the positive \t
 
 \begin{figure}[htbp]
   \centering
-    \includegraphics[width=3.5in]{images/CMS_coord_sys}
-    \caption[Coordinate System of the CMS Detector]{The conventional coordinate system of the CMS detector.\cite{CMSCoordSys}}
+    \includegraphics[width=4in]{images/CMS_coord_sys}
+    \caption[Coordinate System of the CMS Detector]{The coordinate system convention used for the CMS detector.\cite{CMSCoordSys}}
     \label{fig:CMS_coord_sys}
 \end{figure}
 
 \subsection{Detector Subsystems}
 
-The CMS detector is composed of layers of subsystems dedicated towards the detection and measurement of different types of particles. Hermetic design, but fiducial volume? coverage? high pseudorapidity or very \textit{forward} particles lost down the beam pipe or lack of coverage, radiation
-
-
-A full review of the detector \cite{CMSTDR1}
+As with all modern general-purpose detectors, the guiding principle in the design of the CMS detector is hermeticity. By maximizing the angular coverage of the space surrounding the interaction point, the final state particles produced by proton-proton collisions are more likely to be recorded by the detector's subsystems. The CMS detector is composed of layered subsystems as illustrated in Figure \ref{fig:CMSslice}, each designed to detect and measure the properties of different types of particles. Each of the detector subsystems are described in the following sections, starting from those closest to the interaction point. A thorough discussion of the detector's design is available in Ref. \cite{CMSTDR1}, the first volume of the official CMS Technical Design Report (TDR).
 
 \begin{figure}[htbp]
   \centering
     \includegraphics[width=5.5in]{images/CMSslice_whiteBackground}
-    \caption[Cross Sectional View of the CMS Detector]{A cross sectional view of the CMS detector highlighting the different subsystems and the particles they are used to detect.\cite{CMSslice}}
+    \caption[Cross Sectional View of the CMS Detector]{A cross sectional view of the CMS detector in the $r\phi$-plane revealing the different subsystems and the particles they are used to detect.\cite{CMSslice}}
     \label{fig:CMSslice}
 \end{figure}
 
-\subsubsection{Silicon Tracker}
+\subsubsection{Silicon tracker}
 
-\subsubsection{Electromagnetic Calorimeter}
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=5.5in]{images/tracker_diagram}
+    \caption[Schematic for the CMS Silicon Tracker]{A schematic diagram showing a cross sectional view of the CMS detector's silicon tracker in the positive $yz$-plane.\cite{TRACKERDIAGRAM}}
+    \label{fig:CMStrackerdiag}
+\end{figure}
 
-\subsubsection{Hadronic Calorimeter}
+The tracker is designed to detect charged particles and measure their trajectories or ``tracks''. As the innermost layer surrounding the interaction point, its components must have a fast response time to record the tracks of short-lived particles, good spatial resolution to distinguish between tracks of different particles, and excellent radiation tolerance to withstand the high intensity of the proton beams. These concerns motivated the choice of semiconductor detectors made from silicon, which offer fast response times and excellent energy resolution and acceptable radiation hardness, although degradation is expected over time. When a charged particle passes through a semiconductor module, valence band electrons are promoted to the conduction band and leave behind ``holes''. By applying an electric field, the electrons and holes are collected by electrodes to generate a signal indicating the passage of a charged particle. 
 
-\subsubsection{The Muon Subsystems}
+The tracker is composed of 16,588 silicon modules distributed between the pixel tracker, which segments its sensors into 66 million pixels of size $100 \times 150 \mu\mathrm{m}^{2}$\footnote{For reference, the average width of a human hair is around 100 $\mu\mathrm{m}$.}, and strip tracker, which segments its sensors into 9.6 million strips that are 80 to 180 $\mu\mathrm{m}$ wide. The tracker is divided into four regions as shown in Figure \ref{fig:CMStrackerdiag}, with the inner barrel (TIB) and outer barrel (TOB) arranged in cylindrical layers and the inner disks (TID) and endcaps (TEC) arranged in layered disks. This offers full angular coverage in $\phi$ and $\left| \eta \right| < 2.5$, and the granularity of the pixels and strips achieves a \pT\ resolution of approximately 1.5\% for charged particles with $1\ \GeV < \pT < 10\ \GeV$ in the central region of the tracker.\cite{CMSTRACKERPERF}
+
+\subsubsection{Electromagnetic calorimeter}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=5.5in]{images/ecal_diagram}
+    \caption[Schematic for the CMS ECAL]{A schematic diagram showing a cross sectional view of the CMS detector's electromagnetic calorimeter in the positive $yz$-plane.\cite{ECALDIAGRAM}}
+    \label{fig:CMSecaldiag}
+\end{figure}
+
+The electromagnetic calorimeter (ECAL) is designed to detect electrons and photons based on their energy deposition. When highly energetic electrons or photons interact with matter, they initiate an electromagnetic shower via bremsstrahlung or electron-positron pair production, respectively. Because these secondary particles may interact further with the material, the electromagnetic shower proceeds until the energies of the produced particles fall below a critical energy and energy losses proceed through ionization. If the material is a scintillator, it can absorb the low energy particles produced by the shower and produce an amount of light proportional to their energies that can be measured by photodetectors.
+
+To ensure that the energies of incident electrons and photons are collected by the ECAL, lead tungstate ($\mathrm{PbWO}_{4}$) crystals were chosen for their low radiation length and Moli{\`e}re radius, fast response, and radiation hardness. The radiation length is the mean distance over which a particle radiates approximately 63\% of their energy, while the Moli{\`e}re radius specifies the radius of the cylindrical volume that contains approximately 90\% of the energy of the incident electron or photon. By selecting a material that minimizes both of these properties, the full absoprtion of electrons and photons can be achieved within a limited material budget.
+
+The ECAL is composed of 75,848 lead tungstate crystals distributed between the ECAL barrel (EB) which uses 61,200 crytals and the ECAL endcap (EE) which uses 14,648 crystals, as shown in Figure \ref{fig:CMSecaldiag}. The additional ECAL preshower (EC) layer is placed before the EE and consists of alternating lead and silicon modules instead of lead tungstate crystals. The finer granularity of the EC is used to reject closely-spaced photon pairs produced by the decay of neutral pions based on their energy deposits, which could otherwise be identified as a high energy photon by the ECAL. On the whole, the ECAL offers full angular coverage in $\phi$ and $\left| \eta \right| < 3.0$ and achieves an energy resolution between 2-5\% for electrons and 1.1-5\% for photons.\cite{CMSECALPERF}
+
+\subsubsection{Hadronic calorimeter}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=5.5in]{images/hcal_diagram}
+    \caption[Schematic for the CMS HCAL]{A schematic diagram showing a cross sectional view of the CMS detector's hadronic calorimeter in the positive $yz$-plane.\cite{HCALDIAGRAM}}
+    \label{fig:CMShcaldiag}
+\end{figure}
+
+The hadronic calorimeter (HCAL) is designed to detect charged and neutral hadrons based on their energy deposition. When hadrons interact with matter, they initiate a hadronic shower which produces a cascade of particles through the production of secondary hadrons, nuclear deexcitation, and pion and muon decays. Unlike electromagnetic showers, the lengths of hadronic showers are determined by the nuclear interaction length, or the mean distance travelled by a hadron within a material before experiencing an inelastic nuclear interaction, which is larger than the radiation length for the same materials. The HCAL was therefore chosen to be made from brass, which has a short interaction length that maximizes the amount of material to absorb hardons. Unlike the ECAL, which is a \textit{homogeneous calorimeter} because its crystals are both absorber and scintillator, the HCAL is a \textit{sampling calorimeter} composed of alternating layers of brass absorber and plastic scintillator tiles which necessarily means the hadronic shower is only sampled at discrete times during its evolution. The scintillation light is directed by wave-length shifting fibers embedded within the tiles to hybrid photodiodes which produce an amplified electronic signal.
+
+The HCAL is divided into the inner barrel (HB), outer barrel (HO), and endcap (HE) regions as shown in Figure \ref{fig:CMShcaldiag}. This offers full angular coverage in $\phi$ and $\left| \eta \right| < 3.0$. In order to increase the coverage at high $\eta$ to recover particles produced at shallow angles to the beam line, an additional hadronic forward (HF) calorimeters are placed outside both endcaps. The HF is composed of steel and quartz fibers which collect light in the form of Cerenkov radiation and extends coverage down to $\left| \eta \right| < 5.0$. As the HCAL is concerned with the measurement of hadrons, its performance is typically assessed in the context of jet and missing transverse energy \pTmiss\ resolution measurements and is covered in Chapter \ref{reco}.
+
+\subsubsection{Muon subsystems}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=5.5in]{images/muon_diagram}
+    \caption[Schematic for the CMS Muon Subsystems]{A schematic diagram showing a cross sectional view of the CMS detector's muon subsystems in the positive $yz$-plane.\cite{MUONDIAGRAM}}
+    \label{fig:CMSmuondiag}
+\end{figure}
+
+The muon subsystems form the outermost layer of the CMS detector and are designed to detect muons and measure their tracks. It is located far from the interaction point because the muon is a weakly interacting particle that easily penetrates through all preceding layers. While its function is similar to that of the silicon tracker, the muon subsystems eschew solid state for gas ionization chambers to accommodate the amount of surface area required to be covered. The muon subsystems are divided into barrel ($\left| \eta \right| < 0.9$, overlap ($0.9 < \left| \eta \right| < 1.2$), and endcap ($1.2 < \left| \eta \right| < 2.5$) regions which deploy three different implementations of gas ionization chambers.
+
+Drift tubes (DTs) are used in the barrel region because of the low muon rate and magnetic field. They are 4 cm wide tubes containing an anode wire and a gaseous mixture of argon and carbon dioxide with a ratio of 85\% to 15\%, respectively. The passage of a muon through the tube ionizes the gas molecules, whose electrons ``drift'' towards the anode wiring under the force of an applied electric field. The position of the muon is determined by the location of the signal along the wire and the travel time based on the drift velocity of electrons within the tube.
+
+Cathode strip chambers (CSCs) are used in the endcap region because of the high muon rate and non-uniform magnetic field. These trapezoidal chambers are composed of six gaps filled with a gas mixture of 40\% argon, 50\% carbon dioxide, and 10\% carbon tetrafluoride ($CF_{4}$) that house planes of cathode strips oriented radially and anode wires oriented perpendicular to the strips. The passage of a muon through the chamber ionizes the gas molecules, with the electrons travelling to the anode wire and creating an avalanche of electrons and the positive ions travelling to the cathode strips and creating charge pulses. Because the wires and strips are perpendicular, the $r\phi$ position of the muon can be determined at six points and combined to form a track local to the chamber.
+
+Resistive plate chambers (RPCs) are used both in the barrel and endcap regions, offering good spatial resolution and an xcellent time resolution of approximately 3 ns. They consist of two parallel plates made of a resin with high resistivity, one of which is an anode and the other a cathode. The plates surround a 2 mm wide gap filled with a gas mixture of 95\% tetrafluoroethane ($\mathrm{C_{2}H_{2}F_{4}}$) and 5\% isobutane ($\mathrm{i-C_{4}H_{10}}$). The passage of a muon through the chamber ionizes the gas molecules, producing an avalanche of electrons which are collected by metallic strips attached to one of the plates.
 
 \subsection{Data Acquisition and Triggers}
+
+sheer amount of data big data too much to keep how much data generated per second what to keep
 
 \subsubsection{Level 1 trigger}
 
