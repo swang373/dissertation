@@ -77,7 +77,7 @@ The CTF is run for a total of ten iterations. The first iteration seeks to recon
     \subfigure [] {\includegraphics[scale=0.35]{images/pftrack_eff}} \qquad
     \subfigure [] {\includegraphics[scale=0.35]{images/pftrack_misreco}} \qquad
   }
-  \caption[Track Reconstruction Performance]{The tracking efficiency (A) and misreconstruction rate (B) of charged hadron tracks in simulated multijet events for a single, global iteration of the combinatorial track finder (black squares), the prompt iterations (iterations 1, 2, 3, 4, 5, and 7) of the iterative tracking method (green triangles), and the full iterative tracking method (red circles) as a function of track \pT.\cite{PARTICLEFLOW}}
+  \caption[Track Reconstruction Performance]{The A) tracking efficiency and B) misreconstruction rate of charged hadron tracks in simulated multijet events for a single, global iteration of the combinatorial track finder (black squares), the prompt iterations (iterations 1, 2, 3, 4, 5, and 7) of the iterative tracking method (green triangles), and the full iterative tracking method (red circles) as a function of track \pT.\cite{PARTICLEFLOW}}
     \label{fig:pftrack_perf}
 \end{figure}
 
@@ -95,7 +95,7 @@ The ECAL clusters are seeded by cells which contain a local energy maxima above 
     \subfigure [] {\includegraphics[scale=0.35]{images/ecalclusters}} \qquad
     \subfigure [] {\includegraphics[scale=0.35]{images/hcalclusters}} \qquad
   }
-  \caption[Event Display of Calorimeter Clusters]{An event display of a simulated jet of five particles projected onto the ECAL surface (A) and HCAL surface (B). The green lines represent reconstructed tracks while the red dots represent reconstructed cluster centroids. Four ECAL clusters and two HCAL clusters are shown.\cite{PARTICLEFLOW}}
+  \caption[Event Display of Calorimeter Clusters]{An event display of a simulated jet of five particles projected onto A) the ECAL surface and B) the HCAL surface. The green lines represent reconstructed tracks while the red dots represent reconstructed cluster centroids. Four ECAL clusters and two HCAL clusters are shown.\cite{PARTICLEFLOW}}
     \label{fig:caloclusters}
 \end{figure}
 
@@ -121,7 +121,7 @@ This method of electron reconstruction achieves a high identification efficiency
     \subfigure [] {\includegraphics[scale=0.4]{images/elerecoeff_loweta}} \qquad
     \subfigure [] {\includegraphics[scale=0.4]{images/elerecoeff_higheta}} \qquad
   }
-  \caption[Electron Reconstruction Efficiency]{The electron reconstruction efficiency as a function of electron \pT\ for dielectron data events (black points) and Drell-Yan simulation (blue triangles). The medium working point derived from the BDT classifier was used as the multivariate selection.\cite{CMSELEPERF}}
+  \caption[Electron Reconstruction Efficiency]{The electron reconstruction efficiency as a function of electron \pT\ for dielectron data events (black points) and Drell-Yan simulation (blue triangles) in regions of A) low $\eta$ and B) high $\eta$. The medium working point derived from the BDT classifier was used as the multivariate selection.\cite{CMSELEPERF}}
     \label{fig:elerecoeff}
 \end{figure}
 
@@ -137,7 +137,7 @@ The identification of photons is also improved by training a BDT to discriminate
     \subfigure [] {\includegraphics[scale=0.4]{images/photrecoeff_loweta}} \qquad
     \subfigure [] {\includegraphics[scale=0.4]{images/photrecoeff_higheta}} \qquad
   }
-  \caption[Photon Reconstruction Efficiency]{The photon reconstruction efficiency as a function of photon \pT\ for dielectron data events (black points) and Drell-Yan simulation (blue triangles). An example working point for the BDT classifier which achives 80\% signal efficiency was used as the multivariate selection.\cite{CMSPHOTPERF}}
+  \caption[Photon Reconstruction Efficiency]{The photon reconstruction efficiency as a function of photon \pT\ for dielectron data events (black points) and Drell-Yan simulation (blue triangles) in regions of A) low $\eta$ and B) high $\eta$. An example working point for the BDT classifier which achives 80\% signal efficiency was used as the multivariate selection.\cite{CMSPHOTPERF}}
     \label{fig:photrecoeff}
 \end{figure}
 
@@ -201,7 +201,7 @@ Because the theoretically motivated observable quantities describing parton deca
     \subfigure [] {\includegraphics[width=3in]{images/infrared_emission}} \qquad
     \subfigure [] {\includegraphics[width=3in]{images/collinear_emission}} \qquad
   }
-  \caption[Infrared and Collinear Unsafety]{An illustration of the consequences of infrared and collinear unsafety for jet finding. An example of infrared unsafety is shown in (A), where a soft emission (orange) causes the algorithm to merge two overlapping but otherwise distinct jets. An example of collinear unsafety is shown in (B), where the collinear splitting of a contituent alters the jet returned by the algorithm.}
+  \caption[Infrared and Collinear Unsafety]{An illustration of the consequences of infrared and collinear unsafety for jet finding: A) an example of infrared unsafety, where a soft emission (orange) causes the algorithm to merge two overlapping but otherwise distinct jets; B) an example of collinear unsafety, where the collinear splitting of a contituent alters the jet returned by the algorithm.}
     \label{fig:IRCunsafe}
 \end{figure}
 
@@ -224,7 +224,7 @@ which is used to classify a finished cluster as a jet.
 
 The algorithm proceeds by finding the minimum over the set of distances $\left\{ d_{ij}, d_{iB} \right\}$. If the minimum distance is between a pair of particles $i$ and $j$, their four-vectors are summed to form a new particle and particles $i$ and $j$ are removed from the set of particles consideredby the algorithm. If the minimum distance is between a particle and the beam axis, the particle is considered a jet and removed from the set o particles considered by the algorithm. The algorithm continues until all initial particles have been combined into jets. Because the distance measure given by Equation \ref{eq:antikt_dij} is dominated by high \pT\, the anti-$k_{T}$ algorithm tends to cluster soft particles with the hardest particles first,producing perfectly conical jets.
 
-\subsection{Energy Scale and Resolution Corrections}
+\subsection{Energy Scale and Resolution Corrections} \label{jesjer}
 
 Disagreements between the measured energies of reconstructed jets and the true energies of their corresponding partons are expected. The jet's constituent particles encounter unavoidable energy losses as they travel through the detector material and their measured energies are biased by the non-linear response of the detector subsystems to their signals. Because the four-momentum of a jet is taken to be the vectorial sum of the momenta of its clustered PF candidates, these issues and more are compounded together and require a dedicated calibration.
 
