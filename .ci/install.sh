@@ -38,6 +38,7 @@ tlmgr install  \
   amsfonts     \
   amsmath      \
   bibtex       \
+  carlisle     \
   dvipdfmx     \
   epsf         \
   geometry     \
@@ -47,7 +48,6 @@ tlmgr install  \
   ms           \
   sectsty      \
   setspace     \
-  slashed      \
   tools        \
   ulem         \
   url
