@@ -47,6 +47,7 @@ tlmgr install  \
   ms           \
   sectsty      \
   setspace     \
+  slashed      \
   tools        \
   ulem         \
   url
