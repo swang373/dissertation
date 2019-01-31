@@ -228,20 +228,97 @@ The algorithm proceeds by finding the minimum over the set of distances $\left\{
 
 Disagreements between the measured energies of reconstructed jets and the true energies of their corresponding partons are expected. The jet's constituent particles encounter unavoidable energy losses as they travel through the detector material and their measured energies are biased by the non-linear response of the detector subsystems to their signals. Because the four-momentum of a jet is taken to be the vectorial sum of the momenta of its clustered PF candidates, these issues and more are compounded together and require a dedicated calibration.
 
-In order to calibrate jet energies, the recommended procedure by the CMS experiment applies a series of \textit{jet energy scale} (JES) corrections which scale the four-momentum of jets. The various detector effects are addressed using a factorized approach shown in Figure \ref{fig:jeschain}, where each of the corrections are designed to target specfic effects and are applied in a fixed-order sequence.
+In order to calibrate jet energies, the recommended procedure by the CMS experiment applies a series of \textit{jet energy scale} (JES) corrections which scale the four-momentum of jets. The various detector effects are addressed using a factorized approach shown in Figure \ref{fig:jeschain}, where each of the corrections are designed to target specfic effects and are applied in a fixed-order sequence. The first correction aims to remove energy contributions due to pileup particles and also spurious detector noise, and is parameterized as a function of the energy density $\rho$, jet area $A$, and the jet $\pT$ and $\eta$. The second correction addresses the effects of the calorimeter response, which is non-uniform in $\eta$ and non-linear in \pT. The next two corrections address percent level residual differences observed between the truth level simulation and data. A final, optional correction can also be applied to correct the flavor, or type of parton, which initiated the jet.
 
 \begin{figure}[htbp]
   \centering
     \includegraphics[width=6in]{images/jeschain}
-    \caption[Jet Energy Scale Corrections Infographic]{An inforgraphic of the jet energy scale corrections used by the CMS experiment for data and Monte-Carlo (MC) simulated samples. Corrections derived from simulation are marked with MC, while RC stands for random cone and MJB stands for multijet background.\cite{CMSJES}}
+    \caption[Jet Energy Scale Corrections Infographic]{An inforgraphic of the jet energy scale corrections used by the CMS experiment for data and Monte-Carlo simulated samples. Corrections derived from simulation are marked with MC, while RC stands for random cone and MJB stands for multijet background.\cite{CMSJES}}
     \label{fig:jeschain}
 \end{figure}
 
+After the jet energies are calibrated, the jet energy resolution (JER) in Monte-Carlo (MC) simulation is observed to be better than for data. Because the effects of detector acceptance and performance are not completely modelled in simulation, a ``smearing'' procedure is adopted which modifies the four-momenta of reconstructed jets in order to match the energy resolution observed in data. The smearing can be performed using the scaling method which scales the four-momentum with a correction of the form
+\begin{equation}
+  c_{\mathrm{JER}} = 1 + (s_{\mathrm{JER}} - 1) \frac{\pT - \pT^{\mathrm{ptcl}}}{\pT},
+  \label{eq:smearing_scale}
+\end{equation}
+where $s_{\mathrm{JER}}$ is the simulation-to-data resolution scale factor, \pT\ is the transverse momentum of the reconstructed jet, and $\pT^{\mathrm{ptcl}}$ is the transverse momentum of the corresponding jet but clustered from generator-level particles. The scaling method assumes that the particle-level jet matches well the generator-level jet, otherwise it introduces a large shift in the response. The alternative method of stochastic smearing relaxes this assumption, with a randomly sampled correction of the form
+\begin{equation}
+  c_{\mathrm{JER}} = 1 + \mathcal{N}\left( 0, \sigma_{\mathrm{JER}} \right) \sqrt{\max \left( s_{\mathrm{JER}}^{2} - 1, 0 \right)},
+  \label{eq:smearing_stochastic}
+\end{equation}
+where $\mathcal{N}\left( 0, \sigma_{\mathrm{JER}} \right)$ denotes a normal distribution with zero mean and variance determined by the relative \pT\ resolution in simulation $\sigma_{\mathrm{JER}}$ and $s_{\mathrm{JER}}$ is the simulation-to-data resolution scale factor. For either method, negative correction factors are set to zero. Typically, a hybird apporach is recommended where the stochastic smearing is applied by default and the scaling smearing is applied if a jet has a generator-level match.
+
+In physics analyses, both the JES corrections and JER smearings are applied to the reconstructed jets and systematic uncertainties are assessed for the different systematic sources based on their $1\sigma$ shifts that is fully correlated in jet \pT\ and $\eta$. This amounts to at most a 3\% uncertainty in the phase space considered by most analyses. A thorough review of the derivations of the JES corrections, JER smearing, and their uncertainties and are available in Ref. \cite{CMSJES}.
+
 \subsection{\qrkb-Tagging}
+
+The long lifetime of \qrkb-hardons, quark bound states containing a bottom quark, can be attributed to the mass of the \qrkb-quark, which is heavier than the common quarks such as the up or down quarks, and the suppression of its decays to lighter quarks by the Cabbibo-Kobayashi-Maskawa (CKM) matrix. Because of this longer lifetime, \qrkb-hadrons travel a distance on the order a few millimeters before decaying, resulting in a characteristic displaced vertex relative to the primary vertex of the hard scattering process, as shown in Figure \ref{fig:secondary_vertex}. This property enables the jets formed by the hadronization of \qrkb-quarks to be distinguished from those of other quarks by using \textit{\qrkb-tagging} methods which determine a jet's quark flavor.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=4in]{images/secondary_vertex}
+    \caption[Illustration of a Heavy-Flavor Jet]{An illustration of a heavy-flavor (\qrkc\ or \qrkb-hadron) jet emphasizing its characteristic property of a secondary vertex (SV) that is displaced from the primary vertex (PV).\cite{CMSBTAG}}
+    \label{fig:secondary_vertex}
+\end{figure}
+
+The latest \qrkb-tagging algorithm developed and used by the CMS experiment is the Deep Combined Secondary Vertex (DeepCSV)\cite{CMSBTAG} tagger. The DeepCSV tagger is a classifier based on a fully-connected neural network architecture with four hidden layers, each with 100 rectified linear (ReLU) units, implemented using the \texttt{Keras}\cite{KERAS} neural network framework with \texttt{Tensorflow}\cite{TENSORFLOW} as the graph compilation and automatic differentiation backend. The final layer of the neural network is composed of five linear units passed through a softmax activation function. A softmax output layer was chosen because the output values are interpreted to be the probability that a jet belongs to one of five possible classes based on its particle content: exactly one \qrkb-hadron, at least two \qrkb-hadrons, exactly one \qrkc-hadron and no \qrkb-hadrons, at least two \qrkc-hadrons and no \qrkb-hadrons, and no \qrkc\ or \qrkb-hadrons.
+
+The DeepCSV tagger is trained using information from the secondary vertex candidates proposed by the inclusive vertex finding (IVF) algorithm, the informaton of the tracks associated with the secondary vertices such as their impact parameter, as well as the jet \pT\ and $\eta$. The combination of low-level and high-level variables enables the DeepCSV tagger to not only perform better than previous approaches in terms of \qrkb-jet identification efficency but also crucially reduces the misidentification probability of light jets as \qrkb-jets as shown in Figure \ref{fig:btagperf}. For physics analyses, three standard working points are defined for use which trade off \qrkb-jet identification effiency ($\varepsilon_{b}$) for misidentification probability ($\varepsilon_{udsg}$): the loose (L) working point achieves $\varepsilon_{b} = 84\%$ and $\varepsilon_{udsg} = 11\%$, the medium (M) working point achieves $\varepsilon_{b} = 68\%$ and $\varepsilon_{udsg} = 1.1\%$, and the tight (T) working point achieves $\varepsilon_{b} = 50\%$ and $\varepsilon_{udsg} = 0.1\%$.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=4.5in]{images/btagperf}
+    \caption[CMS \qrkb-Tagging Performance]{The receiver operating characteristic (ROC)curves which characterize the performance of various \qrkb-tagging algorithms developed by the CMS experiement and evaluated using a $\qrkt\qrktbar+\mathrm{jets}$ Monte-Carlo simulated sample. The DeepCSV algorithm's \qrkb-tagging performance against light flavored jets is given by the solid purple line.\cite{CMSBTAG}}
+    \label{fig:btagperf}
+\end{figure}
+
+Discrepancies are observed in the distributions of some of the input variables to the DeepCSV tagger between data and simulation which arise due to imperfect modeling of the detector and the modelling of parton showering and hadronization by the MC generators. These discrepancies translate to differences in \qrkb-tagging efficiency between data and simulation. In order to correct for these effects, a scale factor is applied on a per jet basis as a function of jet \pT and $\eta$ defined by
+\begin{equation}
+  \mathrm{SF}_{f} = \frac{\varepsilon_{f}^{\mathrm{data}} \left( \pT, \eta \right)}{\varepsilon_{f}^{\mathrm{MC}} \left( \pT, \eta \right)},
+  \label{eq:btagsf}
+\end{equation}
+where $f$ is the jet flavor, $\varepsilon_{f}^{\mathrm{data}} \left( \pT, \eta \right)$ is the flavor tagging efficiency in data, and $\varepsilon_{f}^{\mathrm{mc}} \left( \pT, \eta \right)$ is the flavor tagging efficiency in MC. One method of determining the tagging efficiency in data is by applying the tag-and-probe (TnP) technique to data events passing a selection for single-lepton \qrkt\qrktbar\ decays. Because top quarks decay into a \bosW\ and a bottom quark nearly 96\% of the time and the \bosW\ boson decays hadronically around 67\% of the time, such a selection of events where one of the \bosW bosons decays leptonically and the other hadronially offers at least two \qrkb-jets and multiple light jets. If a data event contains a \qrkb-jet which satisfies a tagging requirement, the remaining ``probe'' jets are used to provide an unbiased estimate of the \qrkb-tagging efficiency from the fraction of probe jets passing the tagging requirement with respect to all probe jets according to the definition
+\begin{equation}
+  \varepsilon_{b} = \frac{N_{b}^{\mathrm{tagged}}}{N_{b}^{\mathrm{vetoed}} + N_{b}{\mathrm{tagged}}},
+  \label{eq:btageff}
+\end{equation}
+where $N_{b}^{\mathrm{tagged}}$ is the number of probe jets passing the tagging requirements and $N_{b}^{\mathrm{vetoed}}$ is the number of probe jets failing the tagging requirements.
+
+The \qrkb-tagging scale factors incur systematic effects through the measurement of the \qrkb-tagging efficiency. These systematic sources can arise from theory and simulation, such as uncertainties for the factorization and renormalization scales, the branching fractions of \qrkb-hadron decays, and gluon splitting, or data, such as uncertainties for pileup and the jet energy scale and resolution. The \qrkb-tagging algorithms and their performance, as well as the determination of their efficiency scale factors and uncertainty, are described in detail in Ref. \cite{CMSBTAG}.
 
 \section{Missing Transverse Energy}
 
-\subsection{Corrections}
+Although the CMS detector has a near hermetic design, neutrinos and perhaps other theorized particles which are neutral and weakly interacting escape detection. Their presence is indicated by an imbalance in the transverse momentum sum of all ``visible'' particles as illustrated in Figure \ref{fig:metdiag}, from which it is inferred that the energy missing from the final state must have been carried away by ``invisible'' particles to satisfy energy conservation. This imbalance motivates the definition of missing transverse momentum $vec{p}_{\mathrm{T}}^{\mathrm{miss}}$ in an event as
+\begin{equation}
+  \vec{p}_{\mathrm{T}}^{\mathrm{miss}} = - \sum \vec{p}_{\mathrm{T}},
+  \label{eq:rawmet}
+\end{equation}
+or the negative vectorial sum over the transverse momenta of all visible final state particles. The missing transverse energy \pTmiss\ is taken to be the magnitude of $\vec{p}_{\mathrm{T}}^{\mathrm{miss}}$. A complete treatment of the reconstruction of \pTmiss\, including different methods and their performance, may be found in Ref. \cite{CMSMET}, but the following discussion focuses on the standard approach.
 
-\subsection{Filters}
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=3.5in]{images/met_schematic}
+    \caption[Illustration of Missing Transverse Momentum]{An illustration of missing transverse momentum \pTmiss (gray dashed line), which is inferred from the imbalanced transverse momentum sum of visible particles which were detected by their tracks (black solid lines) and calorimeter energy deposits (blue rectangles). The symbol $\vec{\slashed{E}}_{T}$ which used to denote missing transverse momentum has been deprecated.\cite{METDIAGRAM}}
+    \label{fig:metdiag}
+\end{figure}
+
+The reconstruction of \pTmiss\ is challenging because it relies on the accurate reconstruction of all other particles, the precise measurements of their properties, and inherits all of their corrections and the effects of their systematic sources. Given its robust performance, the standard PF algorithm is applied towards the reconstruction of \pTmiss, where the vectorial transverse momentum sum is performed over all PF candidate particles, to produce PF \pTmiss. However, the quantity at this stage is considered ``raw'' \pTmiss\ because it is systematically different from true \pTmiss\ due to non-linear detector responses and misreconstruction of the PF candidates which take on the role of the visible particles. The quantity typically used is \textit{Type-I corrected} \pTmiss, which propagates the jet energy scale (JES) corrections to the determination of \pTmiss. By distinguishing those PF candidates which have been clustered together as jets, we can reformulate Equation \ref{eq:rawmet} to naturally incorporate the JES corrections
+\begin{equation}
+  \vec{p}_{\mathrm{T}}^{\mathrm{miss}} = - \sum_{\mathrm{jets}} \vec{p}_{\mathrm{T}}^{\mathrm{JEC}} - \sum_{\mathrm{unclustered}} \vec{p}_{\mathrm{T}},
+  \label{eq:type1met}
+\end{equation}
+where $\vec{p}_{\mathrm{T}}^{\mathrm{JEC}}$ denotes the $\vec{p}_{\mathrm{T}}$ of the corrected jets.
+
+In addition to these corrections, \textit{filters} are designed by the JetMET POG to help physics analyses reject events with artificially large \pTmiss\ due to specific noise sources. The following filters were recommended to be applied for 2017 data, as well as MC simulation under 2017 data-taking conditions.
+\begin{itemize}
+  \item The \textbf{GoodVerticesFilter} rejects events with large \pTmiss\ due to noisy vertex reconstruction caused by pileup. 
+  \item The \textbf{GlobalTightHaloFilter} rejects events with large \pTmiss\ due to beam-halo particles, which are the result of beam protons interacting with the instrumentation used to collimate the beam or residual gas particles in the beam pipe vacuum. Information from the CSCs in the muon endcap are used to identify the passage of halo muons, which have a non-negligible chance of interacting with the calorimeters to produce clusters with energy on the order of several hundred \GeV.
+  \item The \textbf{HBHENoiseFilter} rejects events with large \pTmiss\ due to sporadic HCAL noise from the hybrid photodiodes (HPD) and readout box (RBX) electronics and ion feedback noise that can affect several HPD pixels. These spurious signals can be identified by their high HPD occupancy and pulse shape infromation from the RBX. An additional \textbf{HBHENoiseIsoFilter} performs the same task but adds additional isolation requirements to pootential HCAL noise clusters by applying a topological filter that searches for neighboring activity in the HCAL as well as the ECAL and tracker.
+  \item The \textbf{EcalDeadCellTriggerPrimitiveFilter} rejects events with large \pTmiss\ due to large energy losses from particles travelling through dead ECAL cells which have non-functioning data links.
+  \item The \textbf{BadPFMuonFilter} rejects events with large \pTmiss\ due to the inclusion of poor quality muon candidates which barely passed the PF algorthim's thresholds and have large mismeasured \pT.
+  \item The \textbf{BadChargedCandidateFilter} rejects events with large \pTmiss\ due to the misreconstruction of poor quality muon candidates, where the PF algorithm incorrectly associates them with an energetic HCAL cluster to form a charged hadron candidate.
+  \item The \textbf{EcalBadCalibFilter} rejects events with large \pTmiss\ due to sporadic high energy noise found in endcap crystals in the very forward region of the ECAL.
+  \item The \textbf{eeBadScFilter}, which is applicable for data and not MC simulation, rejects events with large \pTmiss\ due to high-amplitude anomalous pulses produced by data channels from the ECAL endcap which are identified by the total energy and number of low-quality hits within an ECAL supercluster.
+\end{itemize}
 
