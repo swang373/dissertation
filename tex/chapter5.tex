@@ -363,7 +363,7 @@ Aside from the vector boson and Higgs boson decays, additional hadronic activity
 
 For the \ZnnH\ channel, the vector boson is simply reconstructed from large MET because the \bosZ\ decays invisibly to a pair of neutrinos. Candidate \ZnnH\ events are required to have $\mathrm{MET} > 150\ \GeV$, and the transverse momentum of the reconstructed \bosZ\ candidate is defined as $\pT(\bosZ) = \min \left( \mathrm{MET}, \mathrm{MHT} \right)$. In order to remove observed discrepancies between the data and simulation in the turn-on region of the MET trigger efficiency curve, the analysis of the \ZnnH\ channel only considers events with $\pT(\bosZ) > 170 \GeV$.
 
-For the remaining channels, the vector boson reconstruction involves the selection and identification of isolated leptons. For the \ZllH\ channels, the \bosZ\ boson is reconstructed from pairs of isolated electrons or muons which have a dilepton invariant mass $m_{\ell\ell}$ within the range $75\ \GeV < m_{\ell\ell} < 105\ GeV$ which covers the on and off-shell decays of the \bosZ\ boson. Separate analyses of the \ZllH\ channels are then performed for \bosZ\ boson candidates in a low \pT\ category ($50\ \GeV < \pT(\bosZ) < 150\ \GeV$) and high \pT\ category ($\pT(\bosZ) > 150\ \GeV$). For the \WlnH\ channels, the \bosW\ boson is reconstructed from a single isolated electron or muon and the MET and the transverse momentum and transverse mass of the \bosW\ boson candidate is defined as
+For the remaining channels, the vector boson reconstruction involves the selection and identification of isolated leptons. For the \ZllH\ channels, the \bosZ\ boson is reconstructed from pairs of isolated electrons or muons which have a dilepton invariant mass $m(\ell\ell)$ within the range $75\ \GeV < m(\ell\ell) < 105\ GeV$ which covers the on and off-shell decays of the \bosZ\ boson. Separate analyses of the \ZllH\ channels are then performed for \bosZ\ boson candidates in a low \pT\ category ($50\ \GeV < \pT(\bosZ) < 150\ \GeV$) and high \pT\ category ($\pT(\bosZ) > 150\ \GeV$). For the \WlnH\ channels, the \bosW\ boson is reconstructed from a single isolated electron or muon and the MET and the transverse momentum and transverse mass of the \bosW\ boson candidate is defined as
 \begin{equation}
   \pT(\bosW) = \sqrt{\left( \mathrm{MET}_{x} + p_{x}^{\ell} \right)^{2} + \left( \mathrm{MET}_{y} + p_{y}^{\ell} \right)^{2}}
   \label{eq:WlnWpT}
@@ -406,8 +406,8 @@ Batch-normalization\cite{BATCHNORM} and dropout\cite{DROPOUT} with a probability
 \begin{figure}[htbp]
   \centering
   \mbox{
-    \subfigure [] {\includegraphics[scale=0.35]{images/CMS-HIG-18-016_Figure-aux_001-a}} \qquad
-    \subfigure [] {\includegraphics[scale=0.35]{images/CMS-HIG-18-016_Figure-aux_001-b}} \qquad
+    \subfigure [] {\includegraphics[scale=0.37]{images/CMS-HIG-18-016_Figure-aux_001-a}} \quad
+    \subfigure [] {\includegraphics[scale=0.37]{images/CMS-HIG-18-016_Figure-aux_001-b}} \quad
   }
   \caption[Performance of \ZllH\ Kinematic Fit]{The dijet invariant mass distribution of the \ZllH\ channel before (red) and after the \qrkb-jet energy regression corrections (blue) and the kinematic fit (green) are applied for A) events without a recoiling jet and B) events with a single recoiling jet.}
     \label{fig:kinfit_perf}
@@ -415,10 +415,49 @@ Batch-normalization\cite{BATCHNORM} and dropout\cite{DROPOUT} with a probability
 
 The kinematic fit is specific to the \ZllH\ channel because its events have no genuine MET, thereby admitting a unique kinematic constraint which may be exploited to improve the dijet invariant mass resolution. The \texttt{PhysicsTools/KinFitter} package distributed with CMSSW is used to perform the fit, which consists of first constraining the dilepton system to the \bosZ\ boson mass and then constraining the dilepton-dijet system in the transverse plane, all within uncertainties. This balancing of the dilepton and dijet systems also considers a recoil vector to account for jets caused by initial state radiation (ISR). The kinematic fit further improves the dijet invariant mass resolution in the \ZllH\ channel by at least 20\% on top of the \qrkb-jet energy regression, as shown in Figure \ref{fig:kinfit_perf}.
 
+Although a small effect, the final state partons can emit FSR radiation that is collinear to the direction of the \qrkb-jet. In order to recover FSR belonging to the Higgs boson candidates, the four-vectors of soft jets which lie within a cone of $\Delta R <0.8$ around either of the candidate \qrkb-jets used to reconstruct the Higgs boson are added vectorially to the Higgs boson candidate. The FSR recovery results in a channel-dependent improvement of 1-5\% for the dijet invariant mass resolution.
 
 \section{Event Selection}
 
+The analysis applies a channel-dependent event selection in order to maximize the signal purity while reducing the level of background. These selections are primarily motivated by the final state topology of signal process. The \VHbb\ decay considered by the analysis features a leptonically decaying vector boson that recoils away from a pair of \qrkb-jets in the final state. The vector boson candidate and dijet system are therefore expected to be back-to-back in the transverse plane, such that the difference in azimuthal angle between them peaks at $\pi$. Because the invariant mass of the dijet system is expected to be compatible with the mass of the Higgs boson in the range $100\ \GeV < m_{\bosH} < 150\ \GeV$, the \pT\ distributions of the Higgs jet candidates are expected to peak at roughly $m_{\bosH}/2$. Additional activity in the form of isolated leptons which do not originate from the vector boson candidate and soft hadrons are expected to be low.
+
+The event preselections are further refined by considering the final state topologies of the background processes. The \bosV+jets process is the dominant background for all decay channels because it features a true \bosW\ or \bosZ\ boson and one or more jets. Due to its large cross section and similarity to the signal topology, this is the dominant background for all decay channels. It is not entirely irreducible, as detailed comparisons of the final state reveal differences from the signal in terms of the \pT\ distribution of the vector boson, which is typically softer than for signal, and the dijet invariant mass distribution, which falls more sharply. In addition, the majority of these jets are light jets which can be rejected by selecting Higgs jet candidates from those jets which pass the DeepCSV working points.
+
+The \qrkt\qrktbar+jets background process is a dominant background for the \WlnH\ channel. The preferential decay of the top quark to a \bosW\ boson and a \qrkb-quark results in a final state with up to two genuine \bosW\ bosons, either of which may decay leptonically, and at least two \qrkb-jets. However, \qrkt\qrktbar\ background events typically present a higher jet multiplicity, given that one of the \bosW\ bosons may decay hadronically, and a broader distribution for the difference in azimuthal angle between the vector boson candidate and dijet system. The single top background process is irreducible but only represents approximately 10-20\% of the background composition in the \WlnH\ channel, and even less for the other decay channels, due to its smaller cross section.
+
+The Standard Model (SM) diboson production (\bosW\bosW, \bosW\bosZ, \bosZ\bosZ) processes are also important to consider. Because one of the vector bosons can decay leptonically and the other hadronically, their final state topologies mimic that of the signal processes and produces a peak in the dijet invariant mass distribution that is within a few standard deviations of the Higgs mass peak. As this is another irreducible background, diboson events can only be rejected by having a good dijet invariant mass resolution that enables the separation of the diboson and Higgs mass peaks. Incidentally, the properties that make the diboson background difficult to handle also enable it to serve as a ``standard candle'' for the analysis by providing a well-understood SM process with which to validate the analysis strategy. 
+
 \subsection{Signal Regions}
+
+For each decay channel, a signal region is defined based on a selection that reduces the background contamination. The simulated events in the signal region are reserved for the training and validation of the classifier model used to discriminate signal from background, as well as the final statistical analysis. The cuts used to define the signal regions of each decay channel are listed in Table \ref{tbl:signalregions}.
+
+\begin{table}[htbp]
+  \caption[Signal Region Definitions for the 2017 \VHbb\ Analysis]{The cuts defining the signal regions of the decay channels for the \VHbb\ analysis. The values of the kinematic quantities are quoted in \GeV\ and the values of the differences in azimuthal angle are quoted in radians. For the \WlnH\ column, the two values for $\pT^{\ell}$ and Tightened Lepton Isolation are applicable for the \WmnH\ and \WenH\ channels, respectively. For the \ZllH\ column, the values for $\pT(\bosV)$ denote the low and high $\pT(\bosV)$ analysis categories, respective.}
+  \label{tbl:signalregions}
+  \begin{tabularx}{6.5in}{XXXX}
+    \hline
+    Variable                                        & \ZnnH       & \WlnH        & \ZllH             \\
+    \hline
+    $\pT(\bosV)$                         & $>170$      & $>150$       & $[50, 150], >150$ \\
+    $m(\ell\ell)$                        & --          & --           & $[75, 105]$       \\
+    $\pT^{\ell}$                         & --          & $>25, >30$   & $>20$             \\
+    $\pT(jj)$                            & $>120$      & $>100$       & --                \\
+    $m(jj)$                              & $[60, 160]$ & $[90, 150]$  & $[90, 150]$       \\
+    \pTjmax                              & $>60$       & $>25$        & $>20$             \\
+    \pTjmin                              & $>35$       & $>25$        & $>20$             \\
+    $\btagmax$                           & $>$ Tight   & $>$ Tight    & $>$ Loose          \\
+    $\btagmin$                           & $>$ Loose   & $>$ Loose    & $>$ Loose          \\
+    $N_{\mathrm{j}}^{\mathrm{add}}$      & --          & $<2$         & --                \\
+    $N_{\mathrm{\ell}}^{\mathrm{add}}$   & $=0$        & $=0$         & --                \\
+    \pTmiss                              & $>170$      & --           & --                \\
+    $\mathrm{Anti\text{-}QCD}$           & Yes         & --           & --                \\
+    $| \Delta\phi(\bosV, \bosH) |$       & $>2.0$      & $>2.5$       & $>2.5$            \\
+    $| \Delta\phi(\pTmiss, \pTmisstrk |$ & $<0.5$      & --           & --                \\
+    $| \Delta\phi(\pTmiss, \ell) |$      & --          & $<2.0$       & --                \\
+    Lepton Isolation                     & --          & 0.06, 0.06   & --                \\
+    \hline
+  \end{tabularx}
+\end{table}
 
 \subsection{Background Control Regions} \label{CRs}
 
