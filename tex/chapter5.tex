@@ -429,47 +429,62 @@ The Standard Model (SM) diboson production (\bosW\bosW, \bosW\bosZ, \bosZ\bosZ) 
 
 \subsection{Signal Regions}
 
-For each decay channel, a signal region is defined based on a selection that reduces the background contamination. The simulated events in the signal region are reserved for the training and validation of the classifier model used to discriminate signal from background, as well as the final statistical analysis. The cuts used to define the signal regions of each decay channel are listed in Table \ref{tbl:signalregions}.
+For each decay channel, a signal region is defined based on a selection that reduces the background contamination. The simulated events in the signal region are reserved for the training and validation of the classifier model used to discriminate signal from background, as well as the final statistical analysis, while the data events in the signal region remain blinded until all validation checks have been satisfied. The cuts used to define the signal regions of each decay channel are listed in Table \ref{tbl:signalregions}.
 
 \begin{table}[htbp]
   \caption[Signal Region Definitions for the 2017 \VHbb\ Analysis]{The cuts defining the signal regions of the decay channels for the \VHbb\ analysis. The values of the kinematic quantities are quoted in \GeV\ and the values of the differences in azimuthal angle are quoted in radians. For the \WlnH\ column, the two values for $\pT^{\ell}$ and Tightened Lepton Isolation are applicable for the \WmnH\ and \WenH\ channels, respectively. For the \ZllH\ column, the values for $\pT(\bosV)$ denote the low and high $\pT(\bosV)$ analysis categories, respective.}
   \label{tbl:signalregions}
   \begin{tabularx}{6.5in}{XXXX}
     \hline
-    Variable                                        & \ZnnH       & \WlnH        & \ZllH             \\
+    Variable                              & \ZnnH       & \WlnH        & \ZllH             \\
     \hline
-    $\pT(\bosV)$                         & $>170$      & $>150$       & $[50, 150], >150$ \\
-    $m(\ell\ell)$                        & --          & --           & $[75, 105]$       \\
-    $\pT^{\ell}$                         & --          & $>25, >30$   & $>20$             \\
-    $\pT(jj)$                            & $>120$      & $>100$       & --                \\
-    $m(jj)$                              & $[60, 160]$ & $[90, 150]$  & $[90, 150]$       \\
-    \pTjmax                              & $>60$       & $>25$        & $>20$             \\
-    \pTjmin                              & $>35$       & $>25$        & $>20$             \\
-    $\btagmax$                           & $>$ Tight   & $>$ Tight    & $>$ Loose          \\
-    $\btagmin$                           & $>$ Loose   & $>$ Loose    & $>$ Loose          \\
-    $N_{\mathrm{j}}^{\mathrm{add}}$      & --          & $<2$         & --                \\
-    $N_{\mathrm{\ell}}^{\mathrm{add}}$   & $=0$        & $=0$         & --                \\
-    \pTmiss                              & $>170$      & --           & --                \\
-    $\mathrm{Anti\text{-}QCD}$           & Yes         & --           & --                \\
-    $| \Delta\phi(\bosV, \bosH) |$       & $>2.0$      & $>2.5$       & $>2.5$            \\
-    $| \Delta\phi(\pTmiss, \pTmisstrk |$ & $<0.5$      & --           & --                \\
-    $| \Delta\phi(\pTmiss, \ell) |$      & --          & $<2.0$       & --                \\
-    Lepton Isolation                     & --          & 0.06, 0.06   & --                \\
+    $\pT(\bosV)$                          & $>170$      & $>150$       & $[50, 150], >150$ \\
+    $m(\ell\ell)$                         & --          & --           & $[75, 105]$       \\
+    $\pT^{\ell}$                          & --          & $>25, >30$   & $>20$             \\
+    $\pT(jj)$                             & $>120$      & $>100$       & --                \\
+    $m(jj)$                               & $[60, 160]$ & $[90, 150]$  & $[90, 150]$       \\
+    \pTjmax                               & $>60$       & $>25$        & $>20$             \\
+    \pTjmin                               & $>35$       & $>25$        & $>20$             \\
+    \btagmax                              & $>$ Tight   & $>$ Tight    & $>$ Loose         \\
+    \btagmin                              & $>$ Loose   & $>$ Loose    & $>$ Loose         \\
+    $N_{\mathrm{j}}^{\mathrm{add}}$       & $<2$        & $<2$         & --                \\
+    $N_{\mathrm{\ell}}^{\mathrm{add}}$    & $=0$        & $=0$         & --                \\
+    \pTmiss                               & $>170$      & --           & --                \\
+    $\mathrm{Anti\text{-}QCD}$            & Yes         & --           & --                \\
+    $| \Delta\phi(\bosV, \bosH) |$        & $>2.0$      & $>2.5$       & $>2.5$            \\
+    $| \Delta\phi(\pTmiss, \pTmisstrk) |$ & $<0.5$      & --           & --                \\
+    $| \Delta\phi(\pTmiss, \ell) |$       & --          & $<2.0$       & --                \\
+    Lepton Isolation                      & --          & 0.06, 0.06   & --                \\
     \hline
   \end{tabularx}
 \end{table}
 
+The analysis of the \ZnnH\ channel is performed in the region of phase space where the transverse momentum of the vector boson $\pT(\bosV)$, which is equivalent to the \pTmiss\ for this signal process, is greater than 170 \GeV\ due to concerns of data to simulation disagreement in the regions in and below the region of the trigger turn-on. This high MET requirement also helps to ``boost'' the events considered by the analysis, which offers a better signal-to-background ratio because the $\pT(\bosV)$ distribution is harder for signal than it is for background. The boosted topology is further reinforced by requiring the transverse momentum of the dijet system $\pT(jj)$ to be greater than 120 \GeV\ and the difference in azimuthal angle between the MET and the dijet system $| \Delta\phi(\bosV, \bosH) |$ to be greater than 2.
+
+The dijet invariant mass $m(jj)$ window is chosen to range from 60 \GeV\ to 160 \GeV, which is wider than for the other decay channels in order to recover background statistics lost by the aggressive thresholds placed on the transverse momenta of the Higgs jet candidates. For the Higgs jet candidate pairs, the \qrkb-jet with the greater DeepCSV score is denoted by \btagmax\ and the lesser by \btagmin, while the larger \qrkb-jet transverse momentum is denoted by \pTjmax\ and the smaller by \pTjmin. The \ZnnH\ analysis places large, asymmetric cuts on \pTjmax\ and \pTjmin\ because of an observed reduction of multijet background.
+
+The number of additional jets $N_{\mathrm{j}}^{\mathrm{add}}$ is at most one and the number of additional leptons $N_{\mathrm{\ell}}^{\mathrm{add}}$ must be zero in order to reject \qrkt\qrktbar\ and multijet backgrounds which have large jet multiplicities and leptons in the final state. The difference in azimuthal angle between the MET and tracker MET $| \Delta\phi(\pTmiss, \pTmisstrk) |$ is chosen to be less than 0.5 as the direction of the tracker MET is expected to be close to the direction of true MET, given that the \bosZ\ decay does not produce charged leptons. Finally, the Anti-QCD cut is used to strongly reject the multijet background in the \ZnnH\ channel while mainitaining high signal efficiency. The cut is placed on the minimum of the set of differences in azimuthal angle between each jet in an event with $\pT > 30\ \GeV$ and the MET. By requiring this minimum difference to be greater than 0.5, events with fake MET produced by the mismeasurement of jet \pT are removed from the analysis, with approximately 93\% multijet background rejection at 96\% signal efficiency in simulation. The remaining variables which involve leptons are not applicable to the \ZnnH\ channel.
+
 \subsection{Background Control Regions} \label{CRs}
+
+For each decay channel, several control regions are defined by inverting signal region cuts to produce mutually exclusive samples that are enriched in specific background processes orthogonal to the signal region. The control regions are used by the analysis to validate the agreement of MC simulation to data and to determine the MC normalization of key background processes with minimal extrapolation uncertainties during the final statistical analysis. A diagram summarizing the design of the control regions is show in Figure \ref{fig:controlregiondef}.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=6in]{images/CR_VH}
+    \caption[\VHbb\ Control Region Definitions]{An infographic summarizing the inverted cuts used by each decay channel to define their respective control regions.}
+    \label{fig:controlregiondef}
+\end{figure}
 
 \section{Binned Multivariate Shape Analysis}
 
-\subsection{Input Features}
+\subsection{Multivariate Discriminator}
 
-\subsection{Model Training}
-
-\subsection{Model Selection}
+discuss model training and model selection
 
 \subsection{Binned Shape Analysis}
+
+\subsection{Cross-check Analysis}
 
 \subsection{Invariant Mass Analysis}
 
