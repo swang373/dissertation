@@ -155,7 +155,7 @@ The \bosV+jets samples are also produced using the \textsc{\small MadGraph5\_amc
   \end{tabularx}
 \end{table}
 
-The $\qrkt\bar{\qrkt}$\cite{MCTT} samples listed in Table \ref{tbl:MCttbar} are generated to NLO accuracy using the \textsc{\small POWHEG} v2 event generator and their cross sections are rescaled to NNLO accuracy using the next-to-next-to-leading-logarithm (NNLL) values calculated using the \textsc{\small Top++} v2.0\cite{TOPPP} software. The single top production samples listed in Table \ref{tbl:MCsingletop} are also generated to NLO accuracy, with the t-channel\cite{MCsingletopT} and tW-channel\cite{MCsingletopTW} processes generated using the \textsc{\small POWHEG} v2 event generator and the s-channel\cite{MCsingletopS} process generated using the \textsc{\small MadGraph5\_amc@NLO} v2.4.2 event generator. Their cross sections are also rescaled to their corresponding values obtained from NNLO calculations.\cite{singletopNNLOA,singletopNNLOB} Finally, the QCD or multi-jet samples listed in Table \ref{tbl:MCQCD} are generated to LO accuracy using the \textsc{\small MadGraph5\_amc@NLO} v2.4.2 event generator with the MLM matching scheme. 
+The $\qrkt\bar{\qrkt}$\cite{MCTT} samples listed in Table \ref{tbl:MCttbar} are generated to NLO accuracy using the \textsc{\small POWHEG} v2 event generator and their cross sections are rescaled to NNLO accuracy using the next-to-next-to-leading-logarithm (NNLL) values calculated using the \textsc{\small Top++} v2.0\cite{TOPPP} software. The single top production samples listed in Table \ref{tbl:MCsingletop} are also generated to NLO accuracy, with the t-channel\cite{MCsingletopT} and tW-channel\cite{MCsingletopTW} processes generated using the \textsc{\small POWHEG} v2 event generator and the s-channel\cite{MCsingletopS} process generated using the \textsc{\small MadGraph5\_amc@NLO} v2.4.2 event generator. Their cross sections are also rescaled to their corresponding values obtained from NNLO calculations.\cite{singletopNNLOA,singletopNNLOB} Finally, the QCD or multi-jet samples listed in Table \ref{tbl:MCQCD} are generated to LO accuracy using the \textsc{\small MadGraph5\_amc@NLO} v2.4.2 event generator with the MLM matching scheme.
 
 \begin{table}[htbp]
   \caption[$\qrkt\bar{\qrkt}$ Samples for \VHbb\ 2017]{The Monte-Carlo samples and their cross sections for the $\qrkt\bar{\qrkt}$ processes considered by the 2017 \VHbb\ analysis.}
@@ -289,7 +289,7 @@ The first such correction addresses the difference between the \pTV\ spectrum in
     \label{fig:vjetsewkweight}
 \end{figure}
 
-The second such correction addresses the difference between the \pT\ spectra of the top quarks in data and the $\qrkt\bar{\qrkt}$ MC samples. The \pT\ spectra of top quarks in data are observed to be softer than predicted by the event generators. The $\qrkt\bar{\qrkt}$ samples are therefore reweighted as a function of the top quark \pT\ according to the official recommendation by the CMS experiment.\cite{CMSTTCORR} This correction is only applicable for the \ZnnH\ and \ZllH\ channels, and is superceded by an equivalent reweighting specific to the \WlnH\ channel. 
+The second such correction addresses the difference between the \pT\ spectra of the top quarks in data and the $\qrkt\bar{\qrkt}$ MC samples. The \pT\ spectra of top quarks in data are observed to be softer than predicted by the event generators. The $\qrkt\bar{\qrkt}$ samples are therefore reweighted as a function of the top quark \pT\ according to the official recommendation by the CMS experiment.\cite{CMSTTCORR} This correction is only applicable for the \ZnnH\ and \ZllH\ channels, and is superceded by an equivalent reweighting specific to the \WlnH\ channel.
 
 A third correction addresses the discrepancy between the di-jet invariant mass \mjj\ distribution in data and the LO \bosV+jets MC samples. Although NLO \bosV+jets MC samples are readily available and show good agreement with data for the \mjj\ distribution, they are not used by the analysis because their limited statistical power results in an over 10\% decrease in expected sensitivity with respect to the LO \bosV+jets samples. A differential LO-to-NLO correction based on the separation in $\eta$ between the two \qrkb-quark jets from the Higgs boson decay $\Delta\eta(jj)$ is derived as a ratio of the NLO to LO \bosV+jets samples following the procedure outlined in Ref. \cite{CMSVHbbEvidence}. An example of this ratio is shown in Figure \ref{fig:NLOtoLOratio}. These reweighting functions improve the agreement between data and the LO \bosV+jets samples for the \mjj\ and \pTV\ distributions while demonstrating a negligible effect on the remaining distributions. The full reweighting is assessed as a systematic uncertainty.
 
@@ -300,19 +300,127 @@ A third correction addresses the discrepancy between the di-jet invariant mass \
     \label{fig:NLOtoLOratio}
 \end{figure}
 
-A final correction addresses the downward trend in the data to MC ratio for the \pTV\ distribution that is observed in the control regions of the \WlnH\ channel. A simultaneous fit of the \pTV\ distribution to data in the control regions of the \WlnH\ channel are used to derive independent linear reweighting functions for the $\qrkt\bar{\qrkt}$, \bosW with light-flavored jets (\Wlight), and combination of \bosW with \qrkb-jets (\Wbb) and single top processes. The relative compositions of the background processes were fixed during the fit and the reweighting preserves the overall normalization. The uncertainties on the fitted slopes of the linear reweighting functions are taken to be the systematic uncertainties of this \pTV\ correction. An uncertainty of 13\% is assessed for the $\qrkt\bar{\qrkt}$ reweighting, while a 6\% uncertainty is asseseed for both the \Wlight and \Wbb + single top reweightings. These uncertainties sufficiently cover any perceived discrepancies after all corrections have been applied.
+A final correction addresses the downward trend in the data to MC ratio for the \pTV\ distribution that is observed in the control regions of the \WlnH\ channel. A simultaneous fit of the \pTV\ distribution to data in the control regions of the \WlnH\ channel are used to derive independent linear reweighting functions for the $\qrkt\bar{\qrkt}$, \bosW\ with light-flavored jets (\Wlight), and combination of \bosW\ with \qrkb-jets (\Wbb) and single top processes. The relative compositions of the background processes were fixed during the fit and the reweighting preserves the overall normalization. The uncertainties on the fitted slopes of the linear reweighting functions are taken to be the systematic uncertainties of this \pTV\ correction. An uncertainty of 13\% is assessed for the $\qrkt\bar{\qrkt}$ reweighting, while a 6\% uncertainty is assessed for both the \Wlight\ and \Wbb\ and single top combined reweightings. These uncertainties sufficiently cover any perceived discrepancies after all corrections have been applied.
 
 \section{Physics Objects}
 
+The standard physics object candidates reconstructed by the PF algorithm and described in Chapter \ref{reco} are used by the analysis. The identification and selection of electrons, muons, jets, \qrkb-jets, and MET proceeds according to recipes approved and provided by their corresponding Physics Object Group (POG). Recommended working points and corrections are also applied, as well as additional reconstruction techniques developed for the \VHbb\ analysis.
+
+The primary vertex candidates are reconstructed according to the deterministic annealing algorithm.\cite{ITERTRACK} The signal vertex, the primary vertex corresponding to the primary hard interaction which triggered the event, is chosen to be the primary vertex with the largest $\sum \pT^{2}$, where the sum runs over all elementary particles identified at the tracking level, namely track-jets, track-MET, and charged leptons. In addition, displaced tracks originating from the decay of \qrkb-hadrons are associated with to their proper primary vertex to increase the probability of choosing the correct signal vertex, especially for the \ZnnH\ channel which searches for a decay final state with two \qrkb-jets and large MET.
+
+Because of the high instantaneous luminosity and tight bunch crossing timing, the number of reconstructed primary vertices increases with the amount of pileup, or additional proton-proton interactions that may be \textit{in-time}, occurring within the same bunch crossing considered by the event, or \textit{out-of-time}, occurring within the previous or next bunch crossings. The presence of pileup interactions impacts the choice of signal vertex as well as the reconstruction of all other objects by worsening the momentum resolution of jets and, by extension, MET and affecting the calculation of lepton isolation and the performance of \qrkb-taggers. The analysis addresses pileup effects by employing the following approaches:
+\begin{itemize}
+  \item \textbf{Charged hadronic subtraction (CHS)} is an algorithm integrated with the reconstruction algorithm for PF jets which filters all charged hadrons whose trajectories are incompatible with the primary interaction.
+  \item \textbf{FastJet substraction} is an algorithm provided by the \texttt{FastJet}\cite{FASTJET} software package which calculates the average momentum density per unit area due to pileup for each event which is used to decontiminate jet and lepton isolation cones.
+\end{itemize}
+Finally, to account for observed differences between the pileup distribution in data and MC simulation, the simulated events are reweighted to match the amount of generated pileup. After the effects of pileup have been treated, the agreement between data and simulation is much better, as demonstrated in Figure \ref{fig:rho}.
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=3in]{images/rho}
+    \caption[Average Jet Energy Density in 2017 Data]{The distribution of the average jet energy density $\rho$ for 2017 data and simultion in the \qrkt\qrktbar control region of the \WlnH\ channel which is defined in section \ref{CRs}.}
+    \label{fig:rho}
+\end{figure}
+
+Electrons are reconstructed using the Gaussian-sum filter (GSF) algorithm.\cite{GSFTRACK} The electron candidates are then selected by first applying a loose relative isolation cut of 0.4, after which they must pass tighter identification requirements based on multivariate discriminator thresholds determined by the Electron-Gamma (EGM) POG. Two of the prescribed working points are used:
+\begin{itemize}
+  \item The loose working point (WP90) achieves an electron selection efficiency of 90\% and is used by the analysis to perform an initial categorization of event candidates for every decay channel as well as to identify the electrons in the \ZeeH\ channel.
+  \item The tight working point (WP80) achieves an electron selection efficiency of 80\% and is used to identify electrons in the \WenH\ channel and suppress background.
+\end{itemize}
+Tn order to reduce the multijet background, the electron isolation cut is specifically tightened to 0.06 for the \WenH\ channel. The \ZeeH\ channel loosened the electron isolation cut to 0.15 because its requirement of two leptons in the final state virtually eliminates all multijet background for that channel, allowing it to increase its signal efficiency at little cost.
+
+Muons are reconstructed using tracker muon tracks and global muon tracks identified by the PF algorithm. The muon candidates are also selected by first applying a loose relative isolation cut of 0.4, after which they are required to pass tighter criteria proposed by the Muon POG which are based on the results of the global muon track fit and information from the tracker which are used to determine if it the muon is prompt. The \WmnH\ channel tightened the muon isolation cut to 0.06, which by chance is the same value used by the \WenH\ channel for the electron isolation cut, in order to remove data excesses in the poorly modelled tails of the isolation distribution. The \ZmmH\ channel loosened the muon isolation cut to 0.12 for same reasons the \ZeeH\ channel loosened its electron isolation cut.
+
+Jets are reconstructed using the anti-$k_{T}$ jet clustering algorithm\cite{ANTIKT} to cluster together PF candidates with a radius parameter of $R = 0.4$ to form so-called ``AK4'' jets. The jet energy scale (JES) corrections recommended by the Jet/MET (JME) POG and derived for 2017 data and simulation were applied to calibrate the energy of the jets. The jet energies are also smeared in simulation in order for the resolution in simulation to match the resolution in data. A loose jet identification is applied that rejects misreconstructed candidates due to detector noise or contamination from pileup energy. Jets overlapping a preselected electron or muon are discarded, and jets which are outside of the tracker acceptance of $\left| \eta \right| < 2.5$ are not considered by the analysis.
+
+The identification of jets initiated by the hadronization of \qrkb-quarks is performed using the Deep Combined Secondary Vertex (DeepCSV)\cite{CMSBTAG} \qrkb-tagging algorithm. The DeepCSV tagger uses as its discriminator a neural network classifier which takes as input information from secondary vertices and track impact parameters associated with a jet in an event and outputs five continuous values that are interpreted to be the probabilities that the jet belongs to one of five different possible hadronization scenarios described in section \ref{btagging}. In the context of this analysis, the DeepCSV score refers to the summed probability that a jet originated from a \qrkb-quark or two \qrkb-quarks, as the Higgs boson will be reconstructed from a compatible pair of \qrkb-jet candidates. The \qrkb-Tagging and Vertexing (BTV) POG recommends three working points, shown in Table \ref{tbl:deepcsvwp}, which trade off between \qrkb-tagging efficiency and misidentification rate.
+
+\begin{table}[htbp]
+  \caption[2017 DeepCSV Working Points]{The 2017 \qrkb-tagging working points defined for the DeepCSV algorithm, along with their associated misidentification rates.\cite{CMSBTAG}}
+  \label{tbl:deepcsvwp}
+  \begin{tabularx}{6.5in}{XXr}
+    \hline
+    Working Point & DeepCSV Score & Misidentification Rate \\
+    \hline
+    Loose         & 0.1522        & 10.0\%                 \\
+    Medium        & 0.4941        & 1.0\%                  \\
+    Tight         & 0.8001        & 0.1\%                  \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+Observed discrepancies in the \qrkb-tagging efficiency between data and simulation are addressed by calibrating the DeepCSV discriminator values using a tag-and-probe (TnP) approach such that the the DeepCSV distribution for jets in simulation matches the distribution observed in data control regions. The binned distribution of the probe jets in data is compared to the expected distrbution from simulation and an iterative procedure scales the content of each bin to match while preserving the expected proportions of light and heavy flavor jets. The procedure itself is carried out in bins of \pT\ and $\eta$. The ratio of the scaled distribution in simulation to the original distribution in simulation defines a per jet weight $w_{j}$ which is function of DeepCSV and parameterized by the jet \pT, $\eta$, and flavor. For an event with $N_{\mathrm{jets}}$, the product of the weights for each jet $j$ defines an overall \qrkb-tag calibration weight
+\begin{equation}
+  w_{\qrkb\text{-}\mathrm{tag}} = \prod_{j=1}^{N_{\mathrm{jets}}} w_{j} \left( \mathrm{DeepCSV}_{j} | p_{\mathrm{T}j}, \eta_{j}, \mathrm{flavor}_{j} \right).
+  \label{eq:btagweight}
+\end{equation}
+
+The missing transverse momentum $vec{p}_{\mathrm{T}}^{\mathrm{miss}}$ is reconstructed as the negative vectorial sum of the transverse momentum of all PF objects identified in the event. The magnitude of $vec{p}_{\mathrm{T}}^{\mathrm{miss}}$ is the missing transverse energy \pTmiss, or colloquially MET. A Type-I correction, where the JES corrections are applied to the PF jets which enter the vectorial sum, is applied to calibrate the MET. The jet smearing is also propagated to the MET calculation to more realistically match the resolution of the MET in data. Finally, events with large MET caused by spurious detector noise are rejected by applying the standard set of MET filters recommended by the JetMET POG. In addition to the MET, the missing hadronic transverse energy MHT is also used by the \ZnnH\ channel, which is defined as the magnitude of the missing hadronic transverse momentum, or the negative vectorial sum of the transverse momenta of only jets with $\pT > 30\ \GeV$ and $\left| \eta \right| < 2.4$.
+
+Aside from the vector boson and Higgs boson decays, additional hadronic activity is expected to be low for signal events. The remaining activity is expected to be soft, and so any low \pT\ tracks originating from the signal vertex but not associated with the vector boson or Higgs boson candidates are used to reconstruct the ``soft activity''. These tracks are then clustered into AK4 ``soft-track jets'' which have been demonstrated to capably reconstruct the hadronization of very low energy partons.\cite{CMSTRACKJETS} To further separate signal from background, the \VHbb\ analysis defines and uses the quantity SA5, which is the number of soft-track jets in the event with $\pT > 5\ \GeV$.
+
 \subsection{Vector Boson Candidate}
 
+For the \ZnnH\ channel, the vector boson is simply reconstructed from large MET because the \bosZ\ decays invisibly to a pair of neutrinos. Candidate \ZnnH\ events are required to have $\mathrm{MET} > 150\ \GeV$, and the transverse momentum of the reconstructed \bosZ\ candidate is defined as $\pT(\bosZ) = \min \left( \mathrm{MET}, \mathrm{MHT} \right)$. In order to remove observed discrepancies between the data and simulation in the turn-on region of the MET trigger efficiency curve, the analysis of the \ZnnH\ channel only considers events with $\pT(\bosZ) > 170 \GeV$.
+
+For the remaining channels, the vector boson reconstruction involves the selection and identification of isolated leptons. For the \ZllH\ channels, the \bosZ\ boson is reconstructed from pairs of isolated electrons or muons which have a dilepton invariant mass $m_{\ell\ell}$ within the range $75\ \GeV < m_{\ell\ell} < 105\ GeV$ which covers the on and off-shell decays of the \bosZ\ boson. Separate analyses of the \ZllH\ channels are then performed for \bosZ\ boson candidates in a low \pT\ category ($50\ \GeV < \pT(\bosZ) < 150\ \GeV$) and high \pT\ category ($\pT(\bosZ) > 150\ \GeV$). For the \WlnH\ channels, the \bosW\ boson is reconstructed from a single isolated electron or muon and the MET and the transverse momentum and transverse mass of the \bosW\ boson candidate is defined as
+\begin{equation}
+  \pT(\bosW) = \sqrt{\left( \mathrm{MET}_{x} + p_{x}^{\ell} \right)^{2} + \left( \mathrm{MET}_{y} + p_{y}^{\ell} \right)^{2}}
+  \label{eq:WlnWpT}
+\end{equation}
+and
+\begin{equation}
+  m_{T}(\bosW) = \sqrt{\left( \mathrm{MET}_{x} + p_{\mathrm{T}}^{\ell} \right)^{2} - \pT(\bosW)^{2}},
+  \label{eq:WlnWmT}
+\end{equation}
+where $p^{\ell}$ is the four-momentum of the isolated lepton.
+
 \subsection{Higgs Boson Candidate}
+
+For all decay channels, the Higgs boson is most efficienctly reconstructed using the pair of \qrkb-jets with the largest DeepCSV score per event, where the leading \qrkb-jet is required to pass the tight working point cut for all channels except \ZllH\ and the subleading \qrkb-jet is required to pass the loose working point. Because the identification of the Higgs boson candidate is crucial to the analysis, advanced techniques are used to improve the dijet invariant mass resolution. The application of a \qrkb-jet energy regression, a kinematic fit in the \ZllH\ channel, and a recovery of final state radiation (FSR) results in a channel-dependent improvement of 10-23\% for the mass resolution.
+
+The \qrkb-jet energy regression is used to correct the energies of \qrkb-jets by providing an accurate estimate of the true \qrkb-jet energy and resolution. The multitarget regression is modelled using a neural network implemented using the \texttt{Keras}\cite{KERAS} neural network framework with \texttt{Tensorflow}\cite{TENSORFLOW} as the backend. There are 43 input features based on the \qrkb-jet kinematics, pileup in the event, leading tracks in the \qrkb-jet, soft-lepton tracks in the \qrkb-jet, secondary vertex candidates, and \qrkb-jet energy fractions carried by electromagnetic, charged, and neutral constituents in five rings of $\Delta R$ within the jet cone. The architecture of the neural network model uses six hidden layers with the number of nodes in each layer being 1024, 1024, 1024, 512, 256, and 128, respectively. The hidden layer nodes are leaky rectified linear units (Leaky ReLU) with a slope of $\beta = 0.2$ for the negative part of its argument:
+\begin{equation}
+  f(x) = \begin{cases}
+           x, & \mathrm{ if x > 0} \\
+           \beta x, & \mathrm{ otherwise} \\
+         \end{cases}
+       = \begin{cases}                                                                                                                               
+           x, & \mathrm{ if x > 0} \\
+           0.2 x, & \mathrm{ otherwise} \\
+         \end{cases}.
+  \label{eq:leakyrelu}
+\end{equation}
+Batch-normalization\cite{BATCHNORM} and dropout\cite{DROPOUT} with a probability of 0.1 are applied to the outputs of each hidden layer to increase the training speed and regularize the model. The output layer consists of three linear nodes, one of which is trained to estimate the jet energy correction while the others are trained to estimate the jet energy resolution at 25\% and 75\% quantiles. A composite loss function is used, which is taken to be the sum of the Huber loss\cite{HUBER} for the jet energy correction task and two asymmetrically-weighted quantile losses for the jet energy resolution tasks. The training was performed with stochastic gradient descent using adaptive moment estimation, or the Adam optimizer.\cite{ADAM} The model hyperparameters were optimized by taking the best performing random model out of 50 trials sampled from a discrete grid. By calibrating the \qrkb-jets energies using the corrections obtained by the regression, channel-dependent improvements of 10-23\% for the mass resolution are observed, with the improvements to the \ZllH\ channel shown in Figure \ref{fig:bjetreg_perf}.
+
+\begin{figure}[htbp]
+  \centering
+  \mbox{
+    \subfigure [] {\includegraphics[scale=0.28]{images/RegressionPerformance_nolep_Zll_2017}} \qquad
+    \subfigure [] {\includegraphics[scale=0.28]{images/RegressionPerformance_semilep_Zll_2017}} \qquad
+  }
+  \caption[Performance of \qrkb-jet Energy Regression]{The dijet invariant mass distribution of the \ZllH\ channel before (red) and after the \qrkb-jet energy regression is applied for A) \qrkb-jets which do not contain leptons and B) \qrkb-jets which contain leptons from semi-leptonic decays of \qrkb-hadrons. The artificial neural network based regression (blue) used by the 2017 analysis outperforms the boosted decision tree based regression (green) used by the 2016 analysis.}
+    \label{fig:bjetreg_perf}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \mbox{
+    \subfigure [] {\includegraphics[scale=0.35]{images/CMS-HIG-18-016_Figure-aux_001-a}} \qquad
+    \subfigure [] {\includegraphics[scale=0.35]{images/CMS-HIG-18-016_Figure-aux_001-b}} \qquad
+  }
+  \caption[Performance of \ZllH\ Kinematic Fit]{The dijet invariant mass distribution of the \ZllH\ channel before (red) and after the \qrkb-jet energy regression corrections (blue) and the kinematic fit (green) are applied for A) events without a recoiling jet and B) events with a single recoiling jet.}
+    \label{fig:kinfit_perf}
+\end{figure}
+
+The kinematic fit is specific to the \ZllH\ channel because its events have no genuine MET, thereby admitting a unique kinematic constraint which may be exploited to improve the dijet invariant mass resolution. The \texttt{PhysicsTools/KinFitter} package distributed with CMSSW is used to perform the fit, which consists of first constraining the dilepton system to the \bosZ\ boson mass and then constraining the dilepton-dijet system in the transverse plane, all within uncertainties. This balancing of the dilepton and dijet systems also considers a recoil vector to account for jets caused by initial state radiation (ISR). The kinematic fit further improves the dijet invariant mass resolution in the \ZllH\ channel by at least 20\% on top of the \qrkb-jet energy regression, as shown in Figure \ref{fig:kinfit_perf}.
+
 
 \section{Event Selection}
 
 \subsection{Signal Regions}
 
-\subsection{Background Control Regions}
+\subsection{Background Control Regions} \label{CRs}
 
 \section{Binned Multivariate Shape Analysis}
 
@@ -323,6 +431,8 @@ A final correction addresses the downward trend in the data to MC ratio for the 
 \subsection{Model Selection}
 
 \subsection{Binned Shape Analysis}
+
+\subsection{Invariant Mass Analysis}
 
 \section{Systematic Uncertainties}
 

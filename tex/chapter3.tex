@@ -251,7 +251,7 @@ where $\mathcal{N}\left( 0, \sigma_{\mathrm{JER}} \right)$ denotes a normal dist
 
 In physics analyses, both the JES corrections and JER smearings are applied to the reconstructed jets and systematic uncertainties are assessed for the different systematic sources based on their $1\sigma$ shifts that is fully correlated in jet \pT\ and $\eta$. This amounts to at most a 3\% uncertainty in the phase space considered by most analyses. A thorough review of the derivations of the JES corrections, JER smearing, and their uncertainties and are available in Ref. \cite{CMSJES}.
 
-\subsection{\qrkb-Tagging}
+\subsection{\qrkb-Tagging} \label{btagging}
 
 The long lifetime of \qrkb-hardons, quark bound states containing a bottom quark, can be attributed to the mass of the \qrkb-quark, which is heavier than the common quarks such as the up or down quarks, and the suppression of its decays to lighter quarks by the Cabbibo-Kobayashi-Maskawa (CKM) matrix. Because of this longer lifetime, \qrkb-hadrons travel a distance on the order a few millimeters before decaying, resulting in a characteristic displaced vertex relative to the primary vertex of the hard scattering process, as shown in Figure \ref{fig:secondary_vertex}. This property enables the jets formed by the hadronization of \qrkb-quarks to be distinguished from those of other quarks by using \textit{\qrkb-tagging} methods which determine a jet's quark flavor.
 
@@ -310,7 +310,7 @@ The reconstruction of \pTmiss\ is challenging because it relies on the accurate 
 \end{equation}
 where $\vec{p}_{\mathrm{T}}^{\mathrm{JEC}}$ denotes the $\vec{p}_{\mathrm{T}}$ of the corrected jets.
 
-In addition to these corrections, \textit{filters} are designed by the JetMET POG to help physics analyses reject events with artificially large \pTmiss\ due to specific noise sources. The following filters were recommended to be applied for 2017 data, as well as MC simulation under 2017 data-taking conditions.
+In addition to these corrections, \textit{filters} are designed by the JetMET POG to help physics analyses reject events with artificially large \pTmiss\ due to specific noise sources. The following filters were recommended to be applied for 2017 data, as well as MC simulation under 2017 data-taking conditions:
 \begin{itemize}
   \item The \textbf{GoodVerticesFilter} rejects events with large \pTmiss\ due to noisy vertex reconstruction caused by pileup. 
   \item The \textbf{GlobalTightHaloFilter} rejects events with large \pTmiss\ due to beam-halo particles, which are the result of beam protons interacting with the instrumentation used to collimate the beam or residual gas particles in the beam pipe vacuum. Information from the CSCs in the muon endcap are used to identify the passage of halo muons, which have a non-negligible chance of interacting with the calorimeters to produce clusters with energy on the order of several hundred \GeV.
