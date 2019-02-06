@@ -467,7 +467,7 @@ The number of additional jets $N_{\mathrm{j}}^{\mathrm{add}}$ is at most one and
 
 \subsection{Background Control Regions} \label{CRs}
 
-For each decay channel, several control regions are defined by inverting signal region cuts to produce mutually exclusive samples that are enriched in specific background processes orthogonal to the signal region. The control regions are used by the analysis to validate the agreement of MC simulation to data and to determine the MC normalization of key background processes with minimal extrapolation uncertainties during the final statistical analysis. A diagram summarizing the design of the control regions is show in Figure \ref{fig:controlregiondef}.
+For each decay channel, several control regions are defined by inverting and modifying signal region cuts to produce mutually exclusive samples that are enriched in specific background processes and orthogonal to the signal region. The control regions are used by the analysis to validate the agreement of MC simulation to data and to determine the normalization of key background processes with minimal extrapolation uncertainties during the final statistical analysis. A diagram summarizing the design of the control regions is show in Figure \ref{fig:controlregiondef}.
 
 \begin{figure}[htbp]
   \centering
@@ -475,6 +475,80 @@ For each decay channel, several control regions are defined by inverting signal 
     \caption[\VHbb\ Control Region Definitions]{An infographic summarizing the inverted cuts used by each decay channel to define their respective control regions.}
     \label{fig:controlregiondef}
 \end{figure}
+
+The detailed cuts which define the control regions of the \ZnnH\ channel are listed in Table \ref{tbl:controlregions_Znn}. The \bosZ+heavy process, where \bosZ+jets events produce at least one \qrkb-jet, is the background process most similar to the \ZnnH\ signal. In order to create a \bosZ+heavy enriched control region, the dijet invariant mass window required for the signal region is simply inverted such that the control region focuses on the mass sidebands. Because \qrkt\qrktbar\ is an important background process that is also present in the \bosZ+heavy control region with relatively large contributions, a dedicated control region enriched in the \qrkt\qrktbar\ process is defined by loosening the signal region's Anti-QCD cut threshold to $\pi/2$, loosening the DeepCSV working point to Medium for \btagmax, and requiring at least two additional jets with $\pT > 30\ \GeV$ and at least one additional lepton. The requirement of at least one additional lepton can result in overlap with the \qrkt\qrktbar\ control region for the \WlnH\ channel, so care is taken to ensure that these two control regions remain distinct. A control region enriched in the \bosZ+light process, where \bosZ+jets events produce only light flavored jets, is defined by removing the dijet invariant mass window and inverting the DeepCSV working point cut placed on \btagmax, creating a fairly pure control region that helps to constrain the normalization of the background process.
+
+The detailed cuts which define the control regions of the \WlnH\ and \ZllH\ channels are listed in Table \ref{tbl:controlregions_Wln} and Table \ref{tbl:controlregions_Zll}, respectively.  Distributions of important variables in all of the control regions of the different decay channels are found in Appendix \ref{appendixB}. Because the \bosW+jets processes can have large relative contributions in the \bosZ+light and \bosZ+heavy control regions of the \ZnnH\ channel, the \bosW+light and \bosW+heavy control regions of the \WlnH\ channel are adopted by the \ZnnH\ channel to constrain the normalization of those processes.
+
+\begin{table}[htbp]
+  \caption[\ZnnH\ Control Region Definitions for the 2017 \VHbb\ Analysis]{The cuts defining the control regions of the \ZnnH\ decay channel for the \VHbb\ analysis. The values of the kinematic quantities are quoted in \GeV\ and the values of the differences in azimuthal angle are quoted in radians.}
+  \label{tbl:controlregions_Znn}
+  \begin{tabularx}{6.5in}{XXXX}
+    \hline
+    Variable                              & \qrkt\qrktbar & \bosZ+light & \bosZ+heavy        \\
+    \hline
+    \bosV Decay Type                      & \Wmn          & \Znn        & \Znn               \\
+    \pTmiss                               & $>170$        & $>170$      & $>170$             \\
+    $m(jj)$                               & --            & --          & $\notin [60, 160]$ \\
+    $\pT(jj)$                             & $>120$        & $>120$      & $>120$             \\
+    \btagmax                              & $>$ Medium    & $<$ Medium  & $>$ Tight          \\
+    \btagmin                              & $>$ Loose     & $>$ Loose   & $>$ Loose          \\
+    \pTjmax                               & $>60$         & $>60$       & $>60$              \\
+    \pTjmin                               & $>35$         & $>35$       & $>35$              \\
+    $| \Delta\phi(\bosV, \bosH) |$        & $>2.0$        & $>2.0$      & $>2.0$             \\
+    $N_{\mathrm{\ell}}^{\mathrm{add}}$    & $\geq1$       & $=0$        & $=0$               \\
+    $N_{\mathrm{j}}^{\mathrm{add}}$       & $\geq2$       & $\leq1$     & $\leq1$            \\
+    $| \Delta\phi(\pTmiss, \pTmisstrk) |$ & --            & $<0.5$      & $<0.5$             \\
+    $\mathrm{Anti\text{-}QCD}$            & Modified      & Yes         & Yes                \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+  \caption[\WlnH\ Control Region Definitions for the 2017 \VHbb\ Analysis]{The cuts defining the control regions of the \WenH\ and \WmnH\ decay channels for the \VHbb\ analysis. The values of the kinematic quantities are quoted in \GeV\ and the values of the differences in azimuthal angle are quoted in radians. The $\pTmiss \mathrm{Significance}$ is defined as the ratio of \pTmiss\ to the scalar sum of the transverse energy of all particle-flow objects in the event.}
+  \label{tbl:controlregions_Wln}
+  \begin{tabularx}{6.5in}{XXXX}
+    \hline
+    Variable                              & \qrkt\qrktbar & \bosW+light & \bosW+heavy        \\
+    \hline
+    \bosV Decay Type                      & \Wmn          & \Wmn        & \Wmn               \\
+    $\pT(\bosV)$                          & $>150$        & $>150$      & $>150$             \\
+    $| \Delta\phi(\pTmiss, \ell) |$       & $<2.0$        & $<2.0$      & $<2.0$             \\
+    $m(jj)$                               & $<250$        & $<250$      & $\notin [90, 150]$ \\
+    $\pT(jj)$                             & $>100$        & $>100$      & $>100$             \\
+    \btagmax                              & $>$ Tight     & $<$ Medium  & $>$ Tight          \\
+    \btagmin                              & $>$ Loose     & $>$ Loose   & $>$ Loose          \\
+    \pTjmax                               & $>25$         & $>25$       & $>25$              \\
+    \pTjmin                               & $>25$         & $>25$       & $>25$              \\
+    $| \Delta\phi(\bosV, \bosH) |$        & $>2.5$        & $>2.5$      & $>2.5$             \\
+    $N_{\mathrm{\ell}}^{\mathrm{add}}$    & $\geq1$       & --          & $=0$               \\
+    $N_{\mathrm{j}}^{\mathrm{add}}$       & --            & $\geq1$     & $\leq1$            \\
+    $| \Delta\phi(\pTmiss, \pTmisstrk) |$ & --            & $<0.5$      & $<0.5$             \\
+    $\pTmiss \mathrm{Significance}$       & --            & $>2.0$      & $>2.0$             \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+  \caption[\ZllH\ Control Region Definitions for the 2017 \VHbb\ Analysis]{The cuts defining the control regions of the \ZeeH\ and \ZmmH\ decay channels for the \VHbb\ analysis. The values of the kinematic quantities are quoted in \GeV\ and the values of the differences in azimuthal angle are quoted in radians.}
+  \label{tbl:controlregions_Zll}
+  \begin{tabularx}{6.5in}{XXXX}
+    \hline
+    Variable                              & \qrkt\qrktbar                      & \bosZ+light       & \bosZ+heavy        \\
+    \hline
+    \bosV Decay Type                      & \Zll                               & \Zll              & \Zll               \\
+    $\pT(\bosV)$                          & $[50, 150], >150$                  & $[50, 150], >150$ & $[50, 150], >150$  \\
+    $m(\ell\ell)$                         & $\notin [0, 10], \notin [75, 120]$ & $[75, 105]$       & $[85, 97]$         \\
+    $m(jj)$                               & --                                 & $[90, 150]$       & $\notin [90, 150]$ \\
+    \btagmax                              & $>$ Tight                          & $<$ Loose         & $>$ Tight          \\
+    \btagmin                              & $>$ Loose                          & $<$ Loose         & $>$ Loose          \\
+    \pTjmax                               & $>20$                              & $>20$             & $>20$              \\
+    \pTjmin                               & $>20$                              & $>20$             & $>20$              \\
+    $| \Delta\phi(\bosV, \bosH) |$        & --                                 & $>2.5$            & $>2.5$             \\
+    \pTmiss                               & --                                 & --                & $<60$              \\
+    \hline
+  \end{tabularx}
+\end{table}
 
 \section{Binned Multivariate Shape Analysis}
 
