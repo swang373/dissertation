@@ -463,7 +463,7 @@ The analysis of the \ZnnH\ channel is performed in the region of phase space whe
 
 The dijet invariant mass $m(jj)$ window is chosen to range from 60 \GeV\ to 160 \GeV, which is wider than for the other decay channels in order to recover background statistics lost by the aggressive thresholds placed on the transverse momenta of the Higgs jet candidates. For the Higgs jet candidate pairs, the \qrkb-jet with the greater DeepCSV score is denoted by \btagmax\ and the lesser by \btagmin, while the larger \qrkb-jet transverse momentum is denoted by \pTjmax\ and the smaller by \pTjmin. The \ZnnH\ analysis places large, asymmetric cuts on \pTjmax\ and \pTjmin\ because of an observed reduction of multijet background.
 
-The number of additional jets $N_{\mathrm{j}}^{\mathrm{add}}$ is at most one and the number of additional leptons $N_{\mathrm{\ell}}^{\mathrm{add}}$ must be zero in order to reject \qrkt\qrktbar\ and multijet backgrounds which have large jet multiplicities and leptons in the final state. The difference in azimuthal angle between the MET and tracker MET $| \Delta\phi(\pTmiss, \pTmisstrk) |$ is chosen to be less than 0.5 as the direction of the tracker MET is expected to be close to the direction of true MET, given that the \bosZ\ decay does not produce charged leptons. Finally, the Anti-QCD cut is used to strongly reject the multijet background in the \ZnnH\ channel while mainitaining high signal efficiency. The cut is placed on the minimum of the set of differences in azimuthal angle between each jet in an event with $\pT > 30\ \GeV$ and the MET. By requiring this minimum difference to be greater than 0.5, events with fake MET produced by the mismeasurement of jet \pT are removed from the analysis, with approximately 93\% multijet background rejection at 96\% signal efficiency in simulation. The remaining variables which involve leptons are not applicable to the \ZnnH\ channel.
+The number of additional jets $N_{\mathrm{j}}^{\mathrm{add}}$ is at most one and the number of additional leptons $N_{\mathrm{\ell}}^{\mathrm{add}}$ must be zero in order to reject \qrkt\qrktbar\ and multijet backgrounds which have large jet multiplicities and leptons in the final state. The difference in azimuthal angle between the MET and tracker MET $\left| \Delta\phi(\pTmiss, \pTmisstrk) \right|$ is chosen to be less than 0.5 as the direction of the tracker MET is expected to be close to the direction of true MET, given that the \bosZ\ decay does not produce charged leptons. Finally, the Anti-QCD cut is used to strongly reject the multijet background in the \ZnnH\ channel while mainitaining high signal efficiency. The cut is placed on the minimum of the set of differences in azimuthal angle between each jet in an event with $\pT > 30\ \GeV$ and the MET. By requiring this minimum difference to be greater than 0.5, events with fake MET produced by the mismeasurement of jet \pT are removed from the analysis, with approximately 93\% multijet background rejection at 96\% signal efficiency in simulation. The remaining variables which involve leptons are not applicable to the \ZnnH\ channel.
 
 \subsection{Background Control Regions} \label{CRs}
 
@@ -552,7 +552,53 @@ The detailed cuts which define the control regions of the \WlnH\ and \ZllH\ chan
 
 \section{Binned Multivariate Shape Analysis}
 
+In order to observe the \VHbb\ decay, the distributions considered by the signal extraction fit must enable the hypothesized \VHbb\ signal to be distinguished from the SM background. Although the dijet invariant mass distribution is a powerful physical observable on its own, statistical learning methods can leverage the information spread across multiple key variables to further separate the signal from background. Because multivariate discriminants can achieve signal-to-background ratios which exceed those of individual physical observables, a multivariate approach is employed by this analysis to maximize the sensitivity to the signal process.
+
 \subsection{Multivariate Discriminator}
+
+For this analysis, the multivariate discriminator is a classifier with a single, continuous-valued output that scores events based on how ``signal-like'' they appear, with the convention that more ``signal-like'' events receive higher scores. Because the final state topologies and background contributions are specific to each decay channel, four separate instances of the classifier are trained for the \ZnnH, \WlnH, and the low and high $\pT(\bosV)$ \ZllH\ categories, where the training is inclusive for the \lepe\ and \lepm\ final states. The discriminant distributions of these four distinct models are used for the final signal extraction.
+
+The classifiers are trained in a supervised manner using the MC simulated events which pass the signal region selection of their respective decay channel. For each decay channel, the simulated events are further divided into a training set and a validation set based on the parity of their generator level ID values to obtain two statistically independent samples which are roughly equal in size. The training set is used solely to train the classifier while the validation set is used to evaluate the generalization performance of the model and tune the hyperparameters of the machine learning algorithm. Because of the limited statistics available for the 2017 MC samples, the classifiers are trained and validated using the 2016 MC samples while the 2017 MC samples are used to provide the signal region discriminant distribution considered by the signal extraction fit.
+
+The variables which are used as the classifier input features are listed in Table \ref{tbl:inputfeatures}. The final set of input features were selected using a ``leave-one-out'' strategy, where an initial subset of variables chosen based on their physics efficacy for each channel are further refined by iteratively holding out one variable while training the classifier with the rest. By evaluating the performance of each of these classifiers on the validation set, an optimal set of input features is determined. Because the training and validation sets are derived from 2016 MC samples but the 2017 MC samples and data are used for the signal extraction fit, a lack of agreement between the data and simulated samples in the distributions of the input variables could jeopardize the generalizability of the classifier. It is found that the distributions of the input features remain fairly consistent between the 2016 and 2017 MC samples. 
+
+\begin{table}[htbp]
+  \caption[Event Classification Variables]{The variables which define the input features used to train the event classifier models for the multivariate discriminant analysis. The values of the kinematic quantities are quoted in \GeV\ and the values of the differences in azimuthal angle are quoted in radians.}
+  \label{tbl:inputfeatures}
+  \small
+  \begin{tabularx}{6.5in}{lXrrr}
+    \hline
+    Variable                        & Description                                                                               & \ZnnH      & \WlnH      & \ZllH      \\
+    \hline
+    $m(jj)$                         & dijet invariant mass                                                                      & \checkmark & \checkmark & \checkmark \\
+    $\pT(jj)$                       & dijet transverse momentum                                                                 & \checkmark & \checkmark & \checkmark \\
+    \pTjmax, \pTjmin                & transverse momentum of the two \qrkb-jets                                                 & \checkmark &            & \checkmark \\
+    $\Delta R(jj)$                  & distance between the two \qrkb-jets in $\eta$-$\phi$ space                                &            &            & \checkmark \\
+    $\Delta \eta(jj)$               & difference in $\eta$ between the two \qrkb-jets                                           & \checkmark &            & \checkmark \\
+    $\Delta \phi(jj)$               & difference in $\phi$ between the two \qrkb-jets                                           & \checkmark &            &            \\
+    $\pT(\bosV)$                    & vector boson transverse momentum                                                          &            & \checkmark & \checkmark \\
+    $\Delta \phi(\bosV, \bosH)$     & difference in $\phi$ between the dijet system and vector boson                            & \checkmark & \checkmark & \checkmark \\
+    $\pT(jj) / \pT(\bosV)$          & \pT\ ratio of the dijet system to the vector boson                                        &            &            & \checkmark \\
+    $m(\bosZ)$                      & reconstructed mass of the \bosZ\ boson                                                    &            &            & \checkmark \\
+    \btagmax                        & leading DeepCSV score of the two \qrkb-jets                                               & \checkmark &            & \checkmark \\
+    \btagmin                        & subleading DeepCSV score of the two \qrkb-jets                                            & \checkmark & \checkmark & \checkmark \\
+    \btagadd                        & leading DeepCSV score of all additional jets                                              & \checkmark &            &            \\
+    \pTmiss                         & missing transverse energy                                                                 & \checkmark & \checkmark & \checkmark \\
+    $|\Delta\phi(\pTmiss, j)|$      & difference in $\phi$ between \pTmiss\ and the nearest jet with $\pT > 30\ \GeV$           & \checkmark &            &            \\
+    $|\Delta\phi(\pTmiss, \ell)|$   & difference in $\phi$ between \pTmiss\ and the isolated lepton                             &            & \checkmark &            \\
+    $m_{\mathrm{T}}$                & mass of the isolated lepton $\vec{p}_{\mathrm{T}} + \vec{p}_{\mathrm{T}}^{\mathrm{miss}}$ &            & \checkmark &            \\
+    $m_{\qrkt}$                     & reconstructed mass of the top quark                                                       &            & \checkmark &            \\
+    $N_{\mathrm{j}}^{\mathrm{add}}$ & number of additional jets                                                                 &            & \checkmark & \checkmark \\
+    \pTjadd                         & highest \pT\ of all additional jets                                                       & \checkmark &            &            \\
+    SA5                             & number of soft-track jets with $\pT > 5\ \GeV$                                            & \checkmark & \checkmark & \checkmark \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+overtrain check
+
+For this analysis, two different machine learning classifiers were considered for the final multivariate discriminant: a gradient boosted decision tree (BDT)\cite{GBDT} and a multilayer perceptron\cite{MLP} or artificial neural network (ANN).
+
 
 discuss model training and model selection
 
