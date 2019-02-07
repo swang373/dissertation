@@ -379,7 +379,7 @@ where $p^{\ell}$ is the four-momentum of the isolated lepton.
 
 For all decay channels, the Higgs boson is most efficienctly reconstructed using the pair of \qrkb-jets with the largest DeepCSV score per event, where the leading \qrkb-jet is required to pass the tight working point cut for all channels except \ZllH\ and the subleading \qrkb-jet is required to pass the loose working point. Because the identification of the Higgs boson candidate is crucial to the analysis, advanced techniques are used to improve the dijet invariant mass resolution. The application of a \qrkb-jet energy regression, a kinematic fit in the \ZllH\ channel, and a recovery of final state radiation (FSR) results in a channel-dependent improvement of 10-23\% for the mass resolution.
 
-The \qrkb-jet energy regression is used to correct the energies of \qrkb-jets by providing an accurate estimate of the true \qrkb-jet energy and resolution. The multitarget regression is modelled using a neural network implemented using the \texttt{Keras}\cite{KERAS} neural network framework with \texttt{Tensorflow}\cite{TENSORFLOW} as the backend. There are 43 input features based on the \qrkb-jet kinematics, pileup in the event, leading tracks in the \qrkb-jet, soft-lepton tracks in the \qrkb-jet, secondary vertex candidates, and \qrkb-jet energy fractions carried by electromagnetic, charged, and neutral constituents in five rings of $\Delta R$ within the jet cone. The architecture of the neural network model uses six hidden layers with the number of nodes in each layer being 1024, 1024, 1024, 512, 256, and 128, respectively. The hidden layer nodes are leaky rectified linear units (Leaky ReLU) with a slope of $\beta = 0.2$ for the negative part of its argument:
+The \qrkb-jet energy regression is used to correct the energies of \qrkb-jets by providing an accurate estimate of the true \qrkb-jet energy and resolution. The multitarget regression is modelled using a neural network implemented using the \texttt{Keras}\cite{KERAS} neural network framework with \texttt{Tensorflow}\cite{TENSORFLOW} as the backend. There are 43 input features based on the \qrkb-jet kinematics, pileup in the event, leading tracks in the \qrkb-jet, soft-lepton tracks in the \qrkb-jet, secondary vertex candidates, and \qrkb-jet energy fractions carried by electromagnetic, charged, and neutral constituents in five rings of $\Delta R$ within the jet cone. The architecture of the neural network model uses six hidden layers with the number of nodes in each layer being 1024, 1024, 1024, 512, 256, and 128, respectively. The hidden layer nodes are leaky rectified linear units (Leaky ReLU)\cite{RELU} with a slope of $\beta = 0.2$ for the negative part of its argument:
 \begin{equation}
   f(x) = \begin{cases}
            x, & \mathrm{ if x > 0} \\
@@ -463,11 +463,11 @@ The analysis of the \ZnnH\ channel is performed in the region of phase space whe
 
 The dijet invariant mass $m(jj)$ window is chosen to range from 60 \GeV\ to 160 \GeV, which is wider than for the other decay channels in order to recover background statistics lost by the aggressive thresholds placed on the transverse momenta of the Higgs jet candidates. For the Higgs jet candidate pairs, the \qrkb-jet with the greater DeepCSV score is denoted by \btagmax\ and the lesser by \btagmin, while the larger \qrkb-jet transverse momentum is denoted by \pTjmax\ and the smaller by \pTjmin. The \ZnnH\ analysis places large, asymmetric cuts on \pTjmax\ and \pTjmin\ because of an observed reduction of multijet background.
 
-The number of additional jets $N_{\mathrm{j}}^{\mathrm{add}}$ is at most one and the number of additional leptons $N_{\mathrm{\ell}}^{\mathrm{add}}$ must be zero in order to reject \qrkt\qrktbar\ and multijet backgrounds which have large jet multiplicities and leptons in the final state. The difference in azimuthal angle between the MET and tracker MET $| \Delta\phi(\pTmiss, \pTmisstrk) |$ is chosen to be less than 0.5 as the direction of the tracker MET is expected to be close to the direction of true MET, given that the \bosZ\ decay does not produce charged leptons. Finally, the Anti-QCD cut is used to strongly reject the multijet background in the \ZnnH\ channel while mainitaining high signal efficiency. The cut is placed on the minimum of the set of differences in azimuthal angle between each jet in an event with $\pT > 30\ \GeV$ and the MET. By requiring this minimum difference to be greater than 0.5, events with fake MET produced by the mismeasurement of jet \pT are removed from the analysis, with approximately 93\% multijet background rejection at 96\% signal efficiency in simulation. The remaining variables which involve leptons are not applicable to the \ZnnH\ channel.
+The number of additional jets $N_{\mathrm{j}}^{\mathrm{add}}$ is at most one and the number of additional leptons $N_{\mathrm{\ell}}^{\mathrm{add}}$ must be zero in order to reject \qrkt\qrktbar\ and multijet backgrounds which have large jet multiplicities and leptons in the final state. The difference in azimuthal angle between the MET and tracker MET $\left| \Delta\phi(\pTmiss, \pTmisstrk) \right|$ is chosen to be less than 0.5 as the direction of the tracker MET is expected to be close to the direction of true MET, given that the \bosZ\ decay does not produce charged leptons. Finally, the Anti-QCD cut is used to strongly reject the multijet background in the \ZnnH\ channel while mainitaining high signal efficiency. The cut is placed on the minimum of the set of differences in azimuthal angle between each jet in an event with $\pT > 30\ \GeV$ and the MET. By requiring this minimum difference to be greater than 0.5, events with fake MET produced by the mismeasurement of jet \pT are removed from the analysis, with approximately 93\% multijet background rejection at 96\% signal efficiency in simulation. The remaining variables which involve leptons are not applicable to the \ZnnH\ channel.
 
 \subsection{Background Control Regions} \label{CRs}
 
-For each decay channel, several control regions are defined by inverting signal region cuts to produce mutually exclusive samples that are enriched in specific background processes orthogonal to the signal region. The control regions are used by the analysis to validate the agreement of MC simulation to data and to determine the MC normalization of key background processes with minimal extrapolation uncertainties during the final statistical analysis. A diagram summarizing the design of the control regions is show in Figure \ref{fig:controlregiondef}.
+For each decay channel, several control regions are defined by inverting and modifying signal region cuts to produce mutually exclusive samples that are enriched in specific background processes and orthogonal to the signal region. The control regions are used by the analysis to validate the agreement of MC simulation to data and to determine the normalization of key background processes with minimal extrapolation uncertainties during the final statistical analysis. A diagram summarizing the design of the control regions is show in Figure \ref{fig:controlregiondef}.
 
 \begin{figure}[htbp]
   \centering
@@ -476,11 +476,170 @@ For each decay channel, several control regions are defined by inverting signal 
     \label{fig:controlregiondef}
 \end{figure}
 
+The detailed cuts which define the control regions of the \ZnnH\ channel are listed in Table \ref{tbl:controlregions_Znn}. The \bosZ+heavy process, where \bosZ+jets events produce at least one \qrkb-jet, is the background process most similar to the \ZnnH\ signal. In order to create a \bosZ+heavy enriched control region, the dijet invariant mass window required for the signal region is simply inverted such that the control region focuses on the mass sidebands. Because \qrkt\qrktbar\ is an important background process that is also present in the \bosZ+heavy control region with relatively large contributions, a dedicated control region enriched in the \qrkt\qrktbar\ process is defined by loosening the signal region's Anti-QCD cut threshold to $\pi/2$, loosening the DeepCSV working point to Medium for \btagmax, and requiring at least two additional jets with $\pT > 30\ \GeV$ and at least one additional lepton. The requirement of at least one additional lepton can result in overlap with the \qrkt\qrktbar\ control region for the \WlnH\ channel, so care is taken to ensure that these two control regions remain distinct. A control region enriched in the \bosZ+light process, where \bosZ+jets events produce only light flavored jets, is defined by removing the dijet invariant mass window and inverting the DeepCSV working point cut placed on \btagmax, creating a fairly pure control region that helps to constrain the normalization of the background process.
+
+The detailed cuts which define the control regions of the \WlnH\ and \ZllH\ channels are listed in Table \ref{tbl:controlregions_Wln} and Table \ref{tbl:controlregions_Zll}, respectively.  Distributions of important variables in all of the control regions of the different decay channels are found in Appendix \ref{appendixB}. Because the \bosW+jets processes can have large relative contributions in the \bosZ+light and \bosZ+heavy control regions of the \ZnnH\ channel, the \bosW+light and \bosW+heavy control regions of the \WlnH\ channel are adopted by the \ZnnH\ channel to constrain the normalization of those processes.
+
+\begin{table}[htbp]
+  \caption[\ZnnH\ Control Region Definitions for the 2017 \VHbb\ Analysis]{The cuts defining the control regions of the \ZnnH\ decay channel for the \VHbb\ analysis. The values of the kinematic quantities are quoted in \GeV\ and the values of the differences in azimuthal angle are quoted in radians.}
+  \label{tbl:controlregions_Znn}
+  \begin{tabularx}{6.5in}{XXXX}
+    \hline
+    Variable                              & \qrkt\qrktbar & \bosZ+light & \bosZ+heavy        \\
+    \hline
+    \bosV Decay Type                      & \Wmn          & \Znn        & \Znn               \\
+    \pTmiss                               & $>170$        & $>170$      & $>170$             \\
+    $m(jj)$                               & --            & --          & $\notin [60, 160]$ \\
+    $\pT(jj)$                             & $>120$        & $>120$      & $>120$             \\
+    \btagmax                              & $>$ Medium    & $<$ Medium  & $>$ Tight          \\
+    \btagmin                              & $>$ Loose     & $>$ Loose   & $>$ Loose          \\
+    \pTjmax                               & $>60$         & $>60$       & $>60$              \\
+    \pTjmin                               & $>35$         & $>35$       & $>35$              \\
+    $| \Delta\phi(\bosV, \bosH) |$        & $>2.0$        & $>2.0$      & $>2.0$             \\
+    $N_{\mathrm{\ell}}^{\mathrm{add}}$    & $\geq1$       & $=0$        & $=0$               \\
+    $N_{\mathrm{j}}^{\mathrm{add}}$       & $\geq2$       & $\leq1$     & $\leq1$            \\
+    $| \Delta\phi(\pTmiss, \pTmisstrk) |$ & --            & $<0.5$      & $<0.5$             \\
+    $\mathrm{Anti\text{-}QCD}$            & Modified      & Yes         & Yes                \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+  \caption[\WlnH\ Control Region Definitions for the 2017 \VHbb\ Analysis]{The cuts defining the control regions of the \WenH\ and \WmnH\ decay channels for the \VHbb\ analysis. The values of the kinematic quantities are quoted in \GeV\ and the values of the differences in azimuthal angle are quoted in radians. The $\pTmiss \mathrm{Significance}$ is defined as the ratio of \pTmiss\ to the scalar sum of the transverse energy of all particle-flow objects in the event.}
+  \label{tbl:controlregions_Wln}
+  \begin{tabularx}{6.5in}{XXXX}
+    \hline
+    Variable                              & \qrkt\qrktbar & \bosW+light & \bosW+heavy        \\
+    \hline
+    \bosV Decay Type                      & \Wmn          & \Wmn        & \Wmn               \\
+    $\pT(\bosV)$                          & $>150$        & $>150$      & $>150$             \\
+    $| \Delta\phi(\pTmiss, \ell) |$       & $<2.0$        & $<2.0$      & $<2.0$             \\
+    $m(jj)$                               & $<250$        & $<250$      & $\notin [90, 150]$ \\
+    $\pT(jj)$                             & $>100$        & $>100$      & $>100$             \\
+    \btagmax                              & $>$ Tight     & $<$ Medium  & $>$ Tight          \\
+    \btagmin                              & $>$ Loose     & $>$ Loose   & $>$ Loose          \\
+    \pTjmax                               & $>25$         & $>25$       & $>25$              \\
+    \pTjmin                               & $>25$         & $>25$       & $>25$              \\
+    $| \Delta\phi(\bosV, \bosH) |$        & $>2.5$        & $>2.5$      & $>2.5$             \\
+    $N_{\mathrm{\ell}}^{\mathrm{add}}$    & $\geq1$       & --          & $=0$               \\
+    $N_{\mathrm{j}}^{\mathrm{add}}$       & --            & $\geq1$     & $\leq1$            \\
+    $| \Delta\phi(\pTmiss, \pTmisstrk) |$ & --            & $<0.5$      & $<0.5$             \\
+    $\pTmiss \mathrm{Significance}$       & --            & $>2.0$      & $>2.0$             \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+  \caption[\ZllH\ Control Region Definitions for the 2017 \VHbb\ Analysis]{The cuts defining the control regions of the \ZeeH\ and \ZmmH\ decay channels for the \VHbb\ analysis. The values of the kinematic quantities are quoted in \GeV\ and the values of the differences in azimuthal angle are quoted in radians.}
+  \label{tbl:controlregions_Zll}
+  \begin{tabularx}{6.5in}{XXXX}
+    \hline
+    Variable                              & \qrkt\qrktbar                      & \bosZ+light       & \bosZ+heavy        \\
+    \hline
+    \bosV Decay Type                      & \Zll                               & \Zll              & \Zll               \\
+    $\pT(\bosV)$                          & $[50, 150], >150$                  & $[50, 150], >150$ & $[50, 150], >150$  \\
+    $m(\ell\ell)$                         & $\notin [0, 10], \notin [75, 120]$ & $[75, 105]$       & $[85, 97]$         \\
+    $m(jj)$                               & --                                 & $[90, 150]$       & $\notin [90, 150]$ \\
+    \btagmax                              & $>$ Tight                          & $<$ Loose         & $>$ Tight          \\
+    \btagmin                              & $>$ Loose                          & $<$ Loose         & $>$ Loose          \\
+    \pTjmax                               & $>20$                              & $>20$             & $>20$              \\
+    \pTjmin                               & $>20$                              & $>20$             & $>20$              \\
+    $| \Delta\phi(\bosV, \bosH) |$        & --                                 & $>2.5$            & $>2.5$             \\
+    \pTmiss                               & --                                 & --                & $<60$              \\
+    \hline
+  \end{tabularx}
+\end{table}
+
 \section{Binned Multivariate Shape Analysis}
+
+In order to observe the \VHbb\ decay, the distributions considered by the signal extraction fit must enable the hypothesized \VHbb\ signal to be distinguished from the SM background. Although the dijet invariant mass distribution is a powerful physical observable on its own, statistical learning methods can leverage the information spread across multiple key variables to further separate the signal from background. Because multivariate discriminants can achieve signal-to-background ratios which exceed those of individual physical observables, a multivariate approach is employed by this analysis to maximize the sensitivity to the signal process.
 
 \subsection{Multivariate Discriminator}
 
-discuss model training and model selection
+For this analysis, the multivariate discriminator is a classifier with a single, continuous valued output that scores events based on how ``signal-like'' they appear, with the convention that more ``signal-like'' events receive higher scores. Because the final state topologies and background contributions are specific to each decay channel, separate instances of the classifier are trained for the \ZnnH, \WlnH, and the low and high $\pT(\bosV)$ \ZllH\ categories, where the training may be inclusive or exclusive for the \lepe\ and \lepm\ final states. The discriminant distributions of these distinct models are used for the final signal extraction.
+
+The classifiers are trained in a supervised manner using the MC simulated events which pass the signal region selection of their respective decay channel. For each decay channel, the simulated events are further divided into a training set and a validation set based on the parity of their generator level ID values to obtain two statistically independent samples which are roughly equal in size, typically around 200,000 events. The training set is used solely to train the classifier while the validation set is used to evaluate the generalization performance of the model and tune the hyperparameters of the machine learning algorithm. Because of the limited statistics available for the 2017 MC samples, the classifiers are trained and validated using the 2016 MC samples while the 2017 MC samples are used to provide the signal region discriminant distribution considered by the signal extraction fit.
+
+The variables which are used as the classifier input features are listed in Table \ref{tbl:inputfeatures}. The final set of input features were selected using a ``leave-one-out'' strategy, where an initial subset of variables chosen based on their physics efficacy for each channel are further refined by iteratively holding out one variable while training the classifier with the rest. By evaluating the performance of each of these classifiers on the validation set, an optimal set of input features is determined. Because the training and validation sets are derived from 2016 MC samples but the 2017 MC samples and data are used for the signal extraction fit, a lack of agreement between the data and simulated samples in the distributions of the input variables could jeopardize the generalizability of the classifier. It is found that the distributions of the input features remain fairly consistent between the 2016 and 2017 MC samples. 
+
+\begin{table}[htbp]
+  \caption[Event Classification Variables]{The variables which define the input features used to train the event classifier models for the multivariate discriminant analysis. The values of the kinematic quantities are quoted in \GeV\ and the values of the differences in azimuthal angle are quoted in radians.}
+  \label{tbl:inputfeatures}
+  \small
+  \begin{tabularx}{6.5in}{lXrrr}
+    \hline
+    Variable                        & Description                                                                               & \ZnnH      & \WlnH      & \ZllH      \\
+    \hline
+    $m(jj)$                         & dijet invariant mass                                                                      & \checkmark & \checkmark & \checkmark \\
+    $\pT(jj)$                       & dijet transverse momentum                                                                 & \checkmark & \checkmark & \checkmark \\
+    \pTjmax, \pTjmin                & transverse momentum of the two \qrkb-jets                                                 & \checkmark &            & \checkmark \\
+    $\Delta R(jj)$                  & distance between the two \qrkb-jets in $\eta$-$\phi$ space                                &            &            & \checkmark \\
+    $\Delta \eta(jj)$               & difference in $\eta$ between the two \qrkb-jets                                           & \checkmark &            & \checkmark \\
+    $\Delta \phi(jj)$               & difference in $\phi$ between the two \qrkb-jets                                           & \checkmark &            &            \\
+    $\pT(\bosV)$                    & vector boson transverse momentum                                                          &            & \checkmark & \checkmark \\
+    $\Delta \phi(\bosV, \bosH)$     & difference in $\phi$ between the dijet system and vector boson                            & \checkmark & \checkmark & \checkmark \\
+    $\pT(jj) / \pT(\bosV)$          & \pT\ ratio of the dijet system to the vector boson                                        &            &            & \checkmark \\
+    $m(\bosZ)$                      & reconstructed mass of the \bosZ\ boson                                                    &            &            & \checkmark \\
+    \btagmax                        & leading DeepCSV score of the two \qrkb-jets                                               & \checkmark &            & \checkmark \\
+    \btagmin                        & subleading DeepCSV score of the two \qrkb-jets                                            & \checkmark & \checkmark & \checkmark \\
+    \btagadd                        & leading DeepCSV score of all additional jets                                              & \checkmark &            &            \\
+    \pTmiss                         & missing transverse energy                                                                 & \checkmark & \checkmark & \checkmark \\
+    $|\Delta\phi(\pTmiss, j)|$      & difference in $\phi$ between \pTmiss\ and the nearest jet with $\pT > 30\ \GeV$           & \checkmark &            &            \\
+    $|\Delta\phi(\pTmiss, \ell)|$   & difference in $\phi$ between \pTmiss\ and the isolated lepton                             &            & \checkmark &            \\
+    $m_{\mathrm{T}}$                & mass of the isolated lepton $\vec{p}_{\mathrm{T}} + \vec{p}_{\mathrm{T}}^{\mathrm{miss}}$ &            & \checkmark &            \\
+    $m_{\qrkt}$                     & reconstructed mass of the top quark                                                       &            & \checkmark &            \\
+    $N_{\mathrm{j}}^{\mathrm{add}}$ & number of additional jets                                                                 &            & \checkmark & \checkmark \\
+    \pTjadd                         & highest \pT\ of all additional jets                                                       & \checkmark &            &            \\
+    SA5                             & number of soft-track jets with $\pT > 5\ \GeV$                                            & \checkmark & \checkmark & \checkmark \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=6in]{images/features_Znn}
+    \caption[Input Feature Distributions for the \ZnnH\ Channel]{The distributions of select input features for the \ZnnH\ decay channel. In order to emphasize the separation between signal (blue) and background (red), the distributions are normalized.}
+    \label{fig:features_Znn}
+\end{figure}
+
+Two different machine learning algorithms were considered for the final multivariate discriminant. Gradient boosted decision tree (BDT)\cite{GBDT} classifiers implemented using the \texttt{TMVA} v4.2.1\cite{TMVA} software package were used to establish a performance baseline, given their broad acceptance by the high energy physics community because of the relative interpretability of their results and good ``out-of-the-box'' performance with little to no input feature preprocessing or hyperparameter tuning. Multilayer perceptron\cite{MLP} or artificial neural network (ANN) classifiers implemented using the \texttt{Keras} neural network framework with \texttt{Tensorflow} as the computational backend were compared to the incumbent BDT classifiers to determine if recent advances in the implementation and training of ANN classifiers resulted in superior performance.
+
+Optimal BDT and ANN classification models were selected using a grid-based hyperparameter search with the area under the receiver operating characteristic (ROC) curve evaluated on the validation set as the performance metric. Because overfitting can result in models which fail to generalize because they are sensitive to fine variations in the training set, the Kolmogorov-Smirnov test statistic was used to estimate the compatibility of the discriminant distribution of the training set to the validation set. The compatibility of the normalized shapes of the discriminant distributions for the training and validations sets were also visually inspected.
+
+The performance of the optimized BDT and ANN classifiers were found to be nearly equivalent, with both models achieving similar area under the ROC curve values near 0.80 when evaluated on the validation set. The ANN classifier was chosen as the final discriminantor for the analysis. The chosen neural network architecture, dubbed ``DNN'' for deep neural network, takes as input the training features of a specific decay channel, each scaled to zero mean and unit variance, and passes them through five hidden layers with 32 nodes in each layer. The hidden layer nodes are Leaky ReLU units with a slope of $\beta = 0.2$ for the negative part of its argument. Residual connections\cite{RESCONNECT}, which have been shown to benefit the training of deep neural networks by mitigating the problem of vanishing or exploding gradients during training, were made between the first, second, and third hidden layers and the last hidden layer and between the second and fourth hidden layers. Batch-normalization and dropout with a probability of 0.1 are applied to the outputs of each hidden layer to increase the training speed and regularize the model. The output layer consists of two linear nodes passed through a softmax activation function. A softmax output layer was chosen because the output values are interpreted to be the probability that an event belongs to one of the two possible classes of signal or background. The DNN was trained to minimize the cross entropy loss using stochastic gradient descent with adaptive moment estimation, or the Adam optimizer. The output node of the DNN chosen to represent the probability that an event belongs to the signal class defines a discriminant whose values fall within the inclusive range $[0, 1]$, where events with lower scores are more background-like and events with higher scores are more signal-like. The normalized discriminant distributions of each of the trained DNN classifiers are shown in Figure \ref{fig:DNN_overtrain}. 
+
+\begin{figure}[htbp]
+  \centering
+  \mbox{
+    \subfigure [] {\includegraphics[width=0.38\linewidth]{images/Zll_low_overtraining}}
+    \subfigure [] {\includegraphics[width=0.38\linewidth]{images/Zll_high_overtraining}}
+  }
+  \mbox{
+    \subfigure [] {\includegraphics[width=0.38\linewidth]{images/Wen_overtraining}}
+    \subfigure [] {\includegraphics[width=0.38\linewidth]{images/Wmn_overtraining}}
+  }
+  \mbox{
+    \subfigure [] {\includegraphics[width=0.38\linewidth]{images/Znn_overtraining}}
+  }
+  \caption[Normalized DNN Discriminant Distributions]{The normalized DNN discriminant distributions for the A) low $\pT(\bosV)$ \ZllH; B) high $\pT(\bosV)$ \ZllH; C) \WenH; D) \WmnH; and E) \ZnnH\ channels. The signal distributions are shown for the training set (solid blue) and for the validation set (blue points). The background distributions are also shown for the training set (hashed red) and the validation set (red points).}
+  \label{fig:DNN_overtrain}
+\end{figure}
+
+Because the \bosZ+heavy control region of the \ZnnH\ channel and the \bosW+heavy control region of the \WlnH\ channel are not pure in the enriched background, the normalization of the \bosV+\qrkb\ and \bosV+\qrkb\qrkbbar\ processes are difficult to constrain. A variation of the DNN is therefore used to enhance the separation of the contributing background processes in the \bosV+heavy flavor control regions of the \ZnnH\ and \WlnH\ channels. The input features are the same as those used for the signal classification task, except that the training and validation events pass the control region selection of their respective decay channel. The training is carried out as before, with the neural network architecture modified to use a five-way softmax output layer whose values are interpreted to be the probability that an event belongs to one of five possible background classes: \bosV+\qrkb\qrkbbar, \qrkt\qrktbar, \bosV+light, \bosV+\qrkb, and single top. The discriminant distributions of these multi-background DNN classifiers are shown in Figure \ref{fig:DNN_multi}.
+
+\begin{figure}[htbp]
+  \centering
+  \mbox{
+    \subfigure [] {\includegraphics[width=0.38\linewidth]{images/AT_2017_WH_CR_MULTI_v1_5bins}}
+    \subfigure [] {\includegraphics[width=0.38\linewidth]{images/AT_2017_WH_CR_MULTI_v1_5bins_SF}}
+  }
+  \mbox{
+    \subfigure [] {\includegraphics[width=0.38\linewidth]{images/AT_2017_ZNN_CR_MULTI_v3_5bins}}
+    \subfigure [] {\includegraphics[width=0.38\linewidth]{images/AT_2017_ZNN_CR_MULTI_v3_5bins_SF}}
+  }
+  \caption[Multi-background DNN Discriminant Distributions]{The multi-background DNN discriminant distributions for the \bosW+heavy control region of the \WlnH\ channel (top row) and \bosZ+heavy control region of the \ZnnH\ channel (bottom row) both A), C) before and B), D) after the background process normalizations have been adjusted.}
+  \label{fig:DNN_multi}
+\end{figure}
 
 \subsection{Binned Shape Analysis}
 
