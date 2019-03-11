@@ -6,7 +6,7 @@ In the early days of particle physics experimentation, charged particles were vi
 
 The hermetic design of the CMS detector and the granularity of its subsystems enabled the first successful deployment of a \textit{particle flow (PF)} based reconstruction algorithm at a hadron collider experiment.\cite{PARTICLEFLOW} Although the individual subsystems are capable of reconstructing the particles for which they were designed, a more accurate and global event description can be achieved by combining the measurements obtained by the subsystems as a whole. Since its commissioning, the PF algorithm has been used online to improve the efficiency of the High-Level Trigger (HLT) and offline to improve the quality of the reconstructed particle candidates considered by physics analyses.
 
-The PF algorithm starts by collecting the detector-level objects, or \textit{elements}, produced by each detector subsystem: the silicon tracker and muon chambers both provide charged particle \textit{tracks}, while the electromagnetic calorimeter (ECAL) and hadronic calorimeter (HCAL) both provide \textit{clusters} of absorbed energy. A \textit{link algorithm} which tests the compatibility of pairs of elements from different subsystems is used to generate \textit{blocks} of elements that are directly linked or indirectly linked through common elements. Individual particles are subsequently identified and reconstructed within each block, starting with muons then proceeding to electrons, photons, and charged and neutral hadrons. As particles are reconstructed, the elements associated with that particle are removed from the block such that each particle is reconstructed from a set of unique elements. Once all the blocks have been processed and all particles in the event have been identified and reconstructed, a post-processing algorithm is used to correct misidentified or misreconstructed muons with large transverse momentum \pT which can artificially increase the reconstructed missing transverse momentum \pTmiss\ in the event.
+The PF algorithm starts by collecting the detector-level objects, or \textit{elements}, produced by each detector subsystem: the silicon tracker and muon chambers both provide charged particle \textit{tracks}, while the electromagnetic calorimeter (ECAL) and hadronic calorimeter (HCAL) both provide \textit{clusters} of absorbed energy. A \textit{link algorithm} which tests the compatibility of pairs of elements from different subsystems is used to generate \textit{blocks} of elements that are directly linked or indirectly linked through common elements. Individual particles are subsequently identified and reconstructed within each block, starting with muons then proceeding to electrons, photons, and charged and neutral hadrons. As particles are reconstructed, the elements associated with that particle are removed from the block such that each particle is reconstructed from a set of unique elements. Once all the blocks have been processed and all particles in the event have been identified and reconstructed, a post-processing algorithm is used to correct misidentified or misreconstructed muons with large transverse momentum \pT\ which can artificially increase the reconstructed missing transverse momentum \pTmiss\ in the event.
 
 \begin{figure}[htbp]
   \centering
@@ -55,18 +55,18 @@ The CTF is run for a total of ten iterations. The first iteration seeks to recon
   \small
   \begin{tabularx}{6.5in}{XXl}
     \hline
-    Iteration & Seed Type            & Reconstructed Tracks                    \\
+    Iteration & Seed Type            & Reconstructed Tracks                        \\
     \hline
-    1         & pixel triplets       & prompt, high \pT                        \\
-    2         & pixel triplets       & from b hadron decays, $R \lesssim 5$ cm \\
-    3         & pixel triplets       & prompt, low \pT                         \\
-    4         & pixel pairs          & recover high \pT                        \\
-    5         & pixel+strip triplets & displaced, $R \lesssim 7$ cm            \\
-    6         & strip triplets/pairs & very displaced, $R \lesssim 25$ cm      \\
-    7         & strip triplets/pairs & very displaced, $R \lesssim 60$ cm      \\
-    8         & pixel+strip pairs    & inside high \pT jets                    \\
-    9         & muon-tagged tracks   & muons                                   \\
-    10        & muon detectors       & muons                                   \\
+    1         & pixel triplets       & prompt, high \pT                            \\
+    2         & pixel triplets       & from \qrkb-hadron decays, $R \lesssim 5$ cm \\
+    3         & pixel triplets       & prompt, low \pT                             \\
+    4         & pixel pairs          & recover high \pT                            \\
+    5         & pixel+strip triplets & displaced, $R \lesssim 7$ cm                \\
+    6         & strip triplets/pairs & very displaced, $R \lesssim 25$ cm          \\
+    7         & strip triplets/pairs & very displaced, $R \lesssim 60$ cm          \\
+    8         & pixel+strip pairs    & inside high \pT\ jets                       \\
+    9         & muon-tagged tracks   & muons                                       \\
+    10        & muon detectors       & muons                                       \\
     \hline
   \end{tabularx}
 \end{table}
@@ -81,7 +81,7 @@ The CTF is run for a total of ten iterations. The first iteration seeks to recon
     \label{fig:pftrack_perf}
 \end{figure}
 
-The tracking efficiency and misreconstruction rate are shown in Figure \ref{fig:pftrack_perf}. The full iterative tracking method achieves a 90\% reconstruction efficiency for tracks with \pT\ between 1 \GeV\ and 10 \GeV, to be compared with the 70-80\% efficiency of the global CTF, and maintains an approximately 8-10\% higher efficiency than the global CTF for tracks with $\pT > 100 \GeV$. Although the iterative tracking method incurs a slightly higher misreconstruction rate than the global CTF, it is able to reconstruct over half of the tracks missed by the global CTF while running twice as fast.
+The tracking efficiency and misreconstruction rate are shown in Figure \ref{fig:pftrack_perf}. The full iterative tracking method achieves a 90\% reconstruction efficiency for tracks with \pT\ between 1 \GeV\ and 10 \GeV, to be compared with the 70-80\% efficiency of the global CTF, and maintains an approximately 8-10\% higher efficiency than the global CTF for tracks with $\pT > 100\ \GeV$. Although the iterative tracking method incurs a slightly higher misreconstruction rate than the global CTF, it is able to reconstruct over half of the tracks missed by the global CTF while running twice as fast.
 
 \subsubsection{Calorimeter clusters}
 
