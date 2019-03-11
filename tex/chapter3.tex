@@ -6,7 +6,7 @@ In the early days of particle physics experimentation, charged particles were vi
 
 The hermetic design of the CMS detector and the granularity of its subsystems enabled the first successful deployment of a \textit{particle flow (PF)} based reconstruction algorithm at a hadron collider experiment.\cite{PARTICLEFLOW} Although the individual subsystems are capable of reconstructing the particles for which they were designed, a more accurate and global event description can be achieved by combining the measurements obtained by the subsystems as a whole. Since its commissioning, the PF algorithm has been used online to improve the efficiency of the High-Level Trigger (HLT) and offline to improve the quality of the reconstructed particle candidates considered by physics analyses.
 
-The PF algorithm starts by collecting the detector-level objects, or \textit{elements}, produced by each detector subsystem: the silicon tracker and muon chambers both provide charged particle \textit{tracks}, while the electromagnetic calorimeter (ECAL) and hadronic calorimeter (HCAL) both provide \textit{clusters} of absorbed energy. A \textit{link algorithm} which tests the compatibility of pairs of elements from different subsystems is used to generate \textit{blocks} of elements that are directly linked or indirectly linked through common elements. Individual particles are subsequently identified and reconstructed within each block, starting with muons then proceeding to electrons, photons, and charged and neutral hadrons. As particles are reconstructed, the elements associated with that particle are removed from the block such that each particle is reconstructed from a set of unique elements. Once all the blocks have been processed and all particles in the event have been identified and reconstructed, a post-processing algorithm is used to correct misidentified or misreconstructed muons with large transverse momentum \pT which can artificially increase the reconstructed missing transverse momentum \pTmiss\ in the event.
+The PF algorithm starts by collecting the detector-level objects, or \textit{elements}, produced by each detector subsystem: the silicon tracker and muon chambers both provide charged particle \textit{tracks}, while the electromagnetic calorimeter (ECAL) and hadronic calorimeter (HCAL) both provide \textit{clusters} of absorbed energy. A \textit{link algorithm} which tests the compatibility of pairs of elements from different subsystems is used to generate \textit{blocks} of elements that are directly linked or indirectly linked through common elements. Individual particles are subsequently identified and reconstructed within each block, starting with muons then proceeding to electrons, photons, and charged and neutral hadrons. As particles are reconstructed, the elements associated with that particle are removed from the block such that each particle is reconstructed from a set of unique elements. Once all the blocks have been processed and all particles in the event have been identified and reconstructed, a post-processing algorithm is used to correct misidentified or misreconstructed muons with large transverse momentum \pT\ which can artificially increase the reconstructed missing transverse momentum \pTmiss\ in the event.
 
 \begin{figure}[htbp]
   \centering
@@ -55,18 +55,18 @@ The CTF is run for a total of ten iterations. The first iteration seeks to recon
   \small
   \begin{tabularx}{6.5in}{XXl}
     \hline
-    Iteration & Seed Type            & Reconstructed Tracks                    \\
+    Iteration & Seed Type            & Reconstructed Tracks                        \\
     \hline
-    1         & pixel triplets       & prompt, high \pT                        \\
-    2         & pixel triplets       & from b hadron decays, $R \lesssim 5$ cm \\
-    3         & pixel triplets       & prompt, low \pT                         \\
-    4         & pixel pairs          & recover high \pT                        \\
-    5         & pixel+strip triplets & displaced, $R \lesssim 7$ cm            \\
-    6         & strip triplets/pairs & very displaced, $R \lesssim 25$ cm      \\
-    7         & strip triplets/pairs & very displaced, $R \lesssim 60$ cm      \\
-    8         & pixel+strip pairs    & inside high \pT jets                    \\
-    9         & muon-tagged tracks   & muons                                   \\
-    10        & muon detectors       & muons                                   \\
+    1         & pixel triplets       & prompt, high \pT                            \\
+    2         & pixel triplets       & from \qrkb-hadron decays, $R \lesssim 5$ cm \\
+    3         & pixel triplets       & prompt, low \pT                             \\
+    4         & pixel pairs          & recover high \pT                            \\
+    5         & pixel+strip triplets & displaced, $R \lesssim 7$ cm                \\
+    6         & strip triplets/pairs & very displaced, $R \lesssim 25$ cm          \\
+    7         & strip triplets/pairs & very displaced, $R \lesssim 60$ cm          \\
+    8         & pixel+strip pairs    & inside high \pT\ jets                       \\
+    9         & muon-tagged tracks   & muons                                       \\
+    10        & muon detectors       & muons                                       \\
     \hline
   \end{tabularx}
 \end{table}
@@ -81,13 +81,13 @@ The CTF is run for a total of ten iterations. The first iteration seeks to recon
     \label{fig:pftrack_perf}
 \end{figure}
 
-The tracking efficiency and misreconstruction rate are shown in Figure \ref{fig:pftrack_perf}. The full iterative tracking method achieves a 90\% reconstruction efficiency for tracks with \pT\ between 1 \GeV\ and 10 \GeV, to be compared with the 70-80\% efficiency of the global CTF, and maintains an approximately 8-10\% higher efficiency than the global CTF for tracks with $\pT > 100 \GeV$. Although the iterative tracking method incurs a slightly higher misreconstruction rate than the global CTF, it is able to reconstruct over half of the tracks missed by the global CTF while running twice as fast.
+The tracking efficiency and misreconstruction rate are shown in Figure \ref{fig:pftrack_perf}. The full iterative tracking method achieves a 90\% reconstruction efficiency for tracks with \pT\ between 1 \GeV\ and 10 \GeV, to be compared with the 70-80\% efficiency of the global CTF, and maintains an approximately 8-10\% higher efficiency than the global CTF for tracks with $\pT > 100\ \GeV$. Although the iterative tracking method incurs a slightly higher misreconstruction rate than the global CTF, it is able to reconstruct over half of the tracks missed by the global CTF while running twice as fast.
 
 \subsubsection{Calorimeter clusters}
 
 The ECAL and HCAL, which are the intermediate detector subsystems of the CMS detector, reconstruct energy clusters left behind by traversing particles. The electromagnetic interactions of particles with the ECAL materials induce electromagnetic showers which deposit their energy in lead tungstate crystals. The strong interactions of particles with the HCAL materials induce hadronic showers and jets which deposit their energies in alternating layers of brass or steel absorbing plates and plastic scintillator. The electronic signals produced by these showers are measured by the cells of their respective calorimeter.
 
-The ECAL clusters are seeded by cells which contain a local energy maxima above a detector-dependent threshold. The \textit{Island algorithm} is used in both the ECAL barrel and endcaps to cluster the eight cells directly adjacent to the seed in the $\eta\phi$-plane with measured energies above twice the noise level, while the \textit{hybrid algorithm} is used in the ECAL barrel only and forms bars that are 3 or 5 crystals wide in $eta$ before searching along the $phi$-direction. Both of these algorithms propose \textit{topological clusters} which are themselves clustered into \textit{superclusters}. The most energetic topological cluster is used as the supercluster seed, and nearby clusters are gathered into a supercluster with some spread in the $phi$-direction to recover the energy from photon conversions and bremsstrahlung which are spread by the solenoid's magnetic field. Although 94\% of the energy of a photon or electron is contained by a $3\times3$ cluster of crystals, and up to 97\% for $5\times5$ clusters, detector materials before the ECAL result in energy losses which are accounted for by applying corrections to the supercluster energies. Clusters are similarly constructed using information from the HCAL, although the algorithms proceed by considering only those four cells which share an edge with the seed cell. A visualization of ECAL and HCAL clusters are shown in Figure \ref{fig:caloclusters}.
+The ECAL clusters are seeded by cells which contain a local energy maxima above a detector-dependent threshold. The \textit{Island algorithm} is used in both the ECAL barrel and endcaps to cluster the eight cells directly adjacent to the seed in the $\eta\phi$-plane with measured energies above twice the noise level, while the \textit{hybrid algorithm} is used in the ECAL barrel only and forms bars that are 3 or 5 crystals wide in $\eta$ before searching along the $\phi$-direction. Both of these algorithms propose \textit{topological clusters} which are themselves clustered into \textit{superclusters}. The most energetic topological cluster is used as the supercluster seed, and nearby clusters are gathered into a supercluster with some spread in the $\phi$-direction to recover the energy from photon conversions and bremsstrahlung which are spread by the solenoid's magnetic field. Although 94\% of the energy of a photon or electron is contained by a $3\times3$ cluster of crystals, and up to 97\% for $5\times5$ clusters, detector materials before the ECAL result in energy losses which are accounted for by applying corrections to the supercluster energies. Clusters are similarly constructed using information from the HCAL, although the algorithms proceed by considering only those four cells which share an edge with the seed cell. A visualization of ECAL and HCAL clusters are shown in Figure \ref{fig:caloclusters}.
 
 \begin{figure}[htbp]
   \centering
@@ -101,7 +101,7 @@ The ECAL clusters are seeded by cells which contain a local energy maxima above 
 
 \subsubsection{Standalone muon tracks}\label{standalonemuontrack}
 
-The muon chambers also reconstruct tracks from hits and, being the outer-most detector subsystems of the CMS detector, it is expected that these tracks represent muon trajectoriees. For drift tubes (DTs), hits are reconstructed along anode wires based on the measured arrival time of electrons produced when a traversing muon ionizes the gas in the drift cell. For cathode strip chambers (CSCs), hits are reconstructed from the intersection of clustered signals from cathode strips and anode wire groups. For resistive plate chambers (RPCs), the hits are reconstructed as the centroid of the clustered strip signals. Because the CSCs and DTs have multiple layers, as opposed to the single layer design of the RPCs, their hits are also locally reconstructed as \textit{track segments}.
+The muon chambers also reconstruct tracks from hits and, being the outer-most detector subsystems of the CMS detector, it is expected that these tracks represent muon trajectories. For drift tubes (DTs), hits are reconstructed along anode wires based on the measured arrival time of electrons produced when a traversing muon ionizes the gas in the drift cell. For cathode strip chambers (CSCs), hits are reconstructed from the intersection of clustered signals from cathode strips and anode wire groups. For resistive plate chambers (RPCs), the hits are reconstructed as the centroid of the clustered strip signals. Because the CSCs and DTs have multiple layers, as opposed to the single layer design of the RPCs, their hits are also locally reconstructed as \textit{track segments}.
 
 Groups of DT and CSC track segments from the innermost chambers are used as seeds to generate trajectory candidates. A Kalman filter\cite{MUONKF} is used to form track candidates by combining the seed with track segments and hits found in the outer layers. This process is also repeated in reverse, from the outer layers towards the track seed, and the resulting pair is combined into a single track candidate which is then extrapolated to the beam axis and refit with a vertex constraint. This optimal track candidate, based solely on the information obtained by the muon chambers, is what is referred to as a \textit{standalone muon track}.
 
@@ -156,7 +156,7 @@ A variety of muon identification algorithms are defined by the CMS Muon POG to s
 
 \subsubsection{Charged and neutral hadrons}
 
-Charged hadron candidates are seeded by HCAL clusters which are linked to at least one track and possibly ECAL clusters. Neutral hadron candidates within the tracker's acceptance, or $\left| \eta \right| < 2.5$, are instead seeded by HCAL clusters which are not linked to a track while candidates utside of the tracker's acceptance are seeded by linked ECAL and HCAL clusters which present an energy excesses inconsistent with the signature of a charged hadron's energy deposition. Because such hadrons are created by the hadronization of final state particles, their performance is better discussed in the context of jet reconstruction and is reserved for section \ref{jetreco}.
+Charged hadron candidates are seeded by HCAL clusters which are linked to at least one track and possibly ECAL clusters. Neutral hadron candidates within the tracker's acceptance, or $\left| \eta \right| < 2.5$, are instead seeded by HCAL clusters which are not linked to a track while candidates outside of the tracker's acceptance are seeded by linked ECAL and HCAL clusters which present energy excesses inconsistent with the signature of a charged hadron's energy deposition. Because such hadrons are created by the hadronization of final state particles, their performance is better discussed in the context of jet reconstruction and is reserved for section \ref{jetreco}.
 
 \section{Primary Vertices}
 
